@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-import { cssQueries } from "../../styles/utils";
+import { cssQueries, paddingSection } from "../../styles/utils";
 import { PlatformCard } from "./PlatformCard";
 
 
@@ -11,7 +11,7 @@ const PlatformSectionContainer = styled.section`
 
 const WordingContainer = styled.div`
   display: grid;
-  padding: ${({ theme }) => `4rem ${theme.spacing.mainHorizontal}`};
+  ${paddingSection}
   background-color: ${({ theme }) => theme.colors.background5};
   color: ${({ theme }) => theme.colors.default5};
 

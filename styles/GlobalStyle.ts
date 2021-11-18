@@ -8,6 +8,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: Helvetica, sans-serif;
     background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+
+  #__next {
+    height: 100vh;
   }
 
   h1 {

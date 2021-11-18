@@ -18,7 +18,7 @@ const ThemeTag = styled.span`
 
 const MoreThemesTag = styled(ThemeTag)`
   border-radius: 50%;
-  width: 0.7rem;
+  width: .7rem;
 `;
 
 export const ThemeTags = ({

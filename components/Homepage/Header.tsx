@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import Image from "next/image";
 
+import { cssQueries, marginSection } from "../../styles/utils";
+
 import { LinkAsButton } from "../basics/LinkAsButton";
-import { cssQueries } from "../../styles/utils";
 
 const HeaderContainer = styled.header`
-  margin: ${({ theme }) => `4rem ${theme.spacing.mainHorizontal}`};
+  ${marginSection}
 
   @media ${cssQueries.desktop} {
     display: grid;

@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { paddingSection } from "../../styles/utils";
 
 import { LinkAsButton } from "../basics/LinkAsButton";
 
 const ThemeSectionContainer = styled.div`
-  padding: ${({ theme }) => `2rem ${theme.spacing.mainHorizontal}`};
+  ${paddingSection}
   background-color: ${({ theme }) => theme.colors.background3};
   color: ${({ theme }) => theme.colors.default3};
   text-align: center;
@@ -30,7 +31,7 @@ export const ThemeSection = ({ themes }: { themes: string[]} ) => (
     <LabelContainer>
       {themes.map((theme: string, index: number) => (
         <LinkAsButton
-          href={`/search?theme=${theme}`}
+          href={`/search?themes=${theme}`}
           text={theme}
           key={index}
         />

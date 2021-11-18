@@ -10,7 +10,7 @@ const RoundedImage = styled(Image)`
 export const ProfilePicture = ({ pictureUrl }) => (
   <RoundedImage
     src={pictureUrl}
-    loader={profilePictureLoader}
+    unoptimized
     alt="photo de profil"
     height={10}
     width={10}

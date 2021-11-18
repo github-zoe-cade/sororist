@@ -21,5 +21,19 @@ export const cardStyle = css`
   background-color: ${({ theme }) => theme.colors.background1};
   color: ${({ theme }) => theme.colors.default1};
   border-radius: 2px;
+  box-sizing: content-box;
+  opacity: 0.92;
   ${cardShadow}
+`
+
+export const marginSection = css`
+  margin: ${({ theme }) => `4rem ${theme.spacings.mainHorizontal}`};
+`
+
+export const paddingSection = css`
+  padding: ${({ theme }) => `4rem ${theme.spacings.mainHorizontal}`};
+`
+
+export const paddingBottomLastSection = css`
+  padding-bottom: 7rem;
 `

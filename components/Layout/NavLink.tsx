@@ -11,11 +11,11 @@ const StyledLi = styled.li<{ active: boolean }>`
 type NavLinkProps = {
   href: string;
   text: string;
-  currentPath: string;
+  currentPath?: string;
 };
 
 export const NavLink = ({ href, text, currentPath }: NavLinkProps) => (
-  <StyledLi active={currentPath === href}>
+  <StyledLi active={(currentPath || '') === href}>
     <Link href={href}>{text}</Link>
   </StyledLi>
 );

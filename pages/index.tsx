@@ -2,13 +2,16 @@ import styled from "styled-components";
 import Head from "next/head";
 import { getLatestProfiles, ProfileType } from "../lib/profiles";
 
+import { paddingSection, paddingBottomLastSection } from "../styles/utils";
+
 import { Layout } from "../components/Layout";
 import { LinkAsButton } from "../components/basics/LinkAsButton";
+import { ProfileCard } from "../components/ProfileCard";
+import { ProfileCardsContainer } from "../components/ProfileCard/ProfileCardsContainer";
 
 import { Header } from "../components/Homepage/Header";
 import { ThemeSection } from "../components/Homepage/ThemeSection";
 import { PlatformSection } from "../components/Homepage/PlatformSection";
-import { ProfileCard } from "../components/ProfileCard";
 
 
 export async function getStaticProps() {
@@ -34,14 +37,8 @@ export async function getStaticProps() {
 
 const LatestSection = styled.div`
   text-align: center;
-  padding: ${({ theme }) => `3rem ${theme.spacing.mainHorizontal}`};
-`;
-const ProfileCardsContainer = styled.div`
-  padding: 2rem 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2.5rem;
+  ${paddingSection}
+  ${paddingBottomLastSection}
 `;
 
 export default function Home({ themes, platforms, latestProfiles }) {

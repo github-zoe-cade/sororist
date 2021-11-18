@@ -52,6 +52,7 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
               href={link}
               Icon={Icon}
               alt={platform}
+              target="_blank"
             />
           );
         })}

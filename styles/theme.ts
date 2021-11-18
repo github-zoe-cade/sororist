@@ -1,5 +1,5 @@
 export const theme = {
-  spacing: {
+  spacings: {
     mainHorizontal: '8%'
   },
   colors: {

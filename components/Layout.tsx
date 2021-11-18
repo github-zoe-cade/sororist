@@ -1,14 +1,21 @@
 import styled from "styled-components";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 import { cssQueries } from "../styles/utils";
 import { NavLink } from "./Layout/NavLink";
+
+const LayoutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: space-between;
+`;
 
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   margin: 0 1rem;
-`
+`;
 
 const DesktopMenu = styled.ul`
   display: flex;
@@ -26,6 +33,10 @@ const MobileMenu = styled.div`
   }
 `;
 
+const Main = styled.main`
+  flex-grow: 1;
+`;
+
 const Footer = styled.footer`
   background-color: ${({ theme }) => theme.colors.background5};
   padding: 2rem;
@@ -38,43 +49,29 @@ const Footer = styled.footer`
   & li {
     margin-bottom: 1rem;
   }
-`
+`;
 
-export const Layout = ({ children }) => {
-  const router = useRouter();
-
-  return (
-    <>
-      <Navbar>
+export const Layout = ({ children }) => (
+  <LayoutContainer>
+    <Navbar>
+      <Link href="/" passHref>
         <h3>A cool name</h3>
-        <DesktopMenu>
-          <NavLink
-            href="/search"
-            currentPath={router.pathname}
-            text="Explorer"
-          />
-          <NavLink
-            href="/new-profile"
-            currentPath={router.pathname}
-            text="Suggérer un profil"
-          />
-          <NavLink
-            href="/about"
-            currentPath={router.pathname}
-            text="A propos"
-          />
-        </DesktopMenu>
-        <MobileMenu>TODO</MobileMenu>
-      </Navbar>
-      <main>{children}</main>
-      <Footer>
-        <ul>
-          <li>Mentions légales</li>
-          <li>Protection des données</li>
-          <li>Supprimer/modifier mon profil</li>
-          <li>Nous contacter</li>
-        </ul>
-      </Footer>
-    </>
-  );
-};
+      </Link>
+      <DesktopMenu>
+        <NavLink href="/search" text="Explorer" />
+        <NavLink href="/new-profile" text="Suggérer un profil" />
+        <NavLink href="/about" text="A propos" />
+      </DesktopMenu>
+      <MobileMenu>TODO</MobileMenu>
+    </Navbar>
+    <Main>{children}</Main>
+    <Footer>
+      <ul>
+        <li>Mentions légales</li>
+        <li>Protection des données</li>
+        <li>Supprimer/modifier mon profil</li>
+        <li>Nous contacter</li>
+      </ul>
+    </Footer>
+  </LayoutContainer>
+);
