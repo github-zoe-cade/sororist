@@ -1,0 +1,11 @@
+{
+  "https://cdn.skypack.dev/-/@georgedoescode/generative-utils@v1.0.0-cZQ5M67pBqknSeJkiCuX/dist=es2019,mode=imports/optimized/@georgedoescode/generative-utils.js": { "integrity": "sha512-GDoLmea0ZjwuR7Q7DGsj1tCw0MHZwMCFdd/r19Hc0Lg5G4upiSsBow+djNcpvi8gm9aRbYqPJPG96z9yTOCQsA==", "contentType": "application/javascript; charset=utf-8" },
+  "https://cdn.skypack.dev/-/@georgedoescode/generative-utils@v1.0.34-j6Exn8KDkBcBBu3Es5IR/dist=es2019,mode=imports/optimized/@georgedoescode/generative-utils.js": { "integrity": "sha512-vdU89fiz2MalSuk0prFMo09XDTi7QvyfJK6f6wC43J7zaZzl3SvbQ9GzVJ98v/g/sAQeYeMFNhq9RwUq4L3b9Q==", "contentType": "application/javascript; charset=utf-8" },
+  "https://cdn.skypack.dev/-/@svgdotjs/svg.js@v3.1.1-zaIKZxuWNmqPgP6xAiE2/dist=es2019,mode=imports/optimized/@svgdotjs/svgjs.js": { "integrity": "sha512-p+HEYcGD2AUlvrHQ15bOopZGLZe282HWJe6STFfS9Vw6lcB8BqeS6AgZjDuS1irkwkeGCNmeqvmgil02FF/3Yw==", "contentType": "application/javascript; charset=utf-8" },
+  "https://cdn.skypack.dev/-/gsap@v3.6.0-Kjw0NtTK2oEKdOqCHsIq/dist=es2019,mode=imports/optimized/gsap.js": { "integrity": "sha512-sqlGzRUQMebHgrhbe48ZyIO68MPsnzrxbwlUmr9NeG8DlTjRPRXR6JrxpEzv76LZg7F8Akw6Zv+ksKxyFjajQA==", "contentType": "application/javascript; charset=utf-8" },
+  "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.0": { "integrity": "sha512-/sJYKA0ydNUfnsdM9n9E6FRZsvdvPXiEgBAO6QyVWXrPUtSVP2mWjGyHeHsIZuANuuOyfrzameityhygTnUg+w==", "contentType": "application/javascript; charset=utf-8" },
+  "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.34": { "integrity": "sha512-KW/Yr/hnyojkOuo/FSAKGIrmhqK3d5glgcFvXaqMf8XLFkWxieNAPDvMZ4RlG3Q9Yz3ikGRb5N8RnF9LSlsv8g==", "contentType": "application/javascript; charset=utf-8" },
+  "https://cdn.skypack.dev/@svgdotjs/svg.js": { "integrity": "sha512-5yOVQAjgkdezO+ugunAbrnqHkhvwQ0Bv55PVnbV6LGBx4HFkq+al7HxVCbVR2IQTzm5CnGPOoVdD2BryQNPyog==", "contentType": "application/javascript; charset=utf-8" },
+  "https://cdn.skypack.dev/gsap@3.6.0": { "integrity": "sha512-dQbawce4Mcwxhgm1LKGfQv+mf3+x9wpg03aqrtEwfvVfwkSG9wcsOseQLJNuJoIH5TonrCODvDQtxC79WTpVIw==", "contentType": "application/javascript; charset=utf-8" },
+  "version": 1
+}
