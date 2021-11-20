@@ -8,3 +8,7 @@ export const inputStyle = css`
   font-size: 1rem;
   flex-grow: 1;
 `
+
+export const inputHeight = css`
+  height: 38px;
+`

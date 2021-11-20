@@ -1,47 +1,53 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Router } from "next/router";
-import { Formik, Form, Field } from "formik";
-import { FaRandom } from "react-icons/fa";
+import { Formik } from "formik";
 import { FiltersType } from "../../lib/filters";
 
-import { LinkAsButton } from "../basics/LinkAsButton";
-import { ThemeSelect } from "./ThemeSelect";
-import { PlatformSelect } from "./PlatformSelect";
-import { SearchBar } from "./SearchBar";
+import { toArray } from "../../lib/helpers";
+import { cssQueries } from "../../styles/utils";
+
+import { FiltersForm } from "./FiltersForm";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 
 const FiltersContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background1};
   color: ${({ theme }) => theme.colors.default1};
   border: 1px solid ${({ theme }) => theme.colors.default3};
+  border-left: none;
+  border-right: none;
   padding: 1rem 5rem;
 `;
 
-const StyledForm = styled(Form)`
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
-`;
+const FiltersMenu = styled.div`
+  @media ${cssQueries.desktop} {
+    display: none;
+  }
 
-const StyledLabel = styled.span`
-  line-height: 2;
-`;
-
-const RandomButtonContainer = styled.div`
   display: flex;
-  justify-content: end;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  & > svg {
+    fill: ${({ theme }) => theme.colors.primary1};
+    height: 1.6rem;
+  }
 `;
 
 export const Filters = ({ router }: { router: Router }) => {
   const [filters, setFilters] = useState<FiltersType>();
+  const [toggleOn, setToggleOn] = useState(false);
 
   useEffect(() => {
     if (router.isReady) {
       const appliedFilters: FiltersType = {
         themes: router.query.themes,
         platforms: router.query.platforms,
-        searchTerms: new Array(router.query.searchTerms).flat().join(),
+        searchTerms: toArray(router.query.searchTerms).join(),
       };
       setFilters(appliedFilters);
     }
@@ -60,70 +66,27 @@ export const Filters = ({ router }: { router: Router }) => {
   if (!!filters.platforms) initialValues["platforms"] = filters.platforms;
   if (!!filters.searchTerms) initialValues["searchTerms"] = filters.searchTerms;
 
+  const filtersCount =
+    toArray(initialValues.themes).length +
+    toArray(initialValues.platforms).length +
+    toArray(initialValues.searchTerms).length;
+
   return (
     <FiltersContainer>
-      <Formik initialValues={{}} onSubmit={onSubmit}>
-        {({ values, setFieldValue, submitForm, ...formikBag }) => {
-          // Router refresh in 2 times, make sure we refresh once the router.isReady
-          useEffect(() => {
-            formikBag.setValues(initialValues);
-          }, [filters]);
+      <FiltersMenu role="button" onClick={() => setToggleOn(!toggleOn)}>
+        Filters
+        {filtersCount > 0 && <span>({filtersCount})</span>}
+        {toggleOn ? <FaCaretUp /> : <FaCaretDown />}
+      </FiltersMenu>
 
-          const onChange = (fieldName: string) => (options: string[]) => {
-            setFieldValue(fieldName, options);
-            submitForm();
-          };
-
-          return (
-            <StyledForm>
-              <Field name="themes">
-                {({ field }) => (
-                  <label htmlFor="theme">
-                    <StyledLabel>Filtrer par thème :</StyledLabel>
-                    <ThemeSelect
-                      {...field}
-                      setFieldValue={setFieldValue}
-                      onChange={onChange(field.name)}
-                    />
-                  </label>
-                )}
-              </Field>
-
-              <Field name="platforms">
-                {({ field }) => (
-                  <label htmlFor="platforms">
-                    <StyledLabel>Filtrer par plateforme :</StyledLabel>
-                    <PlatformSelect
-                      {...field}
-                      setFieldValue={setFieldValue}
-                      onChange={onChange(field.name)}
-                    />
-                  </label>
-                )}
-              </Field>
-
-              <Field name="searchTerms">
-                {({ field }) => (
-                  <SearchBar
-                    {...field}
-                    filters={filters}
-                    setFieldValue={setFieldValue}
-                    submitForm={submitForm}
-                  />
-                )}
-              </Field>
-
-              <RandomButtonContainer>
-                <LinkAsButton href="/search">
-                  <FaRandom />
-                    &nbsp;
-                   Au hasard
-                </LinkAsButton>
-              </RandomButtonContainer>
-            </StyledForm>
-          );
-        }}
-      </Formik>
+      <FiltersForm
+        closeForm={() => setToggleOn(false)}
+        filters={filters}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        router={router}
+        toggleOn={toggleOn}
+      />
     </FiltersContainer>
   );
 };

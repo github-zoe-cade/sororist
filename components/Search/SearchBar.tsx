@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 
 import { FiltersType } from "../../lib/filters";
-import { inputStyle } from "../../styles/forms";
+import { inputHeight, inputStyle } from "../../styles/forms";
 
 import { Button } from "../basics/Button";
 import { RemovableTag } from "../basics/RemovableTag";
@@ -14,12 +14,7 @@ const StyledLabel = styled.span`
 
 const NameInputContainer = styled.div`
   display: flex;
-  height: 38px;
-
-  &:focus-within,
-  &:focus {
-    outline: ${({ theme }) => theme.colors.primary1} auto 1px;
-  }
+  ${inputHeight}
 `;
 
 const StyledInput = styled.input<{ textHidden: boolean }>`
@@ -27,16 +22,17 @@ const StyledInput = styled.input<{ textHidden: boolean }>`
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   color: ${({ textHidden }) => textHidden && "white"};
-
-  &:focus {
-    outline: none;
-  }
 `;
 
 const StyledButton = styled(Button)`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   padding: 0 0.75rem;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  ${inputHeight}
 
   &:focus {
     background: ${({ theme }) => theme.colors.secondary1};

@@ -10,6 +10,7 @@ const StyledButton = styled.button<{ isDisabled: boolean }>`
   border: none;
   line-height: 1.5;
   font-weight: 700;
+  font-size: 1rem;
   display: inline-block;
   ${buttonRadius};
   ${backgroundTransition};

@@ -9,3 +9,6 @@ export const random = (array: any[], size: number = 1): any => {
 
   return randomElements
 }
+
+const _toArray = <T>(value: T[] | T): T[] => (new Array(value).flat() as T[])
+export const toArray = <T>(value: T[] | T): T[] | [] => (!!value && _toArray(value)) || []

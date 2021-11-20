@@ -1,8 +1,11 @@
 import Select from "react-select";
 import { theme } from "../../styles/theme";
 
-const fieldValueToSelectValues = (value) =>
-  ((value && new Array(value).flat()) || []).map((value) => ({
+import { toArray } from "../../lib/helpers";
+import { cssQueries } from "../../styles/utils";
+
+const fieldValueToSelectValues = (value: string | string[]) =>
+  toArray(value).map((value: string | string[]) => ({
     value,
     label: value,
   }));

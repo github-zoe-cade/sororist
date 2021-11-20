@@ -1,7 +1,9 @@
 import fakeProfiles from "./fakeProfiles";
 import { FiltersType } from "./filters";
 
-// type Sex = "female" | "non-binary"
+import { toArray } from "./helpers";
+
+// type Sex = string & ("female" | "non-binary")
 
 export type ProfileType = {
   uuid: string;
@@ -26,7 +28,7 @@ export const getMatchingProfiles = (filters: FiltersType): ProfileType[] => {
     return fakeProfiles;
   }
 
-  const themesArray = new Array(filters.themes).flat();
+  const themesArray = toArray(filters.themes);
   if (themesArray.length == 0) {
     return fakeProfiles;
   }
