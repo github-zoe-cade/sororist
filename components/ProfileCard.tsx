@@ -19,6 +19,14 @@ const ProfileCardContainer = styled.div`
   padding: 1rem;
   height: 230px;
   width: 300px;
+  position: relative;
+`;
+
+const CardLink = styled.a`
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
 `;
 
 const LinksContainer = styled.div`
@@ -40,9 +48,25 @@ const IdentityContainer = styled.div`
   font-weight: 700;
 `;
 
+const ClickableCard = ({ href, children }) => (
+  <ProfileCardContainer
+    tabIndex="0"
+    role="button"
+    aria-pressed="false"
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        document.querySelector('.card-link').click()
+      }
+    }}
+  >
+    <CardLink href={href} className="card-link"> </CardLink>
+    {children}
+  </ProfileCardContainer>
+);
+
 export const ProfileCard = ({ profile }: ProfileCardProps) => {
   return (
-    <ProfileCardContainer>
+    <ClickableCard href={`/profiles/${profile.uuid}`}>
       <LinksContainer>
         {profile.links.map(({ platform, link }, index) => {
           const Icon = platformIcons[platform];
@@ -63,6 +87,6 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
       </IdentityContainer>
 
       <ThemeTags themes={profile.themes} />
-    </ProfileCardContainer>
+    </ClickableCard>
   );
 };

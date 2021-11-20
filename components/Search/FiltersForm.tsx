@@ -6,20 +6,19 @@ import { FiltersType } from "../../lib/filters";
 
 import { cssQueries } from "../../styles/utils";
 
-import { LinkAsButton } from "../basics/LinkAsButton";
 import { Button } from "../basics/Button";
 import { ThemeSelect } from "./ThemeSelect";
 import { PlatformSelect } from "./PlatformSelect";
 import { SearchBar } from "./SearchBar";
 import { Router } from "next/router";
 
-const StyledForm = styled(Form)<{ toggleOn: boolean }>`
+const StyledForm = styled(Form)<{ open: boolean }>`
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
 
   @media ${cssQueries.mobile} {
-    display: ${({ toggleOn }) => (toggleOn ? "flex" : "none")};
+    display: ${({ open }) => (open ? "flex" : "none")};
     flex-direction: column;
     padding-top: 1rem;
   }
@@ -75,7 +74,7 @@ export const FiltersForm = ({
           submitForm();
         };
         return (
-          <StyledForm toggleOn={toggleOn}>
+          <StyledForm open={toggleOn}>
             <Field name="themes">
               {({ field }) => (
                 <label htmlFor="theme">

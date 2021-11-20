@@ -73,7 +73,7 @@ export const Filters = ({ router }: { router: Router }) => {
 
   return (
     <FiltersContainer>
-      <FiltersMenu role="button" onClick={() => setToggleOn(!toggleOn)}>
+      <FiltersMenu role="button" onClick={() => setToggleOn(!toggleOn)} tabIndex="0">
         Filters
         {filtersCount > 0 && <span>({filtersCount})</span>}
         {toggleOn ? <FaCaretUp /> : <FaCaretDown />}
