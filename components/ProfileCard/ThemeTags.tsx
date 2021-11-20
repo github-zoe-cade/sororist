@@ -5,7 +5,7 @@ import { buttonRadius } from "../../styles/utils";
 const ThemesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: .2rem;
+  gap: 0.2rem;
 `;
 
 const ThemeTag = styled.span`
@@ -18,21 +18,21 @@ const ThemeTag = styled.span`
 
 const MoreThemesTag = styled(ThemeTag)`
   border-radius: 50%;
-  width: .7rem;
+  width: 0.7rem;
 `;
 
-export const ThemeTags = ({
-  themes,
-}: {
+type ThemeTags = {
   themes: Array<{ uuid: number; name: string }>;
-}) => {
+};
+
+export const ThemeTags = ({ themes }: ThemeTags) => {
   const displayedNumber = 4;
   const displayedThemes = random(themes, displayedNumber);
   const hiddenThemesNumber = themes.length - displayedNumber;
 
   return (
     <ThemesContainer>
-      {displayedThemes.map(({ name }, index) => (
+      {displayedThemes.map(({ name }: {name: string}, index: number) => (
         <ThemeTag key={index}>{name}</ThemeTag>
       ))}
       {hiddenThemesNumber > 0 && (

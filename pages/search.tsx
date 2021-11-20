@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { withRouter } from "next/router";
-import Link from "next/link";
+import { Router, withRouter } from "next/router";
 
-import { LinkAsButton } from "../components/basics/LinkAsButton";
-import { Layout } from "../components/Layout";
-import { ProfileCard } from "../components/ProfileCard";
-import { ProfileCardsContainer } from "../components/ProfileCard/ProfileCardsContainer";
-import { Filters } from "../components/Search/Filters";
 import { getMatchingProfiles } from "../lib/profiles";
 import {
   cardStyle,
@@ -15,8 +9,16 @@ import {
   paddingBottomLastSection,
 } from "../styles/utils";
 
-const Title = styled.h2`
-  padding: 2rem ${({ theme }) => theme.spacings.mainHorizontal};
+import { Layout } from "../components/Layout";
+import { LinkAsButton } from "../components/basics/LinkAsButton";
+import { Button } from "../components/basics/Button";
+import { ProfileCard } from "../components/ProfileCard";
+import { ProfileCardsContainer } from "../components/ProfileCard/ProfileCardsContainer";
+
+import { Filters } from "../components/Search/Filters";
+
+const Title = styled.h3`
+  padding: 0 ${({ theme }) => theme.spacings.mainHorizontal};
 `;
 
 const ResultsSection = styled.div`
@@ -26,13 +28,13 @@ const ResultsSection = styled.div`
 `;
 
 const NoResults = styled.div`
-  margin-top: 5rem;
   ${cardStyle}
   ${paddingSection}
 `;
 
-const Search = ({ router }) => {
+const Search = ({ router }: { router: Router }) => {
   const [results, setResults] = useState([]);
+  const [offset, setOffset] = useState(20);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -40,6 +42,12 @@ const Search = ({ router }) => {
     const res = getMatchingProfiles(router.query);
     setResults(res);
   }, [router]);
+
+  const fetchNextResults = () => {
+    // const res = fetchNextMatchingProfiles(router.query, offset)
+    // setResults(res)
+    setOffset((prevState) => prevState + 20);
+  };
 
   return (
     <Layout>
@@ -54,13 +62,13 @@ const Search = ({ router }) => {
                 <ProfileCard key={index} profile={profile} />
               ))}
             </ProfileCardsContainer>
-            <LinkAsButton text="Voir plus" href="/search" />
+            <Button onClick={fetchNextResults}>Voir plus</Button>
           </>
         )}
 
         {results.length === 0 && (
           <NoResults>
-            <h2>Pas de résultat 😭</h2>
+            <h3>Pas de résultat 😭</h3>
             <LinkAsButton text="Enlever les filtres" href="/search" />
           </NoResults>
         )}

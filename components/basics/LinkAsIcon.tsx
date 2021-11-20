@@ -19,7 +19,7 @@ export const LinkAsIcon = ({ href, Icon, alt, target, className }: LinkAsIconPro
 
   return (
     <a href={href} target={target}>
-      <StyledIcon className={className} alt={alt} />
+      <StyledIcon className={className} title={alt} />
     </a>
   );
 };

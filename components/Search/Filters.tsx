@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Router } from "next/router";
 import { Formik, Form, Field } from "formik";
+import { FaRandom } from "react-icons/fa";
+import { FiltersType } from "../../lib/filters";
 
 import { LinkAsButton } from "../basics/LinkAsButton";
-
-import { ThemeSelector } from "./ThemeSelector";
+import { ThemeSelect } from "./ThemeSelect";
+import { PlatformSelect } from "./PlatformSelect";
+import { SearchBar } from "./SearchBar";
 
 const FiltersContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background1};
@@ -15,85 +18,112 @@ const FiltersContainer = styled.div`
 `;
 
 const StyledForm = styled(Form)`
-  /* display: flex; */
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
 `;
 
-type Filters = {
-  themes?: string | string[];
-  platforms?: string | string[];
-  searchTerms?: string | string[];
-};
+const StyledLabel = styled.span`
+  line-height: 2;
+`;
+
+const RandomButtonContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: end;
+`;
 
 export const Filters = ({ router }: { router: Router }) => {
-  const [filters, setFilters] = useState<Filters>();
+  const [filters, setFilters] = useState<FiltersType>();
 
   useEffect(() => {
     if (router.isReady) {
-      const appliedFilters: Filters = {
+      const appliedFilters: FiltersType = {
         themes: router.query.themes,
         platforms: router.query.platforms,
-        searchTerms: router.query.searchTerms,
+        searchTerms: new Array(router.query.searchTerms).flat().join(),
       };
       setFilters(appliedFilters);
     }
   }, [router]);
 
-  const onSubmit = async (values: Filters, { resetForm }) => {
+  const onSubmit = async (values: FiltersType) => {
     router.push({ pathname: router.pathname, query: values });
-    resetForm({});
   };
+
+  if (!filters) {
+    return <div>Chargement...</div>;
+  }
+
+  const initialValues: FiltersType = {};
+  if (!!filters.themes) initialValues["themes"] = filters.themes;
+  if (!!filters.platforms) initialValues["platforms"] = filters.platforms;
+  if (!!filters.searchTerms) initialValues["searchTerms"] = filters.searchTerms;
 
   return (
     <FiltersContainer>
-      {filters && (
-        <>
-          <Formik
-            initialValues={{
-              themes: filters.themes,
-              platforms: filters.platforms,
-            }}
-            onSubmit={onSubmit}
-          >
-            {({ values, setFieldValue, submitForm, ...formikBag }) => (
-              <StyledForm>
-                <Field name="themes">
-                  {({ field }) => {
-                    const onChange = (options) => {
-                      setFieldValue("themes", options);
-                      submitForm();
-                    };
-                    return (
-                      <ThemeSelector
-                        {...field}
-                        values={field.value || []}
-                        setFieldValue={setFieldValue}
-                        onChange={onChange}
-                      />
-                    );
-                  }}
-                </Field>
+      <Formik initialValues={{}} onSubmit={onSubmit}>
+        {({ values, setFieldValue, submitForm, ...formikBag }) => {
+          // Router refresh in 2 times, make sure we refresh once the router.isReady
+          useEffect(() => {
+            formikBag.setValues(initialValues);
+          }, [filters]);
 
-                <Field
-                  name="searchTerms"
-                  placeholder="Chercher par nom/pseudo"
-                  value={values.searchTerms || ""}
-                />
-                <input type="submit" />
-              </StyledForm>
-            )}
-          </Formik>
-          Filters
-          {Object.entries(filters).map(
-            (filter, index) =>
-              filter[1] && (
-                <p key={index}>
-                  {filter[0]}: {filter[1]}
-                </p>
-              )
-          )}
-          <LinkAsButton text="Au hasard" href="/search" />
-        </>
-      )}
+          const onChange = (fieldName: string) => (options: string[]) => {
+            setFieldValue(fieldName, options);
+            submitForm();
+          };
+
+          return (
+            <StyledForm>
+              <Field name="themes">
+                {({ field }) => (
+                  <label htmlFor="theme">
+                    <StyledLabel>Filtrer par thème :</StyledLabel>
+                    <ThemeSelect
+                      {...field}
+                      setFieldValue={setFieldValue}
+                      onChange={onChange(field.name)}
+                    />
+                  </label>
+                )}
+              </Field>
+
+              <Field name="platforms">
+                {({ field }) => (
+                  <label htmlFor="platforms">
+                    <StyledLabel>Filtrer par plateforme :</StyledLabel>
+                    <PlatformSelect
+                      {...field}
+                      setFieldValue={setFieldValue}
+                      onChange={onChange(field.name)}
+                    />
+                  </label>
+                )}
+              </Field>
+
+              <Field name="searchTerms">
+                {({ field }) => (
+                  <SearchBar
+                    {...field}
+                    filters={filters}
+                    setFieldValue={setFieldValue}
+                    submitForm={submitForm}
+                  />
+                )}
+              </Field>
+
+              <RandomButtonContainer>
+                <LinkAsButton href="/search">
+                  <FaRandom />
+                    &nbsp;
+                   Au hasard
+                </LinkAsButton>
+              </RandomButtonContainer>
+            </StyledForm>
+          );
+        }}
+      </Formik>
     </FiltersContainer>
   );
 };

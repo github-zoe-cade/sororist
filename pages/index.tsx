@@ -13,7 +13,6 @@ import { Header } from "../components/Homepage/Header";
 import { ThemeSection } from "../components/Homepage/ThemeSection";
 import { PlatformSection } from "../components/Homepage/PlatformSection";
 
-
 export async function getStaticProps() {
   // do some API fetching
   const latestProfiles = getLatestProfiles();
@@ -24,7 +23,7 @@ export async function getStaticProps() {
     "Electronique",
     "DevOps",
     "Acccessibilité",
-  ]
+  ];
 
   return {
     props: {
@@ -41,7 +40,13 @@ const LatestSection = styled.div`
   ${paddingBottomLastSection}
 `;
 
-export default function Home({ themes, platforms, latestProfiles }) {
+type HomeProps = {
+  themes: string[];
+  platforms: string[];
+  latestProfiles: ProfileType[];
+};
+
+export default function Home({ themes, platforms, latestProfiles }: HomeProps) {
   return (
     <>
       <Head>

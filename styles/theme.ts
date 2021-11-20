@@ -9,9 +9,9 @@ export const theme = {
     primary3: 'yellow',
 
     // Brand colors declination (hover, active)
-    secondary1: '#aaa',
-    secondary2: '',
-    secondary3: '',
+    secondary1: 'deepskyblue',
+    secondary2: 'orangered',
+    secondary3: 'gold',
 
     // Default text colors
     default1: '#000',

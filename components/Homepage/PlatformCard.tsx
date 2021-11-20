@@ -22,13 +22,12 @@ const PlatformName = styled.div`
   }
 `;
 
-export const PlatformCard = ({
-  platform,
-  index,
-}: {
+type PlatformCard = {
   platform: string;
   index: number;
-}) => {
+};
+
+export const PlatformCard = ({ platform, index }: PlatformCard) => {
   const Icon = platformIcons[platform.toLowerCase()];
 
   return (

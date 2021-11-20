@@ -1,4 +1,5 @@
 import fakeProfiles from "./fakeProfiles";
+import { FiltersType } from "./filters";
 
 // type Sex = "female" | "non-binary"
 
@@ -20,7 +21,7 @@ export const getAllProfilesUuid = (): string[] => {
   return [];
 };
 
-export const getMatchingProfiles = (filters): ProfileType[] => {
+export const getMatchingProfiles = (filters: FiltersType): ProfileType[] => {
   if (!filters.themes) {
     return fakeProfiles;
   }
@@ -30,12 +31,8 @@ export const getMatchingProfiles = (filters): ProfileType[] => {
     return fakeProfiles;
   }
 
-  return fakeProfiles.filter(
-    (profile) =>
-      profile.themes.filter((theme) =>
-        themesArray.includes(theme.name.toLowerCase())
-      ).length > 0
-  );
+  return fakeProfiles.filter((profile) => profile.themes.filter(
+    (theme) => themesArray.includes(theme.name)).length > 0)
 };
 
 export const getProfile = (uuid: number): ProfileType => fakeProfiles[0];

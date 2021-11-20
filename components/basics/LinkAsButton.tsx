@@ -18,8 +18,22 @@ const StyledLink = styled.a`
   }
 `;
 
-export const LinkAsButton = ({ href, text }: {href: string, text: string}) => (
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+type LinkProps = { href: string, text?: string, children?: React.ReactNode };
+type LinkWithText = LinkProps & { text: string };
+type LinkWithChildren = LinkProps & { children: React.ReactNode };
+
+type LinkAsButtonProps = LinkWithText | LinkWithChildren;
+
+export const LinkAsButton = ({ href, text, children }: LinkAsButtonProps) => (
   <Link href={href} passHref>
-    <StyledLink>{text}</StyledLink>
+    <StyledLink>
+      {text}
+      {children && <Container>{children}</Container>}
+    </StyledLink>
   </Link>
 );

@@ -15,7 +15,7 @@ type NavLinkProps = {
 };
 
 export const NavLink = ({ href, text, currentPath }: NavLinkProps) => (
-  <StyledLi active={(currentPath || '') === href}>
+  <StyledLi active={(currentPath || '') === href} tabIndex={1} >
     <Link href={href}>{text}</Link>
   </StyledLi>
 );

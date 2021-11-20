@@ -19,6 +19,7 @@ const Navbar = styled.nav`
 
 const DesktopMenu = styled.ul`
   display: flex;
+  align-items: start;
   gap: 1rem;
   list-style: none;
 
