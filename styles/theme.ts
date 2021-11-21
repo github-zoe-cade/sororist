@@ -1,6 +1,6 @@
 export const theme = {
   spacings: {
-    mainHorizontal: '8%'
+    mainHorizontal: '8%',
   },
   colors: {
     // Brand colors

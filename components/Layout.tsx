@@ -56,7 +56,7 @@ export const Layout = ({ children }) => (
   <LayoutContainer>
     <Navbar>
       <Link href="/" passHref>
-        <h3>A cool name</h3>
+        <h4>A cool name</h4>
       </Link>
       <DesktopMenu>
         <NavLink href="/search" text="Explorer" />

@@ -1,22 +1,70 @@
-import Image from "next/image";
+import styled from "styled-components";
 
-export async function getServerSideProps({ params }) {
+import {
+  getAllProfilesUuid,
+  getProfile,
+  getSimilarProfiles,
+  ProfileType,
+} from "lib/profiles";
+
+import {
+  marginSection,
+  paddingBottomLastSection,
+} from "styles/utils";
+
+import { Layout } from "components/Layout";
+
+import { ThemeSection } from "components/common/ThemeSection";
+
+
+import { BackButton } from "./BackButton";
+import { ProfilePanel } from "./ProfilePanel";
+import { SimilarPanel } from "./SimilarPanel";
+
+export const getStaticProps = async ({ params }) => {
+  const profile = getProfile(params.uuid);
+  const similarProfiles = getSimilarProfiles(params.uuid);
   return {
     props: {
-      id: params.id,
-      name: "A very cool duck",
+      profile,
+      similarProfiles,
     },
+    revalidate: 7200,
   };
-}
+};
 
-export default function Profile({ name, id }) {
+export const getStaticPaths = async () => {
+  const uuids = getAllProfilesUuid();
+  const paths = uuids.map((uuid) => ({ params: { uuid } }));
+
+  return { paths, fallback: "blocking" };
+};
+
+const ProfileLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2rem;
+  ${marginSection}
+  margin-top: 0;
+  ${paddingBottomLastSection}
+`;
+
+type ProfileProps = {
+  profile: ProfileType;
+  similarProfiles: ProfileType[];
+};
+
+export default function Profile({ profile, similarProfiles }: ProfileProps) {
   return (
-    <>
-      <h1>Cool profile</h1>
-      <p>{name}</p>
-      <p>{id}</p>
-      <Image src="/images/duck.jpg" height={144} width={144} alt={name} />
-      <button onClick={() => window.history.back()}>Back</button>
-    </>
+    <Layout>
+      <BackButton />
+
+      <ProfileLayout>
+        <ProfilePanel profile={profile} />
+        <SimilarPanel similarProfiles={similarProfiles} />
+      </ProfileLayout>
+
+      <ThemeSection themes={profile.themes.map((x) => x.name).slice(0, 6)} />
+    </Layout>
   );
 }

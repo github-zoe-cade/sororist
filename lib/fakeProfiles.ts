@@ -4,6 +4,7 @@ export default Array.from({ length: 20 }).map((_, index) => ({
   sex: "female",
   description:
     "Twitch affiliate ·  Web Developper RoR/React \n Leftist with a right-clicker mentality\n Attention, tweets avec des bouts de choucroute dedans.\n PP @eniluapski",
+  commercial: "Je suis disponible pour des talks en physique à Paris, en streaming ou pour des podcasts",
   pictureUrl:
     "https://pbs.twimg.com/profile_images/1360173198302732288/SiSNTGSg_400x400.jpg",
   themes: [

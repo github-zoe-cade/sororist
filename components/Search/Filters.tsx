@@ -17,6 +17,10 @@ const FiltersContainer = styled.div`
   border-left: none;
   border-right: none;
   padding: 1rem 5rem;
+
+  @media ${cssQueries.mobile} {
+    padding: 1rem 2rem;
+  }
 `;
 
 const FiltersMenu = styled.div`

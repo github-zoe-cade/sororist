@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { ProfileType } from "lib/profiles";
 import { cardStyle } from "styles/utils";
 
-import { LinkAsIcon } from "./basics/LinkAsIcon";
-import { platformIcons } from "./basics/plateformIcons";
 import { ProfilePicture } from "./common/ProfilePicture";
 import { ThemeTags } from "./common/ThemeTags";
+import { SocialLinks } from "./common/SocialLinks"
 
 type ProfileCardProps = {
   profile: ProfileType;
+  className?: string;
 };
 
 const ProfileCardContainer = styled.div`
@@ -22,20 +22,15 @@ const ProfileCardContainer = styled.div`
   position: relative;
 `;
 
+const StyledSocialLinks = styled(SocialLinks)`
+  text-align: right;
+`
+
 const CardLink = styled.a`
   position: absolute;
   inset: 0;
   opacity: 0;
   z-index: 1;
-`;
-
-const LinksContainer = styled.div`
-  text-align: right;
-  font-size: 1.3rem;
-
-  & > :not(:last-child) {
-    margin-right: 0.5rem;
-  }
 `;
 
 const IdentityContainer = styled.div`
@@ -48,14 +43,15 @@ const IdentityContainer = styled.div`
   font-weight: 700;
 `;
 
-const ClickableCard = ({ href, children }) => (
+const ClickableCard = ({ href, className, children }) => (
   <ProfileCardContainer
+    className={className}
     tabIndex="0"
     role="button"
     aria-pressed="false"
     onKeyDown={(e) => {
-      if (e.key === "Enter") {
-        document.querySelector('.card-link').click()
+      if (e.key === "Enter" && typeof document !== undefined) {
+        (document.querySelector('.card-link') as HTMLLinkElement).click()
       }
     }}
   >
@@ -64,29 +60,16 @@ const ClickableCard = ({ href, children }) => (
   </ProfileCardContainer>
 );
 
-export const ProfileCard = ({ profile }: ProfileCardProps) => {
+export const ProfileCard = ({ profile, className }: ProfileCardProps) => {
   return (
-    <ClickableCard href={`/profiles/${profile.uuid}`}>
-      <LinksContainer>
-        {profile.links.map(({ platform, link }, index) => {
-          const Icon = platformIcons[platform];
-          return (
-            <LinkAsIcon
-              key={index}
-              href={link}
-              Icon={Icon}
-              alt={platform}
-              target="_blank"
-            />
-          );
-        })}
-      </LinksContainer>
+    <ClickableCard href={`/profiles/${profile.uuid}`} className={className}>
+      <StyledSocialLinks links={profile.links} />
       <IdentityContainer>
         <ProfilePicture pictureUrl={profile.pictureUrl} />
         <p>{profile.name}</p>
       </IdentityContainer>
 
-      <ThemeTags themes={profile.themes} />
+      <ThemeTags themes={profile.themes} displayedNumber={4} />
     </ClickableCard>
   );
 };

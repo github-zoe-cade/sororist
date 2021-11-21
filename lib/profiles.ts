@@ -10,6 +10,7 @@ export type ProfileType = {
   name: string;
   sex?: string;
   description: string;
+  commercial: string;
   pictureUrl?: string;
   themes: Array<{ uuid: number; name: string }>;
   links: Array<{ platform: string; link: string }>;
@@ -17,6 +18,7 @@ export type ProfileType = {
 
 // Return the info to build the latest profiles on the homepage
 export const getLatestProfiles = (): ProfileType[] => fakeProfiles.slice(0, 6);
+export const getSimilarProfiles = (uuid: string): ProfileType[] => fakeProfiles.slice(0, 3);
 
 // All the uuids to trigger static build of all profile pages on deploy
 export const getAllProfilesUuid = (): string[] => {
@@ -33,7 +35,7 @@ export const getMatchingProfiles = (filters: FiltersType): ProfileType[] => {
     return fakeProfiles;
   }
 
-  return fakeProfiles.filter((profile) => profile.themes.filter(
+  return fakeProfiles.filter((profile: ProfileType) => profile.themes.filter(
     (theme) => themesArray.includes(theme.name)).length > 0)
 };
 

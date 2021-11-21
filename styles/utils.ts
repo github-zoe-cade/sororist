@@ -30,8 +30,16 @@ export const marginSection = css`
   margin: ${({ theme }) => `4rem ${theme.spacings.mainHorizontal}`};
 `
 
+export const marginElement = css`
+margin: ${({ theme }) => `0rem ${theme.spacings.mainHorizontal}`};
+`
+
 export const paddingSection = css`
   padding: ${({ theme }) => `4rem ${theme.spacings.mainHorizontal}`};
+`
+
+export const paddingElement = css`
+  padding: ${({ theme }) => `0rem ${theme.spacings.mainHorizontal}`};
 `
 
 export const paddingBottomLastSection = css`
