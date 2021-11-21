@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { backgroundTransition, buttonRadius } from "../../styles/utils";
+import { backgroundTransition, buttonRadius } from "styles/utils";
 
 const StyledButton = styled.button<{ isDisabled: boolean }>`
   background-color: ${({ theme }) => theme.colors.primary1};

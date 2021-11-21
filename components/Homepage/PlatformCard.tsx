@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cssQueries } from "../../styles/utils";
+import { cssQueries } from "styles/utils";
 
 import { LinkAsButton } from "../basics/LinkAsButton";
 import { RectangleCard } from "../basics/RectangleCard";

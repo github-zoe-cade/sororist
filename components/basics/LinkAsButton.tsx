@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { backgroundTransition, buttonRadius } from "../../styles/utils";
+import { backgroundTransition, buttonRadius } from "styles/utils";
 
 const StyledLink = styled.a`
   background-color: ${({ theme }) => theme.colors.primary1};

@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 
-import { FiltersType } from "../../lib/filters";
-import { inputHeight, inputStyle } from "../../styles/forms";
+import { FiltersType } from "lib/filters";
+import { inputHeight, inputStyle } from "styles/forms";
 
 import { Button } from "../basics/Button";
 import { RemovableTag } from "../basics/RemovableTag";

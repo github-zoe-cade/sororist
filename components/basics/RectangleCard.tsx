@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cardStyle } from "../../styles/utils";
+import { cardStyle } from "styles/utils";
 
 export const RectangleCard = styled.div`
   ${cardStyle}

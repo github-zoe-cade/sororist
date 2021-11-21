@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-import { cssQueries } from "../styles/utils";
+import { cssQueries } from "styles/utils";
 import { NavLink } from "./Layout/NavLink";
 
 const LayoutContainer = styled.div`

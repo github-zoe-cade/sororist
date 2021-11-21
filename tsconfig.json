@@ -19,7 +19,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "baseUrl": ".",
   },
   "include": [
     "next-env.d.ts",

@@ -2,23 +2,24 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Router, withRouter } from "next/router";
 
-import { getMatchingProfiles } from "../lib/profiles";
+import { getMatchingProfiles } from "lib/profiles";
 import {
   cardStyle,
   paddingSection,
+  paddingElement,
   paddingBottomLastSection,
-} from "../styles/utils";
+} from "styles/utils";
 
-import { Layout } from "../components/Layout";
-import { LinkAsButton } from "../components/basics/LinkAsButton";
-import { Button } from "../components/basics/Button";
-import { ProfileCard } from "../components/ProfileCard";
-import { ProfileCardsContainer } from "../components/ProfileCard/ProfileCardsContainer";
+import { Layout } from "components/Layout";
+import { LinkAsButton } from "components/basics/LinkAsButton";
+import { Button } from "components/basics/Button";
+import { ProfileCard } from "components/ProfileCard";
+import { ProfileCardsContainer } from "components/common/ProfileCardsContainer";
 
-import { Filters } from "../components/Search/Filters";
+import { Filters } from "components/Search/Filters";
 
 const Title = styled.h3`
-  padding: 0 ${({ theme }) => theme.spacings.mainHorizontal};
+  ${paddingElement}
 `;
 
 const ResultsSection = styled.div`

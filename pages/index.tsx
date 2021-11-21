@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import Head from "next/head";
-import { getLatestProfiles, ProfileType } from "../lib/profiles";
+import { getLatestProfiles, ProfileType } from "lib/profiles";
 
-import { paddingSection, paddingBottomLastSection } from "../styles/utils";
+import { paddingSection, paddingBottomLastSection } from "styles/utils";
 
-import { Layout } from "../components/Layout";
-import { LinkAsButton } from "../components/basics/LinkAsButton";
-import { ProfileCard } from "../components/ProfileCard";
-import { ProfileCardsContainer } from "../components/ProfileCard/ProfileCardsContainer";
+import { Layout } from "components/Layout";
+import { LinkAsButton } from "components/basics/LinkAsButton";
+import { ProfileCard } from "components/ProfileCard";
+import { ProfileCardsContainer } from "components/common/ProfileCardsContainer";
 
-import { Header } from "../components/Homepage/Header";
-import { ThemeSection } from "../components/Homepage/ThemeSection";
-import { PlatformSection } from "../components/Homepage/PlatformSection";
+import { Header } from "components/Homepage/Header";
+import { ThemeSection } from "components/common/ThemeSection";
+import { PlatformSection } from "components/Homepage/PlatformSection";
 
 export async function getStaticProps() {
   // do some API fetching

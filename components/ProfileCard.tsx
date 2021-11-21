@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { ProfileType } from "../lib/profiles";
-import { cardStyle } from "../styles/utils";
+import { ProfileType } from "lib/profiles";
+import { cardStyle } from "styles/utils";
 
 import { LinkAsIcon } from "./basics/LinkAsIcon";
 import { platformIcons } from "./basics/plateformIcons";
-import { ProfilePicture } from "./ProfileCard/ProfilePicture";
-import { ThemeTags } from "./ProfileCard/ThemeTags";
+import { ProfilePicture } from "./common/ProfilePicture";
+import { ThemeTags } from "./common/ThemeTags";
 
 type ProfileCardProps = {
   profile: ProfileType;

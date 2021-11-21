@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-import { cssQueries, paddingSection } from "../../styles/utils";
+import { cssQueries, paddingSection } from "styles/utils";
 import { PlatformCard } from "./PlatformCard";
 
 

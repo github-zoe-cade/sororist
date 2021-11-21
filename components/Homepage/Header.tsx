@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-import { cssQueries, marginSection } from "../../styles/utils";
+import { cssQueries, marginSection } from "styles/utils";
 
 import { LinkAsButton } from "../basics/LinkAsButton";
 

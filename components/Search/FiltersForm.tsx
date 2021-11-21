@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field } from "formik";
 import { FaRandom } from "react-icons/fa";
-import { FiltersType } from "../../lib/filters";
+import { FiltersType } from "lib/filters";
 
-import { cssQueries } from "../../styles/utils";
+import { cssQueries } from "styles/utils";
 
 import { Button } from "../basics/Button";
 import { ThemeSelect } from "./ThemeSelect";

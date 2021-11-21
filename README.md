@@ -72,7 +72,7 @@ export default styled(StyledLink)`
 **pages/index.js**
 
 ```javascript
-import StyledLink from '../components/StyledLink'
+import StyledLink from 'components/StyledLink'
 
 export default () => (
   <StyledLink href="/post/[pid]" forwardedAs="/post/abc">

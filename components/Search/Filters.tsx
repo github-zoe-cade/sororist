@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Router } from "next/router";
 import { Formik } from "formik";
-import { FiltersType } from "../../lib/filters";
+import { FiltersType } from "lib/filters";
 
-import { toArray } from "../../lib/helpers";
-import { cssQueries } from "../../styles/utils";
+import { toArray } from "lib/helpers";
+import { cssQueries } from "styles/utils";
 
 import { FiltersForm } from "./FiltersForm";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
