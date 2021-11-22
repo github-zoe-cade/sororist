@@ -11,8 +11,8 @@ import { FiltersForm } from "./FiltersForm";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 
 const FiltersContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.background1};
-  color: ${({ theme }) => theme.colors.default1};
+  background-color: ${({ theme }) => theme.colors.background2};
+  color: ${({ theme }) => theme.colors.default2};
   border: 1px solid ${({ theme }) => theme.colors.default3};
   border-left: none;
   border-right: none;
@@ -77,7 +77,7 @@ export const Filters = ({ router }: { router: Router }) => {
 
   return (
     <FiltersContainer>
-      <FiltersMenu role="button" onClick={() => setToggleOn(!toggleOn)} tabIndex="0">
+      <FiltersMenu role="button" onClick={() => setToggleOn(!toggleOn)} tabIndex={0}>
         Filters
         {filtersCount > 0 && <span>({filtersCount})</span>}
         {toggleOn ? <FaCaretUp /> : <FaCaretDown />}

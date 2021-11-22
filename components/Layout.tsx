@@ -39,9 +39,9 @@ const Main = styled.main`
 `;
 
 const Footer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.background5};
+  background-color: ${({ theme }) => theme.colors.background4};
   padding: 2rem;
-  color: ${({ theme }) => theme.colors.default5};
+  color: ${({ theme }) => theme.colors.default4};
 
   & > ul {
     list-style: none;
@@ -75,4 +75,4 @@ export const Layout = ({ children }) => (
       </ul>
     </Footer>
   </LayoutContainer>
-);
+)

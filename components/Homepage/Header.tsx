@@ -3,7 +3,8 @@ import Image from "next/image";
 
 import { cssQueries, marginSection } from "styles/utils";
 
-import { LinkAsButton } from "../basics/LinkAsButton";
+import { LinkAsButton } from "components/basics/LinkAsButton";
+import { HeaderDecoration } from "./HeaderDecoration";
 
 const HeaderContainer = styled.header`
   ${marginSection}
@@ -22,30 +23,26 @@ const Subtitle = styled.p`
 `;
 
 const ImageContainer = styled.div`
-  margin: "auto";
+  margin: auto;
 
   @media ${cssQueries.mobile} {
     margin-top: 2rem;
   }
 `;
 
-export const Header = () => (
-  <HeaderContainer>
-    <div>
-      <h1>Découvrez les femmes de la tech</h1>
-      <Subtitle>
-        Ces femmes et personnes non binaires sont créateur·ices d'idées et
-        d'opinions sur la tech. Blabla à trouver
-      </Subtitle>
-      <LinkAsButton href="/search" text="Explorer" />
-    </div>
-    <ImageContainer>
-      <Image
-        src="/images/header-picture.png"
-        alt=""
-        width={1000}
-        height={670}
-      />
-    </ImageContainer>
-  </HeaderContainer>
-);
+export const Header = () => {
+  return (
+    <HeaderContainer>
+      <div>
+        <h1>Découvrez les femmes de la tech</h1>
+        <Subtitle>
+          Ces femmes et personnes non binaires sont créateur·ices d'idées et
+          d'opinions sur la tech. Blabla à trouver
+        </Subtitle>
+        <LinkAsButton href="/search" text="Explorer" />
+      </div>
+
+      <HeaderDecoration />
+    </HeaderContainer>
+  );
+};

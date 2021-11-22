@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { cssQueries } from "styles/utils";
 
-import { LinkAsButton } from "../basics/LinkAsButton";
-import { RectangleCard } from "../basics/RectangleCard";
-import { platformIcons } from "../basics/plateformIcons";
+import { LinkAsButton } from "components/basics/LinkAsButton";
+import { RectangleCard } from "components/basics/RectangleCard";
+import { platformIcons } from "components/basics/plateformIcons";
 
 const PlatformCardContainer = styled(RectangleCard)<{ row: number }>`
   @media ${cssQueries.desktop} {

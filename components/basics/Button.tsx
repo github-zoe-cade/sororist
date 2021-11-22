@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { backgroundTransition, buttonRadius } from "styles/utils";
 
 const StyledButton = styled.button<{ isDisabled: boolean }>`
-  background-color: ${({ theme }) => theme.colors.primary1};
-  color: ${({ theme }) => theme.colors.default5};
+  background-color: ${({ theme }) => theme.colors.alpha100};
+  color: ${({ theme }) => theme.colors.default4};
   padding: 0.7rem 1rem;
   text-decoration: none;
   border: none;
@@ -18,7 +18,7 @@ const StyledButton = styled.button<{ isDisabled: boolean }>`
   cursor: ${({ isDisabled }) => (isDisabled ? "default" : "pointer")};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary1};
+    background-color: ${({ theme }) => theme.colors.alpha120};
   }
 `;
 

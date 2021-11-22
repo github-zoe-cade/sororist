@@ -1,4 +1,4 @@
-import { MultiSelect } from "../basics/MultiSelect";
+import { MultiSelect } from "components/basics/MultiSelect";
 
 const options = [
   { label: "Twitter", value: "Twitter" },

@@ -5,8 +5,8 @@ import { FaSearch } from "react-icons/fa";
 import { FiltersType } from "lib/filters";
 import { inputHeight, inputStyle } from "styles/forms";
 
-import { Button } from "../basics/Button";
-import { RemovableTag } from "../basics/RemovableTag";
+import { Button } from "components/basics/Button";
+import { RemovableTag } from "components/basics/RemovableTag";
 
 const StyledLabel = styled.span`
   line-height: 2;
@@ -35,7 +35,7 @@ const StyledButton = styled(Button)`
   ${inputHeight}
 
   &:focus {
-    background: ${({ theme }) => theme.colors.secondary1};
+    background: ${({ theme }) => theme.colors.beta100};
   }
 `;
 

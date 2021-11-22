@@ -46,7 +46,7 @@ const IdentityContainer = styled.div`
 const ClickableCard = ({ href, className, children }) => (
   <ProfileCardContainer
     className={className}
-    tabIndex="0"
+    tabIndex={0}
     role="button"
     aria-pressed="false"
     onKeyDown={(e) => {
@@ -69,7 +69,7 @@ export const ProfileCard = ({ profile, className }: ProfileCardProps) => {
         <p>{profile.name}</p>
       </IdentityContainer>
 
-      <ThemeTags themes={profile.themes} displayedNumber={4} />
+      <ThemeTags themes={profile.themes} displayedNumber={3} />
     </ClickableCard>
   );
 };

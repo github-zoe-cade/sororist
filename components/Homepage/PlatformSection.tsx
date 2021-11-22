@@ -12,8 +12,8 @@ const PlatformSectionContainer = styled.section`
 const WordingContainer = styled.div`
   display: grid;
   ${paddingSection}
-  background-color: ${({ theme }) => theme.colors.background5};
-  color: ${({ theme }) => theme.colors.default5};
+  background-color: ${({ theme }) => theme.colors.background4};
+  color: ${({ theme }) => theme.colors.default4};
 
   & > div {
     z-index: 1;

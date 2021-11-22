@@ -9,8 +9,8 @@ const ThemesContainer = styled.div`
 `;
 
 const ThemeTag = styled.span`
-  background-color: ${({ theme }) => theme.colors.primary2};
-  color: ${({ theme }) => theme.colors.default5};
+  background-color: ${({ theme }) => theme.colors.beta100};
+  color: ${({ theme }) => theme.colors.default4};
   padding: 0.3rem 0.4rem;
   font-size: 0.8rem;
   ${buttonRadius};

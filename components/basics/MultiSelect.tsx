@@ -19,18 +19,18 @@ export const MultiSelect = ({ options, onChange, ...field }) => {
   const customStyles = {
     multiValue: (provided: {}) => ({
       ...provided,
-      backgroundColor: theme.colors.primary2,
+      backgroundColor: theme.colors.beta100,
     }),
     multiValueLabel: (provided: {}) => ({
       ...provided,
-      color: theme.colors.default5,
+      color: theme.colors.default4,
     }),
     multiValueRemove: (provided: {}) => ({
       ...provided,
-      color: theme.colors.default5,
+      color: theme.colors.default4,
       cursor: "pointer",
       ":hover": {
-        backgroundColor: theme.colors.secondary2,
+        backgroundColor: theme.colors.beta50,
       },
     }),
   };

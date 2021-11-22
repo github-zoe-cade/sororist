@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { paddingSection } from "styles/utils";
 
-import { LinkAsButton } from "../basics/LinkAsButton";
+import { LinkAsButton } from "components/basics/LinkAsButton";
 
 const ThemeSectionContainer = styled.div`
   ${paddingSection}
@@ -10,11 +10,11 @@ const ThemeSectionContainer = styled.div`
   text-align: center;
 `;
 
-const Intertitle = styled.h3`
-  text-transform: uppercase;
+const Intertitle = styled.p`
+  /* text-transform: uppercase; */
   margin: 0;
-  padding-bottom: 1.5rem;
-  font-size: 1.1rem;
+  padding-bottom: 3rem;
+  font-size: 1.5rem;
   font-weight: 300;
 `;
 

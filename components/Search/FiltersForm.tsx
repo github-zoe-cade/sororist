@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field } from "formik";
+import { Router } from "next/router";
 import { FaRandom } from "react-icons/fa";
 import { FiltersType } from "lib/filters";
 
 import { cssQueries } from "styles/utils";
 
-import { Button } from "../basics/Button";
+import { Button } from "components/basics/Button";
 import { ThemeSelect } from "./ThemeSelect";
 import { PlatformSelect } from "./PlatformSelect";
 import { SearchBar } from "./SearchBar";
-import { Router } from "next/router";
 
 const StyledForm = styled(Form)<{ open: boolean }>`
   display: grid;

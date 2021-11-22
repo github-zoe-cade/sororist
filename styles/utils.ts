@@ -9,7 +9,7 @@ export const buttonRadius = css`
 `
 
 export const cardShadow = css`
-  filter: drop-shadow(1px 2px 4px hsl(220deg 60% 50%));
+  filter: drop-shadow(1px 2px 4px hsl(258.5, 29.8%, 74.3%));
 `
 
 export const cssQueries = {
@@ -18,8 +18,8 @@ export const cssQueries = {
 };
 
 export const cardStyle = css`
-  background-color: ${({ theme }) => theme.colors.background1};
-  color: ${({ theme }) => theme.colors.default1};
+  background-color: ${({ theme }) => theme.colors.background2};
+  color: ${({ theme }) => theme.colors.default2};
   border-radius: 2px;
   box-sizing: content-box;
   opacity: 0.92;

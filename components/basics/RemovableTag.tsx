@@ -26,7 +26,7 @@ const TagContainer = styled.div`
   }
 
   & svg:hover {
-    background-color: ${({ theme }) => theme.colors.secondary2};
+    background-color: ${({ theme }) => theme.colors.beta2};
   }
 `;
 

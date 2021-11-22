@@ -1,13 +1,10 @@
-import { ThemeProvider } from 'styled-components'
-import { theme } from 'styles/theme'
-import { GlobalStyle } from 'styles/GlobalStyle'
-import { useEffect } from 'react'
+import { ThemeProvider } from "styled-components";
+import { theme } from "styles/theme";
+import { GlobalStyle } from "styles/GlobalStyle";
 
 export default function App({ Component, pageProps }) {
-  useEffect(() => {
-    require('lib/generateBackground')
-  }
-  , [])
+  require('lib/generateBackground')
+
   return (
     <>
       <GlobalStyle />
@@ -15,5 +12,5 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </ThemeProvider>
     </>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { MultiSelect } from "../basics/MultiSelect";
+import { MultiSelect } from "components/basics/MultiSelect";
 
 const themesOptions = [
   { label: "Data", value: "Data" },
