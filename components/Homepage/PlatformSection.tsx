@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 
 import { cssQueries, paddingSection } from "styles/utils";
 import { PlatformCard } from "./PlatformCard";
@@ -12,6 +11,7 @@ const PlatformSectionContainer = styled.section`
 const WordingContainer = styled.div`
   display: grid;
   ${paddingSection}
+  background-image: url('/images/circuit-board.svg');
   background-color: ${({ theme }) => theme.colors.background4};
   color: ${({ theme }) => theme.colors.default4};
 
@@ -41,7 +41,7 @@ const CardContainer = styled.div`
 export const PlatformSection = ({ platforms }: { platforms: string[] }) => {
   return (
     <PlatformSectionContainer>
-      <Image src="/images/texture.jpeg" layout="fill" objectFit="cover" />
+      {/* <Image src="/images/texture.jpeg" layout="fill" objectFit="cover" /> */}
       <WordingContainer>
         <div>
           <h2>

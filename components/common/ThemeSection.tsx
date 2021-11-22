@@ -5,13 +5,12 @@ import { LinkAsButton } from "components/basics/LinkAsButton";
 
 const ThemeSectionContainer = styled.div`
   ${paddingSection}
-  background-color: ${({ theme }) => theme.colors.background3};
-  color: ${({ theme }) => theme.colors.default3};
+  background-color: ${({ theme }) => theme.colors.background1};
+  color: ${({ theme }) => theme.colors.default1};
   text-align: center;
 `;
 
 const Intertitle = styled.p`
-  /* text-transform: uppercase; */
   margin: 0;
   padding-bottom: 3rem;
   font-size: 1.5rem;

@@ -24,14 +24,15 @@ const MoreThemesTag = styled(ThemeTag)`
 type ThemeTags = {
   themes: Array<{ uuid: number; name: string }>;
   displayedNumber?: number
+  className?: string
 };
 
-export const ThemeTags = ({ themes, displayedNumber = themes.length }: ThemeTags) => {
+export const ThemeTags = ({ themes, displayedNumber = themes.length, className }: ThemeTags) => {
   const displayedThemes = random(themes, displayedNumber);
   const hiddenThemesNumber = themes.length - displayedNumber;
 
   return (
-    <ThemesContainer>
+    <ThemesContainer className={className}>
       {displayedThemes.map(({ name }: {name: string}, index: number) => (
         <ThemeTag key={index}>{name}</ThemeTag>
       ))}

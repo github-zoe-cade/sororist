@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { ProfileType } from "lib/profiles";
 
-import { cardStyle } from "styles/utils";
+import { cardStyle, cssQueries } from "styles/utils";
 
 import { LinkAsButton } from "components/basics/LinkAsButton";
-import { ProfileCardsContainer } from "components/common/ProfileCardsContainer";
 import { ProfileCard } from "components/ProfileCard";
 
 const PanelContainer = styled.div`
@@ -12,14 +11,23 @@ const PanelContainer = styled.div`
   text-align: center;
   padding: 0 2rem 2rem;
 
-  & > * {
+  & > div {
     margin-top: 2rem;
+  }
+
+  @media ${cssQueries.mobile} {
+    margin-top: 2rem;
+    padding: 1rem 0;
   }
 `;
 
 const StyledProfileCard = styled(ProfileCard)`
   filter: none;
   border: 1px solid lightgray;
+
+  @media ${cssQueries.mobile} {
+    margin: 1rem auto;
+  }
 `
 
 type SimilarPanel = {

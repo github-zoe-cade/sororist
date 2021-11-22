@@ -17,6 +17,19 @@ const Navbar = styled.nav`
   margin: 0 1rem;
 `;
 
+const BrandName = styled.a`
+  font-size: 1.6rem;
+  font-family: "Abril Fatface";
+  letter-spacing: .8px;
+  text-decoration: none;
+  padding: 1rem;
+  color: ${({theme}) => theme.colors.default2};
+
+  &:hover, &:focus {
+    color: ${({theme}) => theme.colors.alpha120};
+  }
+`
+
 const DesktopMenu = styled.ul`
   display: flex;
   align-items: start;
@@ -55,9 +68,7 @@ const Footer = styled.footer`
 export const Layout = ({ children }) => (
   <LayoutContainer>
     <Navbar>
-      <Link href="/" passHref>
-        <h4>A cool name</h4>
-      </Link>
+      <BrandName href="/" tabIndex={1}>A cool name</BrandName>
       <DesktopMenu>
         <NavLink href="/search" text="Explorer" />
         <NavLink href="/new-profile" text="Suggérer un profil" />

@@ -17,11 +17,10 @@ const colors = [
   theme.colors.delta100,
 ];
 
-const shapes = ["circle", "polygon", "spring"];
+const shapes = ["circle", "polygon", "spring", "triangle", "grid"];
 
 const spaceHoldersRadius = 10;
 const nbSquares = 10;
-const nbSquaresAbove = 4;
 
 export const HeaderDecoration = () => {
   const spaceHolders = [];
@@ -58,68 +57,82 @@ export const HeaderDecoration = () => {
   });
 
   return (
-    <svg
-      width="100%"
-      height="100%"
-      viewBox={`0 0 ${width} ${height}`}
-      style={{ overflow: "visible" }}
-      preserveAspectRatio="xMinYMin meet"
-    >
-      <defs>
-        <rect
-          id="rect"
-          x="100"
-          y="100"
-          width="400"
-          height="280"
-          rx="15"
-          stroke="none"
-          fill="none"
-        />
-        <clipPath id="clip">
-          <use xlinkHref="#rect" />
-        </clipPath>
-      </defs>
-
-      {tessellation.cells.map((cell, i) => {
-        const size = cell.innerCircleRadius;
-        const radiusMultiplicator = random(0.3, 2);
-
-        const shouldNotRender = i < 6;
-        if (shouldNotRender) {
-          return null;
-        }
-
-        const shape = random(shapes);
-
-        return i === tessellation.cells.length - 2 ? (
-          <React.Fragment key={i}>
-            <use xlinkHref="#rect" />
-            <image
-              xlinkHref="/images/cover.jpg"
-              clipPath="url(#clip)"
-              width="420"
-              height="280"
-              x={100}
-              y={98}
-            />
-          </React.Fragment>
-        ) : (
-          <Shape
-            shape={shape}
-            x={cell.centroid.x}
-            y={cell.centroid.y}
-            size={size * radiusMultiplicator}
-            fill={random(colors)}
-            key={i}
+    <>
+      <svg
+        width="100%"
+        height="100%"
+        viewBox={`0 0 ${width} ${height}`}
+        style={{ overflow: "visible" }}
+        preserveAspectRatio="xMinYMin meet"
+      >
+        <defs>
+          <rect
+            id="rect"
+            x="100"
+            y="100"
+            width="400"
+            height="280"
+            rx="15"
+            stroke="none"
+            fill="none"
           />
-        );
-      })}
+          <clipPath id="clip">
+            <use xlinkHref="#rect" />
+          </clipPath>
+        </defs>
+
+        {tessellation.cells.map((cell, i) => {
+          const size = cell.innerCircleRadius;
+          const radiusMultiplicator = random(.8, 2.5);
+
+          const shouldNotRender = i < 6;
+          if (shouldNotRender) {
+            return null;
+          }
+
+          const shape = random(shapes);
+
+          return i === tessellation.cells.length - 2 ? (
+            <React.Fragment key={i}>
+              <use xlinkHref="#rect" />
+              <image
+                xlinkHref="/images/cover.jpg"
+                clipPath="url(#clip)"
+                width="420"
+                height="280"
+                x={100}
+                y={98}
+              />
+            </React.Fragment>
+          ) : (
+            <Shape
+              shape={shape}
+              x={cell.centroid.x}
+              y={cell.centroid.y}
+              size={size * radiusMultiplicator}
+              fill={random(colors)}
+              key={i}
+            />
+          );
+        })}
+        {/* {tessellation.cells.map((cell, i) => {
+          return (
+            <polygon
+              key={i}
+              points={cell.points}
+              fill="none"
+              stroke="#000"
+            ></polygon>
+          );
+        })} */}
+      </svg>
       {/* {tessellation.cells.map((cell, i) => {
         return (
-          <polygon key={i} points={cell.points} fill="none" stroke="#000"></polygon>
+          <span key={i} style={{position: "absolute", left: cell.centroid.x + 700, top: cell.centroid.y + 100, fontSize: "3rem" }}>
+            {i}
+          </span>
         );
       })} */}
-    </svg>
+    </>
   );
 };

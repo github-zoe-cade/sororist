@@ -8,6 +8,7 @@ import {
 } from "lib/profiles";
 
 import {
+  cssQueries,
   marginSection,
   paddingBottomLastSection,
 } from "styles/utils";
@@ -41,12 +42,15 @@ export const getStaticPaths = async () => {
 };
 
 const ProfileLayout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 2rem;
   ${marginSection}
   margin-top: 0;
   ${paddingBottomLastSection}
+
+  @media ${cssQueries.desktop} {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+  }
 `;
 
 type ProfileProps = {

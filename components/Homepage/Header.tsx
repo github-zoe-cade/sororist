@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 
 import { cssQueries, marginSection } from "styles/utils";
 
@@ -20,14 +19,6 @@ const Subtitle = styled.p`
   font-size: 1.3rem;
   line-height: 1.4;
   margin-bottom: 3rem;
-`;
-
-const ImageContainer = styled.div`
-  margin: auto;
-
-  @media ${cssQueries.mobile} {
-    margin-top: 2rem;
-  }
 `;
 
 export const Header = () => {
