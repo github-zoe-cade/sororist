@@ -5,6 +5,7 @@ import {
 import { theme } from "styles/theme";
 
 import { Shape } from "components/basics/Shape";
+import React from "react";
 
 const width = 600;
 const height = 500;
@@ -16,7 +17,7 @@ const colors = [
   theme.colors.delta100,
 ];
 
-const shapes = ["circle", "grid", "polygon", "triangle", "spring"];
+const shapes = ["circle", "polygon", "spring"];
 
 const spaceHoldersRadius = 10;
 const nbSquares = 10;
@@ -65,7 +66,16 @@ export const HeaderDecoration = () => {
       preserveAspectRatio="xMinYMin meet"
     >
       <defs>
-        <rect id="rect" x="100" y="100" width="400" height="280" rx="15" stroke="none" fill="none" />
+        <rect
+          id="rect"
+          x="100"
+          y="100"
+          width="400"
+          height="280"
+          rx="15"
+          stroke="none"
+          fill="none"
+        />
         <clipPath id="clip">
           <use xlinkHref="#rect" />
         </clipPath>
@@ -83,18 +93,17 @@ export const HeaderDecoration = () => {
         const shape = random(shapes);
 
         return i === tessellation.cells.length - 2 ? (
-          <>
-          <use xlinkHref="#rect" />
-          <image
-            // xlinkHref="/images/cover.jpg"
-            // clipPath="url(#clip)"
-            width="420"
-            height="280"
-            x={100}
-            y={98}
-            key={i}
-          />
-          </>
+          <React.Fragment key={i}>
+            <use xlinkHref="#rect" />
+            <image
+              xlinkHref="/images/cover.jpg"
+              clipPath="url(#clip)"
+              width="420"
+              height="280"
+              x={100}
+              y={98}
+            />
+          </React.Fragment>
         ) : (
           <Shape
             shape={shape}
@@ -102,7 +111,7 @@ export const HeaderDecoration = () => {
             y={cell.centroid.y}
             size={size * radiusMultiplicator}
             fill={random(colors)}
-            key={`${shape}${i}`}
+            key={i}
           />
         );
       })}

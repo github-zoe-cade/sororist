@@ -30,7 +30,7 @@ export const getMatchingProfiles = (filters: FiltersType): ProfileType[] => {
     return fakeProfiles;
   }
 
-  const themesArray = toArray(filters.themes);
+  const themesArray: string[] = toArray(filters.themes);
   if (themesArray.length == 0) {
     return fakeProfiles;
   }

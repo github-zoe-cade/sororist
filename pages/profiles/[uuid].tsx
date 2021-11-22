@@ -17,9 +17,9 @@ import { Layout } from "components/Layout";
 import { ThemeSection } from "components/common/ThemeSection";
 
 
-import { BackButton } from "./BackButton";
-import { ProfilePanel } from "./ProfilePanel";
-import { SimilarPanel } from "./SimilarPanel";
+import { BackButton } from "components/Profile/BackButton";
+import { ProfilePanel } from "components/Profile/ProfilePanel";
+import { SimilarPanel } from "components/Profile/SimilarPanel";
 
 export const getStaticProps = async ({ params }) => {
   const profile = getProfile(params.uuid);

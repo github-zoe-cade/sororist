@@ -101,7 +101,7 @@ const Grid = ({ fill, size, x, y }) => {
   );
 };
 
-export const Shape = ({ key, shape, size, x, y, fill }) => {
+export const Shape = ({ shape, size, x, y, fill }) => {
   if (shape === "rectangle") {
     return (
       <rect
@@ -116,7 +116,7 @@ export const Shape = ({ key, shape, size, x, y, fill }) => {
   }
 
   if (shape === "grid") {
-    return <Grid key={key} fill={fill} size={size} x={x - size / 4} y={y - size / 4} />;
+    return <Grid fill={fill} size={size} x={x - size / 4} y={y - size / 4} />;
   }
 
   if (shape === "polygon") {
