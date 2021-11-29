@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Formik, Form, Field, FormikProps } from "formik";
-import * as Yup from "Yup";
+import * as Yup from "yup";
 
 import { isEmpty } from "lib/helpers";
 import { EditProfileType } from "lib/profiles";

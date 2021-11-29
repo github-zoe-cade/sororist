@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field, FormikProps } from "formik";
-import * as Yup from "Yup";
+import * as Yup from "yup";
 import { isEmpty } from "lib/helpers";
 import { inputStyle } from "styles/forms";
 import { FaRegCheckCircle } from "react-icons/fa";
