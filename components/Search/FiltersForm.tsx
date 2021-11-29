@@ -102,6 +102,7 @@ export const FiltersForm = ({
                 <SearchBar
                   {...field}
                   filters={filters}
+                  setFieldValue={setFieldValue}
                   submitForm={submitForm}
                 />
               )}

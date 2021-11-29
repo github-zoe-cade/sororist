@@ -24,11 +24,11 @@ export const MultiSelect = ({ error = false, options, onChange, ...field }) => {
     }),
     multiValueLabel: (provided: object) => ({
       ...provided,
-      color: theme.colors.default4,
+      color: theme.colors.default2,
     }),
     multiValueRemove: (provided: object) => ({
       ...provided,
-      color: theme.colors.default4,
+      color: theme.colors.default2,
       cursor: "pointer",
       ":hover": {
         backgroundColor: theme.colors.beta50,
