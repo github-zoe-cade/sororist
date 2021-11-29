@@ -1,19 +1,21 @@
 import { MultiSelect } from "components/basics/MultiSelect";
 
 const options = [
-  { label: "Twitter", value: "Twitter" },
-  { label: "Instagram", value: "Instagram" },
-  { label: "Twitch", value: "Twitch" },
-  { label: "Youtube", value: "Youtube" },
+  { label: "Twitter", value: "twitter" },
+  { label: "Instagram", value: "instagram" },
+  { label: "Twitch", value: "twitch" },
+  { label: "Youtube", value: "youtube" },
 ];
 
 type PlatformSelect = {
-  onChange: (e?: Event) => void;
+  error?: boolean,
+  onChange: (options?: string[]) => void;
 };
 
-export const PlatformSelect = ({ onChange, ...field }: PlatformSelect) => (
+export const PlatformSelect = ({ error, onChange, ...field }: PlatformSelect) => (
   <MultiSelect
     {...field}
+    error={error}
     placeholder="Twitter, Youtube, Github..."
     options={options}
     onChange={onChange}

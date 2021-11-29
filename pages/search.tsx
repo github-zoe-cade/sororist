@@ -51,7 +51,7 @@ const Search = ({ router }: { router: Router }) => {
   };
 
   return (
-    <Layout>
+    <Layout currentPath="/search">
       <Title>Explorez les profils d'expert·e·s</Title>
       <Filters router={router} />
 

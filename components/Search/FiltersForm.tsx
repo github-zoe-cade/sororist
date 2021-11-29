@@ -92,11 +92,7 @@ export const FiltersForm = ({
               {({ field }) => (
                 <label htmlFor="platforms">
                   <StyledLabel>Filtrer par plateforme :</StyledLabel>
-                  <PlatformSelect
-                    {...field}
-                    setFieldValue={setFieldValue}
-                    onChange={onChange(field.name)}
-                  />
+                  <PlatformSelect {...field} onChange={onChange(field.name)} />
                 </label>
               )}
             </Field>
@@ -106,21 +102,26 @@ export const FiltersForm = ({
                 <SearchBar
                   {...field}
                   filters={filters}
-                  setFieldValue={setFieldValue}
                   submitForm={submitForm}
                 />
               )}
             </Field>
 
             <RandomButtonContainer>
-              <ApplyButton onClick={() => {
-                submitForm()
-                closeForm()
-              }}>Appliquer</ApplyButton>
-              <Button onClick={() => {
-                router.push("/search")
-                closeForm()
-              }}>
+              <ApplyButton
+                onClick={() => {
+                  submitForm();
+                  closeForm();
+                }}
+              >
+                Appliquer
+              </ApplyButton>
+              <Button
+                onClick={() => {
+                  router.push("/search");
+                  closeForm();
+                }}
+              >
                 <FaRandom />
                 &nbsp; Au hasard
               </Button>

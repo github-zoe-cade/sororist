@@ -2,30 +2,31 @@ import Select from "react-select";
 import { theme } from "styles/theme";
 
 import { toArray } from "lib/helpers";
-import { cssQueries } from "styles/utils";
-
-const fieldValueToSelectValues = (value: string | string[]) =>
-  toArray(value).map((value: string | string[]) => ({
-    value,
-    label: value,
-  }));
 
 type MultiSelect = {
+  error?: boolean;
   options: Array<{ label: string; value: string | number }>;
   onChange: (e?: Event) => void;
 };
 
-export const MultiSelect = ({ options, onChange, ...field }) => {
+export const MultiSelect = ({ error = false, options, onChange, ...field }) => {
   const customStyles = {
-    multiValue: (provided: {}) => ({
+    control: (provided: object) =>
+      error
+        ? {
+            ...provided,
+            borderColor: theme.colors.error,
+          }
+        : { ...provided },
+    multiValue: (provided: object) => ({
       ...provided,
       backgroundColor: theme.colors.beta100,
     }),
-    multiValueLabel: (provided: {}) => ({
+    multiValueLabel: (provided: object) => ({
       ...provided,
       color: theme.colors.default4,
     }),
-    multiValueRemove: (provided: {}) => ({
+    multiValueRemove: (provided: object) => ({
       ...provided,
       color: theme.colors.default4,
       cursor: "pointer",
@@ -34,6 +35,13 @@ export const MultiSelect = ({ options, onChange, ...field }) => {
       },
     }),
   };
+
+  const fieldValueToSelectValues = (value: string | string[]) =>
+    toArray(value).map((value: string | string[]) => ({
+      value,
+      label: options.find(({ value: optionValue }) => value === optionValue)
+        .label,
+    }));
 
   return (
     <Select

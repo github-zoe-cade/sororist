@@ -5,7 +5,8 @@ import { LinkAsButton } from "components/basics/LinkAsButton";
 
 const ThemeSectionContainer = styled.div`
   ${paddingSection}
-  background-color: ${({ theme }) => theme.colors.background1};
+  background: linear-gradient(${({ theme }) => `${theme.colors.background1}, ${theme.colors.background2}`});
+  /* background-color: ${({ theme }) => theme.colors.background1}; */
   color: ${({ theme }) => theme.colors.default1};
   text-align: center;
 `;

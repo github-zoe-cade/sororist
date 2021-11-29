@@ -6,34 +6,29 @@ import {
 } from "react-icons/bs";
 import { ProfileType } from "lib/profiles";
 
-import { cardStyle, cssQueries } from "styles/utils";
+import { cssQueries } from "styles/utils";
 
-import { ProfilePicture } from "components/common/ProfilePicture";
+import { VoronoiDecoration } from "components/basics/VoronoiDecoration";
+// import { ProfilePicture } from "components/common/ProfilePicture";
 import { SocialLinks } from "components/common/SocialLinks";
 import { ThemeTags } from "components/common/ThemeTags";
-
-const ProfileContainer = styled.div`
-  ${cardStyle}
-  padding: 4rem;
-
-  @media ${cssQueries.mobile} {
-    padding: 2rem;
-  }
-`;
 
 const PictureAndInfo = styled.div`
   @media ${cssQueries.mobile} {
     text-align: center;
+    margin: -1rem;
   }
 
   @media ${cssQueries.desktop} {
     display: grid;
-    grid-template-columns: 40% 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    margin: -3rem;
   }
 `;
 
 const Info = styled.div`
+  margin: 1rem;
+
   & > :not(:last-child) {
     margin-bottom: 1rem;
   }
@@ -43,7 +38,7 @@ const StyledThemeTags = styled(ThemeTags)`
   @media ${cssQueries.mobile} {
     justify-content: center;
   }
-`
+`;
 
 const genderIcons = {
   nonbinary: BsGenderAmbiguous,
@@ -55,9 +50,16 @@ export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
   const Icon = profile.sex && genderIcons[profile.sex];
 
   return (
-    <ProfileContainer>
+    <div>
       <PictureAndInfo>
-        <ProfilePicture pictureUrl={profile.pictureUrl} />
+        <VoronoiDecoration
+          image={profile.pictureUrl}
+          height={500}
+          width={500}
+          pictureHeight={300}
+          pictureWidth={300}
+          pictureShape="circle"
+        />
         <Info>
           <h3>
             {profile.name}
@@ -93,6 +95,6 @@ export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
           ))}
         </div>
       </div>
-    </ProfileContainer>
+    </div>
   );
 };

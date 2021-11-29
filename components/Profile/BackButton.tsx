@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { marginElement } from "styles/utils";
+import { cssQueries, marginElement } from "styles/utils";
 
 import { Button } from "components/basics/Button";
+import { FaArrowLeft } from "react-icons/fa";
 
 const goBack = () => {
   if (typeof window !== undefined) {
@@ -18,11 +19,22 @@ const arrivedFromSearch = () => {
 };
 
 const StyledButton = styled(Button)`
-  margin: 1rem ${({ theme }) => theme.spacings.mainHorizontal};
-`
+  display: flex;
+  align-items: center;
+  margin: 0rem ${({ theme }) => theme.spacings.mainHorizontal};
+
+  @media ${cssQueries.desktop} {
+    margin-top: 1rem;
+  }
+`;
 
 export const BackButton = () => (
-  <div style={{minHeight: "2rem"}}>
-   {arrivedFromSearch() && <StyledButton onClick={goBack}>Retourner</StyledButton>}
+  <div style={{ minHeight: "2rem" }}>
+    {arrivedFromSearch() && (
+      <StyledButton onClick={goBack}>
+        <FaArrowLeft />
+        &nbsp;Retourner
+      </StyledButton>
+    )}
   </div>
-)
+);

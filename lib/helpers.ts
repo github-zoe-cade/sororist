@@ -12,3 +12,18 @@ export const random = (array: any[], size: number = 1): any => {
 
 const _toArray = <T>(value: T[] | T): T[] => (new Array(value).flat() as T[])
 export const toArray = <T>(value: T[] | T): T[] | [] => (!!value && _toArray(value)) || []
+
+export const isEmpty = (value: any) => {
+  if (value == null) {
+    return true;
+  }
+  if (Array.isArray(value) && value.length === 0) {
+    return true
+  }
+
+  if (typeof value === "object") {
+    return Object.keys(value).length === 0
+  }
+
+  return false;
+}

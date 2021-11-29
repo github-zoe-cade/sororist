@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 // Style to match react-select value
 const TagContainer = styled.div`
-  color: #fff;
-  fill: #fff;
+  color: ${({ theme }) => theme.colors.default4};
+  fill: ${({ theme }) => theme.colors.default4};
   font-size: 85%;
   width: fit-content;
   position: absolute;
   bottom: 9px;
   left: 11px;
-  background-color: orange;
+  background-color: ${({ theme }) => theme.colors.beta100};
   border-radius: 2px;
   display: flex;
   align-items: center;

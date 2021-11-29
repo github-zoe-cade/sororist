@@ -11,12 +11,14 @@ const themesOptions = [
 ];
 
 type ThemeSelect = {
-  onChange: (e?: Event) => void;
+  error?: boolean,
+  onChange: (options?: string[]) => void;
 };
 
-export const ThemeSelect = ({ onChange, ...field }: ThemeSelect) => (
+export const ThemeSelect = ({ error, onChange, ...field }: ThemeSelect) => (
   <MultiSelect
     {...field}
+    error={error}
     placeholder="Python, sécurité, accessibilité..."
     options={themesOptions}
     onChange={onChange}

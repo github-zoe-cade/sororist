@@ -61,11 +61,11 @@ const Polygon = ({ x, y, fill, size }) => {
     [0, 5],
     [4, 4],
   ];
-  const polygonSize = (random(0.3, 1) * size) / 10;
+  const polygonSize = size / 15;
   const path = points
     .map(
       (coord) =>
-        `${coord[0] * polygonSize + x - 10}, ${coord[1] * polygonSize + y - 10}`
+        `${coord[0] * polygonSize + x}, ${coord[1] * polygonSize + y}`
     )
     .join(" ");
 
@@ -77,12 +77,12 @@ const Polygon = ({ x, y, fill, size }) => {
       strokeLinejoin="round"
       strokeWidth={0.8 * polygonSize}
       fill={random(["none", fill])}
+      transform={`translate(-${size/3}, -${size/3})`}
     />
   );
 };
 
 const Grid = ({ fill, size, x, y }) => {
-  // const gridSize = 0.3 + Math.random();
   const gridSize = size / 20;
   const height = random(4, 7);
   const width = random(4, 7);

@@ -28,7 +28,7 @@ export async function getStaticProps() {
   return {
     props: {
       themes: mostPopularThemes,
-      platforms: ["Twitch", "Youtube", "Twitter"],
+      platforms: ["Tiktok", "Youtube", "Twitter"],
       latestProfiles,
     },
   };
@@ -51,7 +51,6 @@ export default function Home({ themes, platforms, latestProfiles }: HomeProps) {
     <>
       <Head>
         <title>Who's who</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <Layout>
         <Header />

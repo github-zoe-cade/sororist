@@ -31,7 +31,7 @@ const FiltersMenu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   font-weight: 600;
   font-size: 1.2rem;
   cursor: pointer;
@@ -58,7 +58,9 @@ export const Filters = ({ router }: { router: Router }) => {
   }, [router]);
 
   const onSubmit = async (values: FiltersType) => {
-    router.push({ pathname: router.pathname, query: values });
+    router.push({ pathname: router.pathname, query: values }, undefined, {
+      scroll: false,
+    });
   };
 
   if (!filters) {
@@ -77,7 +79,12 @@ export const Filters = ({ router }: { router: Router }) => {
 
   return (
     <FiltersContainer>
-      <FiltersMenu role="button" onClick={() => setToggleOn(!toggleOn)} tabIndex={0}>
+      <FiltersMenu
+        role="button"
+        onClick={() => setToggleOn(!toggleOn)}
+        onKeyDown={(e) => e.key === "Enter" && setToggleOn(!toggleOn)}
+        tabIndex={0}
+      >
         Filters
         {filtersCount > 0 && <span>({filtersCount})</span>}
         {toggleOn ? <FaCaretUp /> : <FaCaretDown />}

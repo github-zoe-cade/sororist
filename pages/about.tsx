@@ -1,3 +1,5 @@
+import { Layout } from "components/Layout";
+
 export default function About() {
-  return <div>A propos</div>;
+  return <Layout currentPath="/about">A propos</Layout>;
 }

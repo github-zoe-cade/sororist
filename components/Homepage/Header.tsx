@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { cssQueries, marginSection } from "styles/utils";
 
 import { LinkAsButton } from "components/basics/LinkAsButton";
-import { HeaderDecoration } from "./HeaderDecoration";
+import { VoronoiDecoration } from "components/basics/VoronoiDecoration";
 
 const HeaderContainer = styled.header`
   ${marginSection}
@@ -33,7 +33,13 @@ export const Header = () => {
         <LinkAsButton href="/search" text="Explorer" />
       </div>
 
-      <HeaderDecoration />
+      <VoronoiDecoration
+        image="/images/cover.jpg"
+        height={500}
+        width={600}
+        pictureHeight={260}
+        pictureWidth={400}
+      />
     </HeaderContainer>
   );
 };

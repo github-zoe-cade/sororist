@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ProfileType } from "lib/profiles";
-import { cardStyle } from "styles/utils";
+import { cardStyle, cssQueries } from "styles/utils";
 
 import { ProfilePicture } from "./common/ProfilePicture";
 import { ThemeTags } from "./common/ThemeTags";
@@ -17,8 +17,7 @@ const ProfileCardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
-  height: 230px;
-  width: 300px;
+  min-height: 230px;
   position: relative;
 `;
 
@@ -41,7 +40,17 @@ const IdentityContainer = styled.div`
   text-align: left;
   font-size: 1.5rem;
   font-weight: 700;
+
+  @media ${cssQueries.mobile} {
+    grid-template-columns: 30% 1fr;
+    align-items: center;
+  }
 `;
+
+const Name = styled.p`
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+`
 
 const ClickableCard = ({ href, className, children }) => (
   <ProfileCardContainer
@@ -66,7 +75,7 @@ export const ProfileCard = ({ profile, className }: ProfileCardProps) => {
       <StyledSocialLinks links={profile.links} />
       <IdentityContainer>
         <ProfilePicture pictureUrl={profile.pictureUrl} />
-        <p>{profile.name}</p>
+        <Name>{profile.name}</Name>
       </IdentityContainer>
 
       <ThemeTags themes={profile.themes} displayedNumber={3} />

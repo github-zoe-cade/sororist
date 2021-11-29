@@ -17,14 +17,12 @@ const StyledLi = styled.li<{ active: boolean }>`
 type NavLinkProps = {
   href: string;
   text: string;
+  currentPath?: string;
 };
 
-export const NavLink = ({ href, text }: NavLinkProps) => {
-  const currentPath = typeof window === "object" && window.location.pathname;
-  const isCurrentPath = currentPath && !!currentPath.match(new RegExp(href))
-
+export const NavLink = ({ href, text, currentPath }: NavLinkProps) => {
   return (
-    <StyledLi active={isCurrentPath} tabIndex={1}>
+    <StyledLi active={currentPath === href} tabIndex={1}>
       <a href={href}>{text}</a>
     </StyledLi>
   );

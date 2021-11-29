@@ -13,7 +13,7 @@ export type ProfileType = {
   commercial: string;
   pictureUrl?: string;
   themes: Array<{ uuid: number; name: string }>;
-  links: Array<{ platform: string; link: string }>;
+  links: Array<{ platform: string; url: string }>;
 };
 
 // Return the info to build the latest profiles on the homepage

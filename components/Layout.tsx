@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Link from "next/link";
 
 import { cssQueries } from "styles/utils";
 import { NavLink } from "./Layout/NavLink";
+import React from "react";
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -52,6 +52,7 @@ const Main = styled.main`
 `;
 
 const Footer = styled.footer`
+  background: url('/images/topography.svg');
   background-color: ${({ theme }) => theme.colors.background4};
   padding: 2rem;
   color: ${({ theme }) => theme.colors.default4};
@@ -65,14 +66,19 @@ const Footer = styled.footer`
   }
 `;
 
-export const Layout = ({ children }) => (
+type Layout = {
+  currentPath?: string,
+  children: React.ReactNode,
+}
+
+export const Layout = ({ currentPath, children }: Layout) => (
   <LayoutContainer>
     <Navbar>
-      <BrandName href="/" tabIndex={1}>A cool name</BrandName>
+      <BrandName href="/">A cool name</BrandName>
       <DesktopMenu>
-        <NavLink href="/search" text="Explorer" />
-        <NavLink href="/new-profile" text="Suggérer un profil" />
-        <NavLink href="/about" text="A propos" />
+        <NavLink href="/search" text="Explorer" currentPath={currentPath} />
+        <NavLink href="/new-profile" text="Suggérer un profil" currentPath={currentPath} />
+        <NavLink href="/about" text="A propos" currentPath= {currentPath} />
       </DesktopMenu>
       <MobileMenu>TODO</MobileMenu>
     </Navbar>

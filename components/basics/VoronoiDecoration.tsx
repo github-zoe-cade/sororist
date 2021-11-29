@@ -7,9 +7,6 @@ import { theme } from "styles/theme";
 import { Shape } from "components/basics/Shape";
 import React from "react";
 
-const width = 600;
-const height = 500;
-
 const colors = [
   theme.colors.alpha100,
   theme.colors.beta100,
@@ -22,7 +19,23 @@ const shapes = ["circle", "polygon", "spring", "triangle", "grid"];
 const spaceHoldersRadius = 10;
 const nbSquares = 10;
 
-export const HeaderDecoration = () => {
+type VoronoiDecoration = {
+  image: string;
+  height: number;
+  width: number;
+  pictureHeight: number;
+  pictureWidth: number;
+  pictureShape?: string;
+};
+
+export const VoronoiDecoration = ({
+  image,
+  height,
+  width,
+  pictureHeight,
+  pictureWidth,
+  pictureShape = "rectangle",
+}: VoronoiDecoration) => {
   const spaceHolders = [];
   for (let i = 0; i < 6; i++) {
     const angleStep = (Math.PI * 2) / 10;
@@ -41,9 +54,9 @@ export const HeaderDecoration = () => {
     voronoiPoints.push({ x, y });
   }
 
-  const center = { x: width / 2, y: height / 2 }
-  const evenVoronoiPoints = voronoiPoints.filter((_, i) => i%2 === 0)
-  const oddVoronoiPoints = voronoiPoints.filter((_, i) => i%2 !== 0)
+  const center = { x: width / 2, y: height / 2 };
+  const evenVoronoiPoints = voronoiPoints.filter((_, i) => i % 2 === 0);
+  const oddVoronoiPoints = voronoiPoints.filter((_, i) => i % 2 !== 0);
   const points = [
     ...spaceHolders,
     ...oddVoronoiPoints,
@@ -68,24 +81,36 @@ export const HeaderDecoration = () => {
         preserveAspectRatio="xMinYMin meet"
       >
         <defs>
-          <rect
-            id="rect"
-            x="100"
-            y="100"
-            width="400"
-            height="280"
-            rx="15"
-            stroke="none"
-            fill="none"
-          />
+          {pictureShape === "circle" ? (
+            <circle
+              id="img-container"
+              cx={height / 2}
+              cy={width / 2}
+              r={pictureHeight / 2}
+              stroke="none"
+              fill="none"
+            />
+          ) : (
+            <rect
+              id="img-container"
+              x="100"
+              y="100"
+              width={pictureWidth}
+              height={pictureHeight}
+              rx="15"
+              stroke="none"
+              fill="none"
+            />
+          )}
+
           <clipPath id="clip">
-            <use xlinkHref="#rect" />
+            <use xlinkHref="#img-container" />
           </clipPath>
         </defs>
 
         {tessellation.cells.map((cell, i) => {
           const size = cell.innerCircleRadius;
-          const radiusMultiplicator = random(.5, 2.5);
+          const radiusMultiplicator = random(0.5, 2.5);
 
           const shouldNotRender = i < 6;
           if (shouldNotRender) {
@@ -96,14 +121,14 @@ export const HeaderDecoration = () => {
 
           return i === tessellation.cells.length - 6 ? (
             <React.Fragment key={i}>
-              <use xlinkHref="#rect" />
+              <use xlinkHref="#img-container" />
               <image
-                xlinkHref="/images/cover.jpg"
+                xlinkHref={image}
                 clipPath="url(#clip)"
-                width="420"
-                height="280"
+                height={pictureHeight + 10}
+                width={pictureWidth}
                 x={100}
-                y={98}
+                y={95}
               />
             </React.Fragment>
           ) : (
@@ -128,13 +153,6 @@ export const HeaderDecoration = () => {
           );
         })} */}
       </svg>
-      {/* {tessellation.cells.map((cell, i) => {
-        return (
-          <span key={i} style={{position: "absolute", left: cell.centroid.x + 700, top: cell.centroid.y + 100, fontSize: "1rem" }}>
-            {i}
-          </span>
-        );
-      })} */}
     </>
   );
 };

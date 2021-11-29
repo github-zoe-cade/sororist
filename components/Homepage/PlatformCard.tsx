@@ -3,7 +3,7 @@ import { cssQueries } from "styles/utils";
 
 import { LinkAsButton } from "components/basics/LinkAsButton";
 import { RectangleCard } from "components/basics/RectangleCard";
-import { platformIcons } from "components/basics/plateformIcons";
+import { PlatformIcon } from "components/basics/PlateformIcon";
 
 const PlatformCardContainer = styled(RectangleCard)<{ row: number }>`
   @media ${cssQueries.desktop} {
@@ -28,12 +28,10 @@ type PlatformCard = {
 };
 
 export const PlatformCard = ({ platform, index }: PlatformCard) => {
-  const Icon = platformIcons[platform.toLowerCase()];
-
   return (
     <PlatformCardContainer row={index}>
       <PlatformName>
-        <Icon />
+        <PlatformIcon platform={platform.toLowerCase()} />
         {platform}
       </PlatformName>
       <LinkAsButton href={`/search?platform=${platform}`} text="Découvrir" />
