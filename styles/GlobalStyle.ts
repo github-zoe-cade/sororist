@@ -1,15 +1,17 @@
-import { createGlobalStyle } from 'styled-components'
-import { cssQueries } from './utils'
+import { createGlobalStyle, DefaultTheme } from "styled-components";
+import { cssQueries } from "./utils";
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lato', Helvetica, sans-serif;
+    background-color: var(--background2);
     background-size: cover;
     /* background-repeat: no-repeat; */
     min-height: 100vh;
+    color: var(--default2);
   }
 
   #__next {
@@ -20,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Abril Fatface';
     font-size: 4rem;
     line-height: 1.35;
+    color: var(--default1);
 
     @media ${cssQueries.mobile} {
       font-size: 3rem;
@@ -30,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
     /* font-family: 'Recursive'; */
     font-size: 3rem;
     line-height: 1.3;
+    color: var(--default1);
 
     @media ${cssQueries.mobile} {
       font-size: 2rem;
@@ -39,6 +43,16 @@ export const GlobalStyle = createGlobalStyle`
   h3 {
     font-family: 'Abril Fatface';
     font-size: 2.2rem;
+    color: var(--default1);
     letter-spacing: .8px;
   }
-`
+
+  a {
+    color: var(--alpha100);
+
+    &:hover,
+    &:focus {
+      color: var(--alpha120);
+    }
+  }
+`;

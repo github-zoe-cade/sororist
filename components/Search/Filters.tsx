@@ -9,11 +9,12 @@ import { cssQueries } from "styles/utils";
 
 import { FiltersForm } from "./FiltersForm";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
+import { Loading } from "components/basics/Loading";
 
 const FiltersContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background2};
-  color: ${({ theme }) => theme.colors.default2};
-  border: 1px solid ${({ theme }) => theme.colors.default3};
+  color: var(--default2);
+  border: 1px solid var(--default3);
   border-left: none;
   border-right: none;
   padding: 1rem 5rem;
@@ -64,7 +65,7 @@ export const Filters = ({ router }: { router: Router }) => {
   };
 
   if (!filters) {
-    return <div>Chargement...</div>;
+    return <Loading />;
   }
 
   const initialValues: FiltersType = {};

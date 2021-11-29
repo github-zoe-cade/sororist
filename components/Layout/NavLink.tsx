@@ -5,7 +5,7 @@ const StyledLi = styled.li<{ active: boolean }>`
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: ${({ active }) => active && "800"};
-    color: ${({ theme }) => theme.colors.default2};
+    color: var(--default2);
 
     &:hover,
     &:focus {

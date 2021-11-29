@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { Formik, Form, Field, FormikProps, FormikHelpers } from "formik";
+import { Formik, Form, Field, FormikProps } from "formik";
 import * as Yup from "Yup";
 import { isEmpty } from "lib/helpers";
 import { inputStyle } from "styles/forms";
 import { FaRegCheckCircle } from "react-icons/fa";
 
 import { Button } from "components/basics/Button";
-import { ErrorMessage } from "components/basics/ErrorMessage";
 import { PlatformSelect } from "components/Search/PlatformSelect";
 import { ThemeSelect } from "components/Search/ThemeSelect";
 import { LinkList } from "./LinkList";
@@ -33,7 +32,7 @@ const StyledButton = styled(Button)`
 
 const SuccessMessage = styled.div`
   background: ${({ theme }) => theme.colors.success};
-  color: ${({ theme }) => theme.colors.default1};
+  color: var(--default1);
   padding: 1rem;
   border-radius: 5px;
   display: flex;
@@ -110,7 +109,7 @@ export const NewProfileForm = () => {
         return (
           <StyledForm>
             <Label htmlFor="name">Nom et/ou pseudo</Label>
-            <Field name="name" placeholder="Angie Neer (@AngieDev)">
+            <Field name="name">
               {({ field }) => (
                 <Input {...field} placeholder="Angie Neer (@AngieDev)" />
               )}

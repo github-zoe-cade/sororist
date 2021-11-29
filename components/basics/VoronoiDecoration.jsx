@@ -19,15 +19,6 @@ const shapes = ["circle", "polygon", "spring", "triangle", "grid"];
 const spaceHoldersRadius = 10;
 const nbSquares = 10;
 
-type VoronoiDecoration = {
-  image: string;
-  height: number;
-  width: number;
-  pictureHeight: number;
-  pictureWidth: number;
-  pictureShape?: string;
-};
-
 export const VoronoiDecoration = ({
   image,
   height,
@@ -35,7 +26,7 @@ export const VoronoiDecoration = ({
   pictureHeight,
   pictureWidth,
   pictureShape = "rectangle",
-}: VoronoiDecoration) => {
+}) => {
   const spaceHolders = [];
   for (let i = 0; i < 6; i++) {
     const angleStep = (Math.PI * 2) / 10;

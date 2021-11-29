@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 // Style to match react-select value
 const TagContainer = styled.div`
-  color: ${({ theme }) => theme.colors.default2};
-  fill: ${({ theme }) => theme.colors.default2};
+  color: var(--default2);
+  fill: var(--default2);
   font-size: 85%;
   width: fit-content;
   position: absolute;

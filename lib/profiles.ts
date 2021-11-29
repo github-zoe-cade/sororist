@@ -1,4 +1,5 @@
 import fakeProfiles from "./fakeProfiles";
+import fakeEditProfile from "./fakeEditProfile";
 import { FiltersType } from "./filters";
 
 import { toArray } from "./helpers";
@@ -16,9 +17,16 @@ export type ProfileType = {
   links: Array<{ platform: string; url: string }>;
 };
 
+export type EditProfileType = ProfileType & {
+  notValidated: boolean;
+  published: boolean;
+  hidden: boolean;
+};
+
 // Return the info to build the latest profiles on the homepage
 export const getLatestProfiles = (): ProfileType[] => fakeProfiles.slice(0, 6);
-export const getSimilarProfiles = (uuid: string): ProfileType[] => fakeProfiles.slice(0, 3);
+export const getSimilarProfiles = (uuid: string): ProfileType[] =>
+  fakeProfiles.slice(0, 3);
 
 // All the uuids to trigger static build of all profile pages on deploy
 export const getAllProfilesUuid = (): string[] => {
@@ -35,8 +43,14 @@ export const getMatchingProfiles = (filters: FiltersType): ProfileType[] => {
     return fakeProfiles;
   }
 
-  return fakeProfiles.filter((profile: ProfileType) => profile.themes.filter(
-    (theme) => themesArray.includes(theme.name)).length > 0)
+  return fakeProfiles.filter(
+    (profile: ProfileType) =>
+      profile.themes.filter((theme) => themesArray.includes(theme.name))
+        .length > 0
+  );
 };
 
-export const getProfile = (uuid: number): ProfileType => fakeProfiles[0];
+export const getProfile = (uuid: string): ProfileType => fakeProfiles[0];
+
+export const getProfileForEdit = (uuid: string): EditProfileType =>
+  fakeEditProfile;

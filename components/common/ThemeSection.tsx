@@ -6,9 +6,12 @@ import { LinkAsButton } from "components/basics/LinkAsButton";
 const ThemeSectionContainer = styled.div`
   ${paddingSection}
   background: linear-gradient(${({ theme }) => `${theme.colors.background1}, ${theme.colors.background2}`});
-  /* background-color: ${({ theme }) => theme.colors.background1}; */
-  color: ${({ theme }) => theme.colors.default1};
+  color: var(--default2);
   text-align: center;
+
+  @media (prefers-color-scheme: dark) {
+    /* color: var(--default3); */
+  }
 `;
 
 const Intertitle = styled.p`

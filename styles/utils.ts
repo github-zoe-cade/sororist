@@ -19,7 +19,7 @@ export const cssQueries = {
 
 export const cardStyle = css`
   background-color: ${({ theme }) => theme.colors.background2};
-  color: ${({ theme }) => theme.colors.default2};
+  color: var(--default2);
   border-radius: 2px;
   box-sizing: content-box;
   opacity: 0.92;

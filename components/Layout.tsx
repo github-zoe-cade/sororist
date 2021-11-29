@@ -23,7 +23,7 @@ const BrandName = styled.a`
   letter-spacing: .8px;
   text-decoration: none;
   padding: 1rem;
-  color: ${({theme}) => theme.colors.default2};
+  color: var(--default2);
 
   &:hover, &:focus {
     color: ${({theme}) => theme.colors.alpha120};

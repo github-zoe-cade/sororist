@@ -1,0 +1,28 @@
+html {
+  --alpha100: #7C44FF;
+  --alpha120: #4500BD;
+
+  --default1: #12101A;
+  --default2: #3B354D;
+  --default3: #DBD9E6;
+  --default4: #FCFCFF;
+
+  --background1: #DBD9E6;
+  --background2: #FCFCFF;
+  --background3: #12101A;
+  --background4: #3B354D;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* html {
+    --default1: #DBD9E6;
+    --default2: #FCFCFF;
+    --default3: #12101A;
+    --default4: #3B354D;
+
+    --background1: #12101A;
+    --background2: #3B354D;
+    --background3: #DBD9E6;
+    --background4: #FCFCFF;
+  } */
+}
