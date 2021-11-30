@@ -28,7 +28,7 @@ const TextArea = styled.textarea`
   ${inputStyle};
   height: 100%;
   font-family: inherit;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   resize: none;
 `;
 
@@ -82,16 +82,26 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
             <Label htmlFor="description">Présentez-vous en quelques mots</Label>
             <Field name="description">
               {({ field }) => (
-                <TextArea {...field} rows={5} placeholder={placeholders.description} />
+                <TextArea
+                  {...field}
+                  rows={5}
+                  placeholder={placeholders.description}
+                />
               )}
             </Field>
 
             <p>mes réseaux sociaux</p>
 
-            <Label htmlFor="commercial">Vous êtes disponibles pour des talks ou des interventions ?</Label>
+            <Label htmlFor="commercial">
+              Vous êtes disponibles pour des talks ou des interventions ?
+            </Label>
             <Field name="commercial">
               {({ field }) => (
-                <TextArea {...field} rows={5} placeholder={placeholders.commercial} />
+                <TextArea
+                  {...field}
+                  rows={5}
+                  placeholder={placeholders.commercial}
+                />
               )}
             </Field>
 
@@ -146,9 +156,11 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
               Supprimer mes données
             </StyledButton>
             <p>
-              Si vous le souhaitez, vous pouvez supprimer totalement vos
-              données. Dans ce cas, nous risquons de vous contacter à nouveau si
-              une autre personne suggère votre profil.
+              <small>
+                Si vous le souhaitez, vous pouvez supprimer totalement vos
+                données. Dans ce cas, nous risquons de vous contacter à nouveau
+                si une autre personne suggère votre profil.
+              </small>
             </p>
           </StyledForm>
         );

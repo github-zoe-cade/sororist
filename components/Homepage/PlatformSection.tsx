@@ -12,8 +12,8 @@ const WordingContainer = styled.div`
   display: grid;
   ${paddingSection}
   background-image: url('/images/circuit-board.svg');
-  background-color: ${({ theme }) => theme.colors.background4};
-  color: ${({ theme }) => theme.colors.default4};
+  background-color: var(--background4);
+  color: var(--default4);
 
   & > div {
     z-index: 1;
@@ -23,7 +23,21 @@ const WordingContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
+
+
+  /* @media (prefers-color-scheme: dark) {
+    background-color: var(--background1);
+    color: var(--default2);
+  } */
 `;
+
+const Title = styled.h2`
+  color: var(--default4);
+
+  /* @media (prefers-color-scheme: dark) {
+    color: var(--default1);
+  } */
+`
 
 const Subtitle = styled.p`
   font-size: 1.1rem;
@@ -41,13 +55,12 @@ const CardContainer = styled.div`
 export const PlatformSection = ({ platforms }: { platforms: string[] }) => {
   return (
     <PlatformSectionContainer>
-      {/* <Image src="/images/texture.jpeg" layout="fill" objectFit="cover" /> */}
       <WordingContainer>
         <div>
-          <h2>
+          <Title>
             Trouvez des personnes inspirantes à suivre et à inviter en
             conférences
-          </h2>
+          </Title>
           <Subtitle>
             Ecoutez et lisez les opinions de celleux qui font la tech, via vos
             plateformes de prédilection. Likez, relayez, donnez la lumière à ces

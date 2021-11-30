@@ -9,7 +9,7 @@ const StyledLi = styled.li<{ active: boolean }>`
 
     &:hover,
     &:focus {
-      color: ${({ theme }) => theme.colors.alpha120};
+      color: var(--alpha120);
     }
   }
 `;

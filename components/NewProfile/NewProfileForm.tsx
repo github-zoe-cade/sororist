@@ -31,7 +31,7 @@ const StyledButton = styled(Button)`
 `;
 
 const SuccessMessage = styled.div`
-  background: ${({ theme }) => theme.colors.success};
+  background: var(--success100);
   color: var(--default1);
   padding: 1rem;
   border-radius: 5px;

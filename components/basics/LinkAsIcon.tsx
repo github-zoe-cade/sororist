@@ -10,12 +10,12 @@ type LinkAsIconProps = {
 
 export const LinkAsIcon = ({ href, Icon, alt, target, className }: LinkAsIconProps) => {
   const StyledIcon = styled(Icon)`
-    fill: ${({ theme }) => theme.colors.alpha100};
+    fill: var(--alpha100);
     position: relative;
     z-index: 10;
 
     &:hover {
-      fill: ${({ theme }) => theme.colors.alpha120};
+      fill: var(--alpha120);
     }
   `;
 

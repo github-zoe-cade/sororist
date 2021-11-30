@@ -15,10 +15,11 @@ export const cardShadow = css`
 export const cssQueries = {
   desktop: `(min-width: 960px)`,
   mobile: `(max-width: 959px)`,
+  large: `(min-width: 1800px)`,
 };
 
 export const cardStyle = css`
-  background-color: ${({ theme }) => theme.colors.background2};
+  background-color: var(--background2);
   color: var(--default2);
   border-radius: 2px;
   box-sizing: content-box;

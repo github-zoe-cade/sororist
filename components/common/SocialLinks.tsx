@@ -13,14 +13,14 @@ const LinksContainer = styled.div`
   }
 
   ${StyledIcon} {
-    fill: ${({ theme }) => theme.colors.alpha100};
+    fill: var(--alpha100);
     filter: none;
     background: none;
     position: relative;
     z-index: 10;
 
     &:hover {
-      fill: ${({ theme }) => theme.colors.alpha120};
+      fill: var(--alpha120);
     }
   }
 `;

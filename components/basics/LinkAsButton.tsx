@@ -3,8 +3,8 @@ import Link from "next/link";
 import { backgroundTransition, buttonRadius } from "styles/utils";
 
 const StyledLink = styled.a`
-  background-color: ${({ theme }) => theme.colors.alpha100};
-  color: ${({ theme }) => theme.colors.default4};
+  background-color: var(--alpha100);
+  color: var(--default4);
   padding: 0.7rem 1rem;
   text-decoration: none;
   line-height: 1.5;
@@ -14,8 +14,16 @@ const StyledLink = styled.a`
   ${backgroundTransition};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.alpha120};
+    background-color: var(--alpha120);
   }
+
+  /* @media (prefers-color-scheme: dark) {
+    color: var(--default1);
+
+    &:hover, &:focus {
+      color: var(--default1)
+    }
+  } */
 `;
 
 const Container = styled.div`

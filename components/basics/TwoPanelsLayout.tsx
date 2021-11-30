@@ -28,6 +28,7 @@ export const TwoPanelsLayout = styled.div`
 
   & > div:nth-child(2) {
     padding: 4rem 2rem;
+    height: fit-content;
 
     @media ${cssQueries.mobile} {
       margin-top: 2rem;

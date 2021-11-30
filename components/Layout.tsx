@@ -52,10 +52,10 @@ const Main = styled.main`
 `;
 
 const Footer = styled.footer`
-  background: url('/images/topography.svg');
-  background-color: ${({ theme }) => theme.colors.background4};
+  background: url('/images/circuit-board.svg');
+  background-color: var(--background4);
   padding: 2rem;
-  color: ${({ theme }) => theme.colors.default4};
+  color: var(--default4);
 
   & > ul {
     list-style: none;
@@ -64,6 +64,11 @@ const Footer = styled.footer`
   & li {
     margin-bottom: 1rem;
   }
+/*
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--background1);
+    color: var(--default2);
+  } */
 `;
 
 type Layout = {

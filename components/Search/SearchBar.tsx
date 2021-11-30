@@ -19,8 +19,6 @@ const NameInputContainer = styled.div`
 
 const StyledInput = styled.input<{ textHidden: boolean }>`
   ${inputStyle}
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   color: ${({ textHidden }) => textHidden && "white"};
 `;
 
@@ -31,11 +29,11 @@ const StyledButton = styled(Button)`
 
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: -1px;
   ${inputHeight}
 
   &:focus {
-    background: ${({ theme }) => theme.colors.beta100};
+    background: var(--beta100);
   }
 `;
 

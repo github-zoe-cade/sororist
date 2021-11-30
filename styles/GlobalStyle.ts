@@ -30,7 +30,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
   }
 
   h2 {
-    /* font-family: 'Recursive'; */
     font-size: 3rem;
     line-height: 1.3;
     color: var(--default1);

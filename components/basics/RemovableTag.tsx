@@ -9,7 +9,7 @@ const TagContainer = styled.div`
   position: absolute;
   bottom: 9px;
   left: 11px;
-  background-color: ${({ theme }) => theme.colors.beta100};
+  background-color: var(--beta100);
   border-radius: 2px;
   display: flex;
   align-items: center;
@@ -26,8 +26,13 @@ const TagContainer = styled.div`
   }
 
   & svg:hover {
-    background-color: ${({ theme }) => theme.colors.beta2};
+    background-color: var(--beta120);
   }
+
+  /* @media (prefers-color-scheme: dark) {
+    color: var(--default4);
+    fill: var(--default4);
+  } */
 `;
 
 export const RemovableTag = ({ label, onRemove }) => (

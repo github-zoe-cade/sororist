@@ -12,7 +12,7 @@ import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { Loading } from "components/basics/Loading";
 
 const FiltersContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.background2};
+  background-color: var(--background2);
   color: var(--default2);
   border: 1px solid var(--default3);
   border-left: none;
@@ -38,7 +38,7 @@ const FiltersMenu = styled.div`
   cursor: pointer;
 
   & > svg {
-    fill: ${({ theme }) => theme.colors.primary1};
+    fill: var(--alpha100);
     height: 1.6rem;
   }
 `;
