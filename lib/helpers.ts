@@ -27,3 +27,7 @@ export const isEmpty = (value: any) => {
 
   return false;
 }
+
+export const compact = <T>(array: Array<T| undefined>): T[] => (
+  array.filter((t) => t != null)
+)

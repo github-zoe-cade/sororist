@@ -4,7 +4,7 @@ const themesOptions = [
   { label: "Data", value: "Data" },
   { label: "Ruby", value: "Ruby" },
   { label: "React", value: "React" },
-  { label: "Développment", value: "Développment" },
+  { label: "Développement", value: "Développement" },
   { label: "Accessibilité", value: "Accessibilité" },
   { label: "Sécurité", value: "Sécurité" },
   { label: "Python", value: "Python" },

@@ -24,19 +24,18 @@ const WordingContainer = styled.div`
     gap: 1rem;
   }
 
-
-  /* @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
     background-color: var(--background1);
     color: var(--default2);
-  } */
+  }
 `;
 
 const Title = styled.h2`
   color: var(--default4);
 
-  /* @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
     color: var(--default1);
-  } */
+  }
 `
 
 const Subtitle = styled.p`

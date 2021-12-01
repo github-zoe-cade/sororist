@@ -47,7 +47,7 @@ const genderIcons = {
 };
 
 export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
-  const Icon = profile.sex && genderIcons[profile.sex];
+  const Icon = profile.gender && genderIcons[profile.gender];
 
   return (
     <div>
@@ -64,7 +64,7 @@ export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
           <h3>
             {profile.name}
             &nbsp;
-            {profile.sex && <Icon alt={profile.sex} />}
+            {profile.gender && <Icon alt={profile.gender} />}
           </h3>
 
           <StyledThemeTags themes={profile.themes} />

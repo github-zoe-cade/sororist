@@ -38,16 +38,21 @@ html {
 
   /* Semantic colors */
   --success100: #00DE9A;
-  --warning100: orange;
-  --error100: "#9F1E38";
+  --success120: #009572;
+  --warning50: #FEB90F;
+  --warning100: #F08E00;
+  --warning120: #E36A00;
+  --error50: #FF7B96;
+  --error100: #9F1E38;
+  --error120:  #700016;
   --info100: blue;
 
 }
 
 @media (prefers-color-scheme: dark) {
-  /* html {
-    --default1: #FCFCFF;
-    --default2: #e9e9f0;
+  html {
+    --default1: #FFBCC7;
+    --default2: #FFE4E5;
     --default3: #12101A;
     --default4: #3B354D;
 
@@ -55,9 +60,9 @@ html {
     --background2: #3B354D;
     --background3: #DBD9E6;
     --background4: #FCFCFF;
-  } */
+  }
 
-  html {
+  /* html {
     --default1: #12101A;
     --default2: #3B354D;
     --default3: #DBD9E6;
@@ -67,5 +72,5 @@ html {
     --background2: #FCFCFF;
     --background3: #12101A;
     --background4: #3B354D;
-  }
+  } */
 }

@@ -8,8 +8,8 @@ import { FiltersType } from "lib/filters";
 import { cssQueries } from "styles/utils";
 
 import { Button } from "components/basics/Button";
-import { ThemeSelect } from "./ThemeSelect";
-import { PlatformSelect } from "./PlatformSelect";
+import { ThemeSelect } from "components/common/ThemeSelect";
+import { PlatformSelect } from "components/common/PlatformSelect";
 import { SearchBar } from "./SearchBar";
 
 const StyledForm = styled(Form)<{ open: boolean }>`

@@ -24,10 +24,6 @@ const BrandName = styled.a`
   text-decoration: none;
   padding: 1rem;
   color: var(--default2);
-
-  &:hover, &:focus {
-    color: ${({theme}) => theme.colors.alpha120};
-  }
 `
 
 const DesktopMenu = styled.ul`
@@ -64,11 +60,11 @@ const Footer = styled.footer`
   & li {
     margin-bottom: 1rem;
   }
-/*
+
   @media (prefers-color-scheme: dark) {
     background-color: var(--background1);
     color: var(--default2);
-  } */
+  }
 `;
 
 type Layout = {

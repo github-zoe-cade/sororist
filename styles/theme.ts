@@ -28,6 +28,18 @@ export const theme = {
     delta120: "#9F1E38",
     delta150: "#700016",
 
+    // Default text colors
+    default1: "#12101A",
+    default2: "#3B354D",
+    default3: "#DBD9E6",
+    default4: "#FCFCFF",
+
+    // Default background colors, use with associated default text colors
+    background1: "#DBD9E6",
+    background2: "#FCFCFF",
+    background3: "#12101A",
+    background4: "#3B354D",
+
     // Semantic colors
     success: "#00DE9A",
     warning: "",

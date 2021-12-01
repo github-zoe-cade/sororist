@@ -11,7 +11,7 @@ const PanelContainer = styled.div`
   padding-top: 1rem !important;
 
   & > * {
-    margin: 1rem 0;
+    margin: 1rem;
   }
 
   @media ${cssQueries.mobile} {

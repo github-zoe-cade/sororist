@@ -15,9 +15,9 @@ const ThemeTag = styled.span`
   font-size: 0.8rem;
   ${buttonRadius};
 
-  /* @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
     color: var(--default4);
-  } */
+  }
 `;
 
 const MoreThemesTag = styled(ThemeTag)`

@@ -41,7 +41,7 @@ const TextContainer = styled.div`
 
 const DarkThemeBackground = styled.div`
   position: absolute;
-  /* @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
     background-color: var(--background1);
     inset: 0;
     height: calc(100% + 2rem);
@@ -59,7 +59,7 @@ const DarkThemeBackground = styled.div`
       padding-bottom: 0;
       height: 100%;
     }
-  } */
+  }
 `;
 
 export const Header = () => {

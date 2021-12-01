@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Formik, Form, Field, FormikProps } from "formik";
+import router from "next/router";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 import { isEmpty } from "lib/helpers";
@@ -7,7 +8,12 @@ import { EditProfileType } from "lib/profiles";
 import { inputStyle } from "styles/forms";
 
 import { Button } from "components/basics/Button";
-import { ThemeSelect } from "components/Search/ThemeSelect";
+import { LinksField } from "components/common/LinksFields";
+import { ThemeSelect } from "components/common/ThemeSelect";
+
+import { GenderSelect } from "./GenderSelect";
+import { OtherLinksField } from "./OtherLinksField";
+import { HideOrDeleteButton } from "./HideOrDeleteButtons";
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -15,9 +21,19 @@ const StyledForm = styled(Form)`
   row-gap: 1rem;
 `;
 
+const IdentityContainer = styled.div`
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  column-gap: 2rem;
+`;
+
 const Label = styled.label`
   margin-top: 1rem;
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  flex-grow: 1;
 `;
 
 const Input = styled.input`
@@ -33,7 +49,8 @@ const TextArea = styled.textarea`
 `;
 
 const StyledButton = styled(Button)`
-  margin-top: 1rem;
+  margin-top: 2rem;
+  width: 100%;
 `;
 
 const placeholders = {
@@ -45,126 +62,151 @@ const placeholders = {
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Doit être rempli"),
+  gender: Yup.string(),
   description: Yup.string().required("Doit être rempli"),
   links: Yup.mixed().test(
     "atLeastOneUrl",
     "Remplir au moins un",
     (val) => val.filter(({ url }) => !!url).length > 0
   ),
-  commercial: Yup.string(),
   themes: Yup.array().required().min(1, "Choisir au moins un"),
+  commercial: Yup.string(),
+  otherLinks: Yup.array(),
 });
 
 type EditProfileForm = {
   profile: EditProfileType;
 };
 
+type Values = {
+  name: string;
+  gender?: string;
+  description: string;
+  links: Array<{ platform: string; url: string }>;
+  themes: string[];
+  commercial: string;
+  otherLinks: string[];
+};
+
 export const EditProfileForm = ({ profile }: EditProfileForm) => {
-  const handleSubmit = (values: EditProfileType) => {
+  const handleSubmit = (values: Values) => {
     console.log(values);
+    router.push(`/profiles/${profile.uuid}`);
   };
+
+  const initialValues: Values = {
+    ...profile,
+    themes: profile.themes.map((theme) => theme.name),
+    otherLinks: [""],
+  };
+
   return (
     <Formik
-      initialValues={profile}
+      initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      {({ setFieldValue, ...formikBag }) => {
-        return (
-          <StyledForm>
-            <Label htmlFor="name">Nom et/ou pseudo</Label>
-            <Field name="name">
-              {({ field }) => (
-                <Input {...field} placeholder="Angie Neer (@AngieDev)" />
-              )}
-            </Field>
-
-            <Label htmlFor="description">Présentez-vous en quelques mots</Label>
-            <Field name="description">
-              {({ field }) => (
-                <TextArea
-                  {...field}
-                  rows={5}
-                  placeholder={placeholders.description}
-                />
-              )}
-            </Field>
-
-            <p>mes réseaux sociaux</p>
-
-            <Label htmlFor="commercial">
-              Vous êtes disponibles pour des talks ou des interventions ?
+      {({ setFieldValue, values, ...formikBag }) => (
+        <StyledForm>
+          <IdentityContainer>
+            <Label htmlFor="name">
+              Nom et/ou pseudo*
+              <Field name="name">
+                {({ field }) => (
+                  <Input {...field} placeholder="Angie Neer (@AngieDev)" />
+                )}
+              </Field>
             </Label>
-            <Field name="commercial">
-              {({ field }) => (
-                <TextArea
-                  {...field}
-                  rows={5}
-                  placeholder={placeholders.commercial}
-                />
-              )}
-            </Field>
 
-            <Label>Thèmes d'expertise</Label>
-            <Field name="themes">
-              {({ field }) => (
-                <div>ThemeSelect</div>
-                // <ThemeSelect
-                //   {...field}
-                //   onChange={(newValues) => setFieldValue("themes", newValues)}
-                // />
-              )}
-            </Field>
+            <Label htmlFor="gender">
+              Votre genre
+              <Field name="gender">
+                {({ field }) => (
+                  <GenderSelect
+                    {...field}
+                    fieldValue={values.gender}
+                    setFieldValue={setFieldValue}
+                  />
+                )}
+              </Field>
+            </Label>
+          </IdentityContainer>
 
-            <p>mes liens (articles, ressources) </p>
+          <Label htmlFor="description">Présentez-vous en quelques mots*</Label>
+          <Field name="description">
+            {({ field }) => (
+              <TextArea
+                {...field}
+                rows={5}
+                placeholder={placeholders.description}
+              />
+            )}
+          </Field>
+
+          <Field name="links">
+            {({ field }) => (
+              <LinksField
+                {...field}
+                links={values.links}
+                setFieldValue={setFieldValue}
+              />
+            )}
+          </Field>
+
+          <Label>Thèmes d'expertise*</Label>
+          <Field name="themes">
+            {({ field }) => (
+              <ThemeSelect
+                {...field}
+                onChange={(newValues) => setFieldValue("themes", newValues)}
+              />
+            )}
+          </Field>
+
+          <Label htmlFor="commercial">
+            Vous êtes disponibles pour des talks ou des interventions ?
+          </Label>
+          <Field name="commercial">
+            {({ field }) => (
+              <TextArea
+                {...field}
+                rows={5}
+                placeholder={placeholders.commercial}
+              />
+            )}
+          </Field>
+
+          <Label htmlFor="otherLinks">
+            Vos autres liens (articles, podcasts, ressources...)
+          </Label>
+          <Field name="otherLinks">
+            {({ field }) => (
+              <OtherLinksField
+                {...field}
+                otherLinks={values.otherLinks}
+                setFieldValue={setFieldValue}
+              />
+            )}
+          </Field>
+
+          <div style={{ marginTop: "3rem" }}>
+            <small>
+              En publiant vos données, vous acceptez de paraître sur ce site,
+              conformement aux <a href="/mentions-legales">mentions légales</a>.
+            </small>
 
             <StyledButton
               type="Submit"
               onClick={handleSubmit}
               disabled={formikBag.isSubmitting || !isEmpty(formikBag.errors)}
             >
-              Publier mon profil
+              {profile.published ? "Editer mon profil" : "Publier mon profil"}
             </StyledButton>
+          </div>
 
-            <p>
-              <small>
-                En publiant vos données, vous acceptez de paraitre sur ce site,
-                conformement aux mentions légales
-              </small>
-            </p>
-
-            <StyledButton
-              type="Submit"
-              onClick={handleSubmit}
-              disabled={formikBag.isSubmitting || !isEmpty(formikBag.errors)}
-            >
-              Masquer mon profil
-            </StyledButton>
-
-            <p>
-              <small>
-                Votre profil sera caché du répertoire, nous ne vous demanderons
-                plus si vous êtes à nouveau suggéré·e
-              </small>
-            </p>
-
-            <StyledButton
-              type="Submit"
-              onClick={handleSubmit}
-              disabled={formikBag.isSubmitting || !isEmpty(formikBag.errors)}
-            >
-              Supprimer mes données
-            </StyledButton>
-            <p>
-              <small>
-                Si vous le souhaitez, vous pouvez supprimer totalement vos
-                données. Dans ce cas, nous risquons de vous contacter à nouveau
-                si une autre personne suggère votre profil.
-              </small>
-            </p>
-          </StyledForm>
-        );
-      }}
+          <HideOrDeleteButton hidden={profile.hidden} />
+        </StyledForm>
+      )}
     </Formik>
   );
 };

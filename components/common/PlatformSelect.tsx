@@ -5,16 +5,22 @@ const options = [
   { label: "Instagram", value: "instagram" },
   { label: "Twitch", value: "twitch" },
   { label: "Youtube", value: "youtube" },
+  { label: "Github", value: "github" },
+  { label: "Tiktok", value: "tiktok" },
 ];
 
 type PlatformSelect = {
   error?: boolean,
+  name: string,
   onChange: (options?: string[]) => void;
+  value: string[]
 };
 
-export const PlatformSelect = ({ error, onChange, ...field }: PlatformSelect) => (
+export const PlatformSelect = ({ error, name, onChange, value, ...field }: PlatformSelect) => (
   <MultiSelect
     {...field}
+    value={value}
+    name={name}
     error={error}
     placeholder="Twitter, Youtube, Github..."
     options={options}

@@ -9,7 +9,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     font-family: 'Lato', Helvetica, sans-serif;
     background-color: var(--background2);
     background-size: cover;
-    /* background-repeat: no-repeat; */
     min-height: 100vh;
     color: var(--default2);
   }
@@ -52,6 +51,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     &:hover,
     &:focus {
       color: var(--alpha120);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      &:hover,
+      &:focus {
+        color: var(--alpha50);
+      }
     }
   }
 `;

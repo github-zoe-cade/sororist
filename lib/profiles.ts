@@ -9,7 +9,7 @@ import { toArray } from "./helpers";
 export type ProfileType = {
   uuid: string;
   name: string;
-  sex?: string;
+  gender?: string;
   description: string;
   commercial: string;
   pictureUrl?: string;

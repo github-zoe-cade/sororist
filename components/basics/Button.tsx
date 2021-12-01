@@ -1,44 +1,47 @@
 import styled from "styled-components";
 
-import { backgroundTransition, buttonRadius } from "styles/utils";
+import { buttonStyle } from "styles/utils";
 
-const getBackgroundColor = ({theme, color }) => {
+export const getBackgroundColor = ({ color }) => {
   if (color === "warning") {
-    return theme.colors.warning100
+    return "var(--warning100)"
   }
-  return theme.colors.alpha100
+  if (color === "error") {
+    return "var(--error100)"
+  }
+  return "var(--alpha100)"
 }
 
-const getHoverBackgroundColor = ({theme, color}) => {
+export const getDisabledBackgroundColor = ({ color }) => {
   if (color === "warning") {
-    return theme.colors.warning100
+    return "var(--warning50)"
   }
-  return theme.colors.alpha120
+  if (color === "error") {
+    return "var(--error50)"
+  }
+  return "var(--alpha50)"
 }
 
-const StyledButton = styled.button<{ isDisabled: boolean }>`
-  background-color: ${({ isDisabled, theme }) => isDisabled ? theme.colors.alpha50 : getBackgroundColor};
-  color: var(--default4);
-  padding: 0.7rem 1rem;
-  text-decoration: none;
-  border: none;
-  line-height: 1.5;
-  font-weight: 700;
-  font-size: 1rem;
-  display: inline-block;
-  ${buttonRadius};
-  ${backgroundTransition};
+export const getHoverBackgroundColor = ({ color}) => {
+  if (color === "warning") {
+    return  "var(--warning120)"
+  }
+  if (color === "error") {
+    return "var(--error120)"
+  }
+  return "var(--alpha120)"
+}
+
+
+const StyledButton = styled.button<{ isDisabled: boolean, color: string }>`
+  ${buttonStyle}
+  background-color: ${({ isDisabled }) => isDisabled ? getDisabledBackgroundColor : getBackgroundColor};
   opacity: ${({ isDisabled }) => (isDisabled ? 0.5 : 1)};
-  cursor: ${({ isDisabled }) => (isDisabled ? "default" : "pointer")};
+  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
 
   &:hover {
-    background-color: ${({ isDisabled, theme }) => !isDisabled && theme.colors.alpha120};
+    background-color: ${({ isDisabled }) => isDisabled ? getDisabledBackgroundColor : getHoverBackgroundColor};
   }
-
-  /* @media (prefers-color-scheme: dark) {
-    color: var(--default1);
-    fill: var(--default1);
-  } */
 `;
 
 

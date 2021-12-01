@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Field } from "formik";
 import { inputStyle } from "styles/forms";
 
 import { PlatformIcon } from "components/basics/PlateformIcon";
@@ -37,33 +36,26 @@ const regex = {
   youtube: "youtube.com/channel/BVxLoDO8BHzh0khYCA70jrOw",
 };
 
-export const LinkList = ({ setFieldValue, values }) => (
+export const LinkList = ({ setFieldValue, links, ...field }) => (
   <>
     <span>Précisez au moins un lien</span>
-    <Field name="links">
-      {({ field }) => (
-        <>
-          {values.links.map(({ platform, url }) => (
-            <UrlField key={platform}>
-              <PlatformIcon platform={platform} />
-              <Input
-                {...field}
-                placeholder={placeholders[platform]}
-                value={url}
-                onChange={(e) => {
-                  const newLinks = values.links.map((link) =>
-                    link.platform === platform
-                      ? { ...link, url: e.target.value }
-                      : link
-                  );
-                  setFieldValue(field.name, newLinks);
-                }}
-              />
-              <div></div>
-            </UrlField>
-          ))}
-        </>
-      )}
-    </Field>
+    {links.map(({ platform, url }) => (
+      <UrlField key={platform}>
+        <PlatformIcon platform={platform} />
+        <Input
+          {...field}
+          placeholder={placeholders[platform]}
+          value={url}
+          onChange={(e) => {
+            const newLinks = links.map((link) =>
+              link.platform === platform
+                ? { ...link, url: e.target.value }
+                : link
+            );
+            setFieldValue(field.name, newLinks);
+          }}
+        />
+      </UrlField>
+    ))}
   </>
 );

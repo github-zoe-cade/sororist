@@ -27,30 +27,46 @@ export default function ProfilPanel() {
   }
 
   // Call api
-  const res = { code: 200, data: { profile: getProfileForEdit(toArray(uuid)[0]) } };
+  const res = {
+    code: 200,
+    data: { profile: getProfileForEdit(toArray(uuid)[0]) },
+  };
   if (res.code !== 200) {
     console.log("in res");
     router.push(`/profiles/${uuid}`);
   }
 
-  const { profile }: {profile: EditProfileType} = res.data;
+  const { profile }: { profile: EditProfileType } = res.data;
 
   return (
     <div>
       <Title>Editer votre profil</Title>
       {profile.notValidated && (
+        <>
+          <Subtitle>
+            Quelqu'un vous trouve formidable et pense que vous devriez être sur
+            ce répertoire !
+          </Subtitle>
+          <p>
+            Remplissez votre profil et publiez-le pour apparaître sur SUPER NOM.
+            Vous pouvez refuser d'être publié·e et changer d'avis plus tard en
+            faisant la demande <a href="/contact">ici</a> ou supprimer
+            définitivement vos données.
+          </p>
+        </>
+      )}
+      {profile.published && (
         <Subtitle>
-          Quelqu'un vous trouve formidable et pense que vous devriez être sur ce
-          répertoire !
+          Votre profil est actuellement{" "}
+          <span style={{ color: "var(--success120)" }}>publié</span>.
         </Subtitle>
       )}
-      <p>
-        Remplissez votre profil et publiez-le pour apparaître sur SUPER NOM.
-        Vous pouvez refuser d'être publié·e et changer d'avis plus tard en
-        faisant la demande <a href="/contact">ici</a> ou supprimer
-        définitivement vos données.
-      </p>
-
+      {profile.hidden && (
+        <Subtitle>
+          Votre profil est actuellement{" "}
+          <span style={{ color: "var(--warning120)" }}>masqué</span>.
+        </Subtitle>
+      )}
       <EditProfileForm profile={profile} />
     </div>
   );

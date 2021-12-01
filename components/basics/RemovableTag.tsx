@@ -20,7 +20,7 @@ const TagContainer = styled.div`
   }
 
   & svg {
-    padding: 3px 4px;
+    padding: 4.25px 4px;
     border-radius: inherit;
     cursor: pointer;
   }
@@ -29,10 +29,10 @@ const TagContainer = styled.div`
     background-color: var(--beta120);
   }
 
-  /* @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
     color: var(--default4);
     fill: var(--default4);
-  } */
+  }
 `;
 
 export const RemovableTag = ({ label, onRemove }) => (
