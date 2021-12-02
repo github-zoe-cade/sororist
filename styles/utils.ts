@@ -27,11 +27,11 @@ export const buttonStyle = css`
   }
 
   @media (prefers-color-scheme: dark) {
-    color: var(--default2);
-    fill: var(--default2);
+    color: var(--default5);
+    fill: var(--default5);
 
-    &:hover {
-      color: var(--default2);
+    &:hover, &:focus {
+      color: var(--default5);
     }
   }
 `;

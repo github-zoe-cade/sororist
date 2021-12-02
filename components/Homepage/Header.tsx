@@ -4,6 +4,7 @@ import { cssQueries, marginSection } from "styles/utils";
 
 import { LinkAsButton } from "components/basics/LinkAsButton";
 import { VoronoiDecoration } from "components/basics/VoronoiDecoration";
+import { bounceOnHover } from "styles/animations";
 
 const HeaderContainer = styled.header`
   ${marginSection}
@@ -23,20 +24,20 @@ const HeaderContainer = styled.header`
   }
 `;
 
-const Subtitle = styled.p`
-  font-size: 1.3rem;
-  line-height: 1.4;
-  margin-bottom: 3rem;
-`;
-
 const TextContainer = styled.div`
   position: relative;
   height: fit-content;
-  padding: 3rem 0 0 3rem;
+  padding: 2rem 0 0 3rem;
 
   @media ${cssQueries.large} {
     padding: 10rem 7rem 7rem;
   }
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 3rem;
 `;
 
 const DarkThemeBackground = styled.div`
@@ -48,6 +49,10 @@ const DarkThemeBackground = styled.div`
     opacity: 0.5;
     z-index: -1;
 
+    @media ${cssQueries.mobile} {
+      top: -5rem;
+      height: calc(100% + 7rem);
+    }
     @media ${cssQueries.desktop} {
       width: 200%;
       padding-bottom: 2rem;
@@ -62,6 +67,10 @@ const DarkThemeBackground = styled.div`
   }
 `;
 
+const ExploreButton = styled(LinkAsButton)`
+  ${bounceOnHover};
+`;
+
 export const Header = () => {
   return (
     <>
@@ -70,9 +79,10 @@ export const Header = () => {
           <h1>Découvrez les femmes de la tech</h1>
           <Subtitle>
             Ces femmes et personnes non binaires sont créateur·ices d'idées et
-            d'opinions sur la tech. Blabla à trouver
+            d'opinions sur la tech. Suivez-les sur vos réseaux sociaux favoris
+            et donnez-leurs la parole !
           </Subtitle>
-          <LinkAsButton href="/search" text="Explorer" />
+          <ExploreButton href="/search" text="Explorer" />
           <DarkThemeBackground />
         </TextContainer>
 

@@ -25,7 +25,7 @@ export const Faq = () => (
     <p>
       Uniquement à être affichées sur ce site ! Aucune autre utilisation n'en
       sera fait, comme l'indiquent nos{" "}
-      <a href="/mentions-legales">Mentions Légales</a>
+      <a href="/terms-of-services">Mentions Légales</a>
     </p>
 
     <h4>Et si je change d'avis ?</h4>

@@ -10,6 +10,7 @@ const genderOptions = [
 export const GenderSelect = ({ setFieldValue, fieldValue, ...field }) => (
   <Select
     {...field}
+    id={field.name}
     value={genderOptions.find(({ value }) => value === fieldValue) || ""}
     options={genderOptions}
     onChange={(option: { label: string; value: string }) =>

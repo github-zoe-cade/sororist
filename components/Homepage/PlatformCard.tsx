@@ -4,8 +4,11 @@ import { cssQueries } from "styles/utils";
 import { LinkAsButton } from "components/basics/LinkAsButton";
 import { RectangleCard } from "components/basics/RectangleCard";
 import { PlatformIcon } from "components/basics/PlateformIcon";
+import { bounceOnHover } from "styles/animations";
 
 const PlatformCardContainer = styled(RectangleCard)<{ row: number }>`
+  ${bounceOnHover}
+
   @media ${cssQueries.desktop} {
     margin-left: ${({ row }) => (row + 1) * 1.5}rem;
     width: 70%;
@@ -29,7 +32,7 @@ type PlatformCard = {
 
 export const PlatformCard = ({ platform, index }: PlatformCard) => {
   return (
-    <PlatformCardContainer row={index}>
+    <PlatformCardContainer row={index} className="platform-card">
       <PlatformName>
         <PlatformIcon platform={platform.toLowerCase()} />
         {platform}

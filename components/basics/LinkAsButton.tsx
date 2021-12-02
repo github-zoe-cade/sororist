@@ -11,17 +11,25 @@ const Container = styled.div`
   align-items: center;
 `;
 
-type LinkProps = { href: string, text?: string, children?: React.ReactNode };
+type LinkProps = {
+  href: string;
+  text?: string;
+  className?: string;
+  children?: React.ReactNode;
+};
 type LinkWithText = LinkProps & { text: string };
 type LinkWithChildren = LinkProps & { children: React.ReactNode };
 
 type LinkAsButtonProps = LinkWithText | LinkWithChildren;
 
-export const LinkAsButton = ({ href, text, children }: LinkAsButtonProps) => (
-  <Link href={href} passHref>
-    <StyledLink>
-      {text}
-      {children && <Container>{children}</Container>}
-    </StyledLink>
-  </Link>
+export const LinkAsButton = ({
+  href,
+  text,
+  className,
+  children,
+}: LinkAsButtonProps) => (
+  <StyledLink href={href} className={className} tabIndex={0}>
+    {text}
+    {children && <Container>{children}</Container>}
+  </StyledLink>
 );

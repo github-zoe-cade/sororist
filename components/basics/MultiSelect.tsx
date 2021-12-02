@@ -25,6 +25,7 @@ export const MultiSelect = ({ options, onChange, ...field }) => {
   return (
     <Select
       {...field}
+      aria-label={field.name}
       styles={selectStyle}
       options={options}
       value={fieldValueToSelectValues(field.value)}

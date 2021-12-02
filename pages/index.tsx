@@ -58,7 +58,7 @@ export default function Home({ themes, platforms, latestProfiles }: HomeProps) {
         <PlatformSection platforms={platforms} />
 
         <LatestSection>
-          <h3>Derniers profils ajoutés</h3>
+          <h3 style={{color: "var(--default2)"}}>Derniers profils ajoutés</h3>
           <ProfileCardsContainer>
             {latestProfiles.map((profile: ProfileType, index: number) => (
               <ProfileCard key={index} profile={profile} />

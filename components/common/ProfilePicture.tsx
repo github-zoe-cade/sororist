@@ -10,7 +10,7 @@ const RoundedImage = styled(Image)`
 type ProfilePicture = { pictureUrl: string };
 
 export const ProfilePicture = ({ pictureUrl }: ProfilePicture) => (
-  <div style={{position: "relative", width: "100%"}}>
+  <div style={{position: "relative", width: "100%"}} aria-hidden>
     <RoundedImage
       src={pictureUrl}
       // TODO Zoé optimize

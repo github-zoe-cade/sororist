@@ -54,10 +54,16 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     }
 
     @media (prefers-color-scheme: dark) {
+      color: var(--alpha20);
       &:hover,
       &:focus {
         color: var(--alpha50);
       }
     }
   }
+
+  /* Prevent scrolling on body when React modal is open */
+  .ReactModal__Body--open {
+   overflow-y: hidden;
+}
 `;

@@ -6,10 +6,9 @@ import {
 } from "react-icons/bs";
 import { ProfileType } from "lib/profiles";
 
-import { cssQueries } from "styles/utils";
+import { cardStyle, cssQueries } from "styles/utils";
 
 import { VoronoiDecoration } from "components/basics/VoronoiDecoration";
-// import { ProfilePicture } from "components/common/ProfilePicture";
 import { SocialLinks } from "components/common/SocialLinks";
 import { ThemeTags } from "components/common/ThemeTags";
 
@@ -40,6 +39,13 @@ const StyledThemeTags = styled(ThemeTags)`
   }
 `;
 
+const OtherLinkCard = styled.div`
+  ${cardStyle}
+  height: 100px;
+  width: 120px;
+  padding: 2rem;
+`;
+
 const genderIcons = {
   nonbinary: BsGenderAmbiguous,
   female: BsGenderFemale,
@@ -64,7 +70,7 @@ export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
           <h3>
             {profile.name}
             &nbsp;
-            {profile.gender && <Icon alt={profile.gender} />}
+            {profile.gender && <Icon aria-label={profile.gender} />}
           </h3>
 
           <StyledThemeTags themes={profile.themes} />
@@ -81,17 +87,7 @@ export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
         <h4 style={{ marginTop: "3rem" }}>Ressources et liens</h4>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
           {profile.links.map(({ platform }, i) => (
-            <div
-              key={i}
-              style={{
-                height: "100px",
-                width: "120px",
-                background: "lavenderblush",
-                padding: "2rem",
-              }}
-            >
-              {platform}
-            </div>
+            <OtherLinkCard key={i}>{platform}</OtherLinkCard>
           ))}
         </div>
       </div>

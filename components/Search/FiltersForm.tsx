@@ -118,12 +118,13 @@ export const FiltersForm = ({
                 Appliquer
               </ApplyButton>
               <Button
+                style={{ display: "flex", alignItems: "center" }}
                 onClick={() => {
                   router.push("/search");
                   closeForm();
                 }}
               >
-                <FaRandom />
+                <FaRandom role="presentation" />
                 &nbsp; Au hasard
               </Button>
             </RandomButtonContainer>

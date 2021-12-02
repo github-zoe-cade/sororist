@@ -113,7 +113,7 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
               Nom et/ou pseudo*
               <Field name="name">
                 {({ field }) => (
-                  <Input {...field} placeholder="Angie Neer (@AngieDev)" />
+                  <Input {...field} placeholder="Angie Neer (@AngieDev)" id={field.name} />
                 )}
               </Field>
             </Label>
@@ -138,6 +138,7 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
               <TextArea
                 {...field}
                 rows={5}
+                id={field.name}
                 placeholder={placeholders.description}
               />
             )}
@@ -171,6 +172,7 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
               <TextArea
                 {...field}
                 rows={5}
+                id={field.name}
                 placeholder={placeholders.commercial}
               />
             )}
@@ -192,7 +194,7 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
           <div style={{ marginTop: "3rem" }}>
             <small>
               En publiant vos données, vous acceptez de paraître sur ce site,
-              conformement aux <a href="/mentions-legales">mentions légales</a>.
+              conformement aux <a href="/terms-of-services">mentions légales</a>.
             </small>
 
             <StyledButton

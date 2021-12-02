@@ -92,7 +92,7 @@ export const NewProfileForm = () => {
           <Label htmlFor="name">Nom et/ou pseudo*</Label>
           <Field name="name">
             {({ field }) => (
-              <Input {...field} placeholder="Angie Neer (@AngieDev)" />
+              <Input {...field} placeholder="Angie Neer (@AngieDev)" id={field.name} />
             )}
           </Field>
 

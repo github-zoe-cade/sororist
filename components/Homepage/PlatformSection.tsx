@@ -58,12 +58,12 @@ export const PlatformSection = ({ platforms }: { platforms: string[] }) => {
         <div>
           <Title>
             Trouvez des personnes inspirantes à suivre et à inviter en
-            conférences
+            conférence
           </Title>
           <Subtitle>
             Ecoutez et lisez les opinions de celleux qui font la tech, via vos
             plateformes de prédilection. Likez, relayez, donnez la lumière à ces
-            profiles !
+            profils !
           </Subtitle>
         </div>
         <CardContainer>

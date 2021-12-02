@@ -38,7 +38,7 @@ export const PlatformIcon = withTheme(({ platform, className }) => {
 
   return (
     <IconContainer platform={platform}>
-      <Icon alt={platform} className={className} />
+      <Icon aria-label={platform} className={className} />
     </IconContainer>
   );
 });

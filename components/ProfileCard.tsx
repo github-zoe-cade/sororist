@@ -4,7 +4,7 @@ import { cardStyle, cssQueries } from "styles/utils";
 
 import { ProfilePicture } from "./common/ProfilePicture";
 import { ThemeTags } from "./common/ThemeTags";
-import { SocialLinks } from "./common/SocialLinks"
+import { SocialLinks } from "./common/SocialLinks";
 
 type ProfileCardProps = {
   profile: ProfileType;
@@ -19,11 +19,16 @@ const ProfileCardContainer = styled.div`
   padding: 1rem;
   min-height: 230px;
   position: relative;
+  transition: transform ease 0.3s;
+
+  &:hover {
+    transform: translateY(-3%);
+  }
 `;
 
 const StyledSocialLinks = styled(SocialLinks)`
   text-align: right;
-`
+`;
 
 const CardLink = styled.a`
   position: absolute;
@@ -50,7 +55,7 @@ const IdentityContainer = styled.div`
 const Name = styled.p`
   text-overflow: ellipsis;
   overflow-x: hidden;
-`
+`;
 
 const ClickableCard = ({ href, className, children }) => (
   <ProfileCardContainer
@@ -58,13 +63,19 @@ const ClickableCard = ({ href, className, children }) => (
     tabIndex={0}
     role="button"
     aria-pressed="false"
-    onKeyDown={(e) => {
-      if (e.key === "Enter" && typeof document !== undefined) {
-        (document.querySelector('.card-link') as HTMLLinkElement).click()
+    onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (
+        e.key === "Enter" &&
+        typeof document !== undefined &&
+        (e.target as HTMLDivElement).tagName === "div"
+      ) {
+        (document.querySelector(".card-link") as HTMLLinkElement).click();
       }
     }}
   >
-    <CardLink href={href} className="card-link"> </CardLink>
+    <CardLink href={href} className="card-link" tabIndex={-1} aria-hidden>
+      {" "}
+    </CardLink>
     {children}
   </ProfileCardContainer>
 );

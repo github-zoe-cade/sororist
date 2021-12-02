@@ -86,6 +86,7 @@ export const SearchBar = ({
 
         <StyledButton
           type="submit"
+          aria-label="Chercher par nom/pseudo"
           onClick={(e: Event) => {
             submitForm();
             setTag(value);
