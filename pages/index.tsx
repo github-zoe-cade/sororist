@@ -4,9 +4,9 @@ import { getLatestProfiles, ProfileType } from "lib/profiles";
 
 import { paddingSection, paddingBottomLastSection } from "styles/utils";
 
-import { Layout } from "components/Layout";
-import { LinkAsButton } from "components/basics/LinkAsButton";
 import { ProfileCard } from "components/ProfileCard";
+import { LinkAsButton } from "components/basics/LinkAsButton";
+import { Layout } from "components/Layout";
 import { ProfileCardsContainer } from "components/common/ProfileCardsContainer";
 
 import { Header } from "components/Homepage/Header";

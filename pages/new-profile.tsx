@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { TwoPanelsLayout } from "components/basics/TwoPanelsLayout";
+
 import { Layout } from "components/Layout";
+import { TwoPanelsLayout } from "components/basics/layouts/TwoPanelsLayout";
 import { Faq } from "components/NewProfile/Faq";
 import { NewProfileForm } from "components/NewProfile/NewProfileForm";
 

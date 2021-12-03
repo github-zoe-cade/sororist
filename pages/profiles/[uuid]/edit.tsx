@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 
 import { Layout } from "components/Layout";
 import { Loading } from "components/basics/Loading";
-import { TwoPanelsLayout } from "components/basics/TwoPanelsLayout";
+import { TwoPanelsLayout } from "components/basics/layouts/TwoPanelsLayout";
 
 import { Faq } from "components/EditProfile/Faq";
 

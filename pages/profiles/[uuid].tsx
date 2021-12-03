@@ -6,14 +6,13 @@ import {
 } from "lib/profiles";
 
 import { Layout } from "components/Layout";
-
 import { ThemeSection } from "components/common/ThemeSection";
 
 
 import { BackButton } from "components/Profile/BackButton";
 import { ProfilePanel } from "components/Profile/ProfilePanel";
 import { SimilarPanel } from "components/Profile/SimilarPanel";
-import { TwoPanelsLayout } from "components/basics/TwoPanelsLayout";
+import { TwoPanelsLayout } from "components/basics/layouts/TwoPanelsLayout";
 
 export const getStaticProps = async ({ params }) => {
   const profile = getProfile(params.uuid);

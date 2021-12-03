@@ -10,10 +10,10 @@ import {
   paddingBottomLastSection,
 } from "styles/utils";
 
-import { Layout } from "components/Layout";
-import { LinkAsButton } from "components/basics/LinkAsButton";
-import { Button } from "components/basics/Button";
 import { ProfileCard } from "components/ProfileCard";
+import { Button } from "components/basics/Button";
+import { LinkAsButton } from "components/basics/LinkAsButton";
+import { Layout } from "components/Layout";
 import { ProfileCardsContainer } from "components/common/ProfileCardsContainer";
 
 import { Filters } from "components/Search/Filters";
