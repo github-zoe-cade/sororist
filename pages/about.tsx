@@ -4,16 +4,26 @@ import { Layout } from "components/Layout";
 import { TwoPanelsLayout } from "components/basics/layouts/TwoPanelsLayout";
 import { AuthorPanel } from "components/About/AuthorPanel";
 
+const Text = styled.div`
+  & > p {
+    padding-bottom: 1rem;
+  }
+`
+
+const Subtitle = styled.p`
+  font-size: 1.2rem;
+`;
+
 export default function About() {
   return (
     <Layout currentPath="/about">
       <TwoPanelsLayout>
-        <div>
+        <Text>
           <h3>À propos de Sororist</h3>
-          <p>
+          <Subtitle>
             Sororist veut mettre en avant les profils de femmes et de personnes
             non-binaires qui évoluent dans le monde de la tech.
-          </p>
+          </Subtitle>
           <p>
             Que ces personnes soient juniors ou seniors, travaillent dans la
             tech ou s'y intéressent dans leur temps libre, elles ont leur place
@@ -23,11 +33,16 @@ export default function About() {
           <p>
             Le monde de la tech étant majoritairement masculin, nous devons tous
             redoubler d'efforts pour le rendre plus inclusif. Ça passe par
-            reconnaître les expertises de toustes et donner un maximum de
+            reconnaître les expertises de tous·tes et donner un maximum de
             modèles féminins (et non binaires) pour les prochaines générations
             de la tech.
           </p>
-        </div>
+          <p>
+            Ce projet est non lucratif et open source. Les profils ne sont
+            affichées qu'après accord et nous respectons la protections des
+            données personnelles.
+          </p>
+        </Text>
         <AuthorPanel />
       </TwoPanelsLayout>
     </Layout>

@@ -10,16 +10,17 @@ import {
   paddingBottomLastSection,
 } from "styles/utils";
 
+import { Layout } from "components/Layout";
 import { ProfileCard } from "components/ProfileCard";
 import { Button } from "components/basics/Button";
 import { LinkAsButton } from "components/basics/LinkAsButton";
-import { Layout } from "components/Layout";
 import { ProfileCardsContainer } from "components/common/ProfileCardsContainer";
 
 import { Filters } from "components/Search/Filters";
 
 const Title = styled.h3`
   ${paddingElement}
+  filter: drop-shadow(1px 1px 1px var(--background2)) drop-shadow(-1px -1px 1px var(--background2));
 `;
 
 const ResultsSection = styled.div`
@@ -31,6 +32,19 @@ const ResultsSection = styled.div`
 const NoResults = styled.div`
   ${cardStyle}
   ${paddingSection}
+`;
+
+const DarkThemeBackground = styled.div`
+  position: absolute;
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--background2);
+    opacity: 0.8;
+    z-index: -1;
+    right: 0;
+    left: 0;
+    top: 6rem;
+    height: 9rem;
+  }
 `;
 
 const Search = ({ router }: { router: Router }) => {
@@ -53,6 +67,7 @@ const Search = ({ router }: { router: Router }) => {
   return (
     <Layout currentPath="/search">
       <Title>Explorez les profils d'expert·e·s</Title>
+      {/* <DarkThemeBackground /> */}
       <Filters router={router} />
 
       <ResultsSection>

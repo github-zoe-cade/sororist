@@ -50,7 +50,7 @@ export default function Home({ themes, platforms, latestProfiles }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Who's who</title>
+        <title>Sororist</title>
       </Head>
       <Layout>
         <Header />

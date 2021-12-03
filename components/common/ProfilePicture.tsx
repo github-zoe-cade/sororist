@@ -13,7 +13,7 @@ export const ProfilePicture = ({ pictureUrl }: ProfilePicture) => (
   <div style={{position: "relative", width: "100%"}} aria-hidden>
     <RoundedImage
       src={pictureUrl}
-      // TODO Zoé optimize
+      // TODO optimize
       unoptimized
       alt="photo de profil"
       height={10}

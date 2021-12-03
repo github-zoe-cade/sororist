@@ -101,7 +101,7 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
   const initialValues: Values = {
     ...profile,
     themes: profile.themes.map((theme) => theme.name),
-    otherLinks: [""],
+    otherLinks: profile.otherLinks.map((link) => link.url),
   };
 
   return (

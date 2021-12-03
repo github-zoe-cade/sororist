@@ -27,6 +27,10 @@ const FooterLink = styled.a`
   text-decoration: none;
   color: var(--default4);
 
+  &:hover {
+    color: var(--alpha50);
+  }
+
   @media (prefers-color-scheme: dark) {
     color: var(--default2);
   }
