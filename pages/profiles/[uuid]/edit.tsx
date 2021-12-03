@@ -6,8 +6,8 @@ import { TwoPanelsLayout } from "components/basics/TwoPanelsLayout";
 
 import { Faq } from "components/EditProfile/Faq";
 
-const DynamicProfilPanel = dynamic(
-  () => import("components/EditProfile/ProfilPanel"),
+const DynamicProfilePanel = dynamic(
+  () => import("components/EditProfile/ProfilePanel"),
   { ssr: false, loading: () => <Loading /> }
 );
 
@@ -15,7 +15,7 @@ export default function EditProfile() {
   return (
     <Layout>
       <TwoPanelsLayout>
-        <DynamicProfilPanel />
+        <DynamicProfilePanel />
 
         <Faq />
       </TwoPanelsLayout>

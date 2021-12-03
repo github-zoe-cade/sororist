@@ -5,6 +5,7 @@ import { cardStyle, cssQueries } from "styles/utils";
 import { ProfilePicture } from "./common/ProfilePicture";
 import { ThemeTags } from "./common/ThemeTags";
 import { SocialLinks } from "./common/SocialLinks";
+import { upOnHover } from "styles/animations";
 
 type ProfileCardProps = {
   profile: ProfileType;
@@ -19,11 +20,7 @@ const ProfileCardContainer = styled.div`
   padding: 1rem;
   min-height: 230px;
   position: relative;
-  transition: transform ease 0.3s;
-
-  &:hover {
-    transform: translateY(-3%);
-  }
+  ${upOnHover}
 `;
 
 const StyledSocialLinks = styled(SocialLinks)`

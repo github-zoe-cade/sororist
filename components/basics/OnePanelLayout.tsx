@@ -6,7 +6,7 @@ import {
   paddingBottomLastSection,
 } from "styles/utils";
 
-export const TwoPanelsLayout = styled.div`
+export const OnePanelLayout = styled.div`
   margin: 1rem;
   ${paddingBottomLastSection}
 

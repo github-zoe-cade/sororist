@@ -15,6 +15,13 @@ export type ProfileType = {
   pictureUrl?: string;
   themes: Array<{ uuid: number; name: string }>;
   links: Array<{ platform: string; url: string }>;
+  otherLinks: Array<{
+    url: string;
+    image: string;
+    domain: string;
+    title: string;
+    description: string;
+  }>;
 };
 
 export type EditProfileType = ProfileType & {

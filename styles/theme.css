@@ -55,6 +55,7 @@ html {
     --default2: #FFE4E5;
     --default3: #12101A;
     --default4: #3B354D;
+    /* use for buttons because a11y */
     --default5: #ffefef;
 
     --background1: #12101A;
@@ -62,16 +63,4 @@ html {
     --background3: #DBD9E6;
     --background4: #FCFCFF;
   }
-
-  /* html {
-    --default1: #12101A;
-    --default2: #3B354D;
-    --default3: #DBD9E6;
-    --default4: #FCFCFF;
-
-    --background1: #DBD9E6;
-    --background2: #FCFCFF;
-    --background3: #12101A;
-    --background4: #3B354D;
-  } */
 }

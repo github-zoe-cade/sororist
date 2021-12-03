@@ -1,4 +1,7 @@
+import { LinkAsButton } from "components/basics/LinkAsButton";
+import { FaArrowUp } from "react-icons/fa";
 import styled from "styled-components";
+import { cssQueries } from "styles/utils";
 
 const FaqContainer = styled.div`
   & > h4:first-child {
@@ -6,14 +9,25 @@ const FaqContainer = styled.div`
   }
 `;
 
+const BackToProfile = styled.div`
+  text-align: center;
+  padding-top: 2rem;
+
+  @media ${cssQueries.desktop} {
+    display: none;
+  }
+`;
+
 export const Faq = () => (
   <FaqContainer>
+    <a id="faq"></a>
     <h4>Où suis-je ?</h4>
     <p>
-      SUPER NOM est un répertoire qui met en avant les femmes et les personnes
-      non binaires de la tech. Nous voulons donner plus de visibilité à ces
-      personnes pour qu'on puisse les découvrir sur les réseaux ou les inviter
-      dans des conférences, podcasts, etc.
+      <span style={{ color: "var(--default1)" }}>Sororist</span> est un
+      répertoire qui met en avant les femmes et les personnes non binaires de la
+      tech. Nous voulons donner plus de visibilité à ces personnes pour qu'on
+      puisse les découvrir sur les réseaux ou les inviter dans des conférences,
+      podcasts, etc.
     </p>
 
     <h4>Qui vous a suggéré ?</h4>
@@ -33,5 +47,10 @@ export const Faq = () => (
       Vous pouvez à tout moment éditer, masquer ou supprimer vos données sur
       simple demande en suivant <a href="/contact">ce lien</a>
     </p>
+    <BackToProfile>
+      <LinkAsButton href="#profil">
+        Remplir mon profil &nbsp; <FaArrowUp aria-label="haut de la page" />
+      </LinkAsButton>
+    </BackToProfile>
   </FaqContainer>
 );

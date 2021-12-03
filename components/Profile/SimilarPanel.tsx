@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ProfileType } from "lib/profiles";
 
-import { cssQueries } from "styles/utils";
+import { cardShadow, cssQueries } from "styles/utils";
 
 import { LinkAsButton } from "components/basics/LinkAsButton";
 import { ProfileCard } from "components/ProfileCard";
@@ -21,8 +21,16 @@ const PanelContainer = styled.div`
 
 const StyledProfileCard = styled(ProfileCard)`
   filter: none;
-  border: 1px solid lightgray;
+  border: 1px solid var(--default3);
   box-sizing: border-box;
+
+  &:hover {
+    transform: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    border-color: #2c273a;
+  }
 `;
 
 type SimilarPanel = {

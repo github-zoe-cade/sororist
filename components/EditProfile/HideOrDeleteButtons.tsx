@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { cssQueries } from "styles/utils";
 
 import { Button } from "components/basics/Button";
 
@@ -6,6 +7,10 @@ const ButtonContainer = styled.div`
   display: flex;
   gap: 2rem;
   margin-top: 4rem;
+
+  @media ${cssQueries.mobile} {
+    flex-direction: column;
+  }
 
   & > * {
     width: 100%;

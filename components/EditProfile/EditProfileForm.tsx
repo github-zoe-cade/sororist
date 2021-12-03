@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { isEmpty } from "lib/helpers";
 import { EditProfileType } from "lib/profiles";
 import { inputStyle } from "styles/forms";
+import { cssQueries } from "styles/utils";
 
 import { Button } from "components/basics/Button";
 import { LinksField } from "components/common/LinksFields";
@@ -23,8 +24,11 @@ const StyledForm = styled(Form)`
 
 const IdentityContainer = styled.div`
   display: grid;
-  grid-template-columns: 60% 1fr;
   column-gap: 2rem;
+
+  @media ${cssQueries.desktop} {
+    grid-template-columns: 60% 1fr;
+  }
 `;
 
 const Label = styled.label`
@@ -113,7 +117,11 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
               Nom et/ou pseudo*
               <Field name="name">
                 {({ field }) => (
-                  <Input {...field} placeholder="Angie Neer (@AngieDev)" id={field.name} />
+                  <Input
+                    {...field}
+                    placeholder="Angie Neer (@AngieDev)"
+                    id={field.name}
+                  />
                 )}
               </Field>
             </Label>
@@ -194,7 +202,8 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
           <div style={{ marginTop: "3rem" }}>
             <small>
               En publiant vos données, vous acceptez de paraître sur ce site,
-              conformement aux <a href="/terms-of-services">mentions légales</a>.
+              conformement aux <a href="/terms-of-services">mentions légales</a>
+              .
             </small>
 
             <StyledButton

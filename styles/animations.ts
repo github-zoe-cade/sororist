@@ -20,3 +20,11 @@ export const bounceOnHover = css`
     }
   }
 `;
+
+export const upOnHover = css`
+  transition: transform ease 0.3s;
+
+  &:hover {
+    transform: translateY(-3%);
+  }
+`;

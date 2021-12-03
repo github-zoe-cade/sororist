@@ -37,7 +37,7 @@ const DesktopMenu = styled.ul`
 
 export const Navbar = ({ currentPath }) => (
   <NavbarContainer>
-    <BrandName href="/">A cool name</BrandName>
+    <BrandName href="/">Sororist</BrandName>
     <DesktopMenu>
       <NavLinks currentPath={currentPath} />
     </DesktopMenu>

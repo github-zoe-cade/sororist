@@ -2,8 +2,24 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { isEmpty, toArray } from "lib/helpers";
 import { EditProfileType, getProfileForEdit } from "lib/profiles";
+import { cssQueries } from "styles/utils";
 
 import { EditProfileForm } from "./EditProfileForm";
+import { FaArrowDown } from "react-icons/fa";
+
+const LearnMore = styled.a`
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  font-weight: 600;
+
+  @media ${cssQueries.desktop} {
+    display: none;
+  }
+`;
 
 const Title = styled.h3`
   margin-top: 0;
@@ -40,6 +56,7 @@ export default function ProfilPanel() {
 
   return (
     <div>
+      <a id="profil"></a>
       <Title>Editer votre profil</Title>
       {profile.notValidated && (
         <>
@@ -53,6 +70,10 @@ export default function ProfilPanel() {
             faisant la demande <a href="/contact">ici</a> ou supprimer
             définitivement vos données.
           </p>
+          <LearnMore href="#faq">
+            En savoir plus &nbsp;
+            <FaArrowDown aria-label="bas de la page" />
+          </LearnMore>
         </>
       )}
       {profile.published && (

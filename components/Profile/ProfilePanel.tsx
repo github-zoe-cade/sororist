@@ -6,11 +6,13 @@ import {
 } from "react-icons/bs";
 import { ProfileType } from "lib/profiles";
 
-import { cardStyle, cssQueries } from "styles/utils";
+import { cssQueries } from "styles/utils";
 
 import { VoronoiDecoration } from "components/basics/VoronoiDecoration";
 import { SocialLinks } from "components/common/SocialLinks";
 import { ThemeTags } from "components/common/ThemeTags";
+
+import { OtherLinkCard } from "./OtherLinkCard";
 
 const PictureAndInfo = styled.div`
   @media ${cssQueries.mobile} {
@@ -29,7 +31,11 @@ const Info = styled.div`
   margin: 1rem;
 
   & > :not(:last-child) {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
+
+    @media ${cssQueries.mobile} {
+      margin-bottom: 1rem;
+  }
   }
 `;
 
@@ -39,12 +45,26 @@ const StyledThemeTags = styled(ThemeTags)`
   }
 `;
 
-const OtherLinkCard = styled.div`
-  ${cardStyle}
-  height: 100px;
-  width: 120px;
-  padding: 2rem;
-`;
+const StyledSocialLinks = styled(SocialLinks)`
+  font-size: 1.6rem;
+`
+
+const SectionTitle = styled.h4`
+  margin: 3rem 0 2rem;
+`
+
+const OtherLinksContainer = styled.div`
+  display: grid;
+  gap: 2rem;
+
+ @media ${cssQueries.desktop} {
+   grid-template-columns: repeat(2, 1fr);
+ }
+
+ @media ${cssQueries.large} {
+   grid-template-columns: repeat(3, 1fr);
+ }
+`
 
 const genderIcons = {
   nonbinary: BsGenderAmbiguous,
@@ -75,21 +95,21 @@ export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
 
           <StyledThemeTags themes={profile.themes} />
 
-          <SocialLinks links={profile.links} />
+          <StyledSocialLinks links={profile.links} />
         </Info>
       </PictureAndInfo>
       <div>
-        <h4 style={{ marginTop: "3rem" }}>Description</h4>
+        <SectionTitle>Description</SectionTitle>
         {profile.description}
-        <h4 style={{ marginTop: "3rem" }}>Partenariat</h4>
+        <SectionTitle>Partenariat</SectionTitle>
         {profile.commercial}
 
-        <h4 style={{ marginTop: "3rem" }}>Ressources et liens</h4>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
-          {profile.links.map(({ platform }, i) => (
-            <OtherLinkCard key={i}>{platform}</OtherLinkCard>
+        <SectionTitle>Ressources et liens</SectionTitle>
+        <OtherLinksContainer>
+          {profile.otherLinks.map((link, i) => (
+            <OtherLinkCard key={i} link={link} />
           ))}
-        </div>
+        </OtherLinksContainer>
       </div>
     </div>
   );

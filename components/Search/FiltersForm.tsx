@@ -30,11 +30,12 @@ const StyledLabel = styled.span`
 
 const RandomButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
+  align-items: end;
 
-  @media ${cssQueries.desktop} {
-    justify-content: end;
-    align-items: end;
+  @media ${cssQueries.mobile} {
+    justify-content: space-between;
+    padding-top: 1rem;
   }
 `;
 

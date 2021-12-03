@@ -23,4 +23,27 @@ export default Array.from({ length: 20 }).map((_, index) => ({
     { platform: "github", url: "github.com/zoeKD" },
     { platform: "tiktok", url: "downdusky.com" },
   ],
+  otherLinks: [
+    {
+      url: "https://dev.to/softcodeon/how-to-add-preloader-in-html-page-1obn",
+      image: "https://dev.to/social_previews/article/913448.png",
+      domain: "dev.to",
+      title: "How to Add Preloader in HTML Page",
+      description: "A preloader is one of the important elements of the user-friendly interface. It indicates that..."
+    },
+    {
+      url: "https://afrotech.com/insecure-comes-to-life-in-mobile-app-game",
+      image: "https://cms.afrotech.com/wp-content/uploads/2021/11/GlowUpGames-1568x882.jpg",
+      domain: "afrotech.com",
+      title: "Women-Led Game Studio Launches 'Insecure: The Come Up Game' Alongside HBO - AfroTech",
+      description: "HBO and Issa Rae’s “Insecure” isn’t going out without a bang! AfroTech first told you about Glow Up Games, an all-women of color founded game..."
+    },
+    {
+      url: "https://www.fastcompany.com/90698662/inside-one-designers-career-championing-stem-for-girls",
+      image: "https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2021/11/p-2-90698662-from-carman-sandiego-to-girl-tech-inside-one-designerand8217s-career-championing-stem-for-girls.jpg",
+      domain: "fastcompany.com",
+      title: "Inside one designer’s career championing STEM for girls",
+      description: "Janese Swanson has spent decades in the software and toy industries, advocating for more STEM education and coding products for girls."
+    },
+  ],
 }));
