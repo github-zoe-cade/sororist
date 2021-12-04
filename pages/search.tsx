@@ -34,19 +34,6 @@ const NoResults = styled.div`
   ${paddingSection}
 `;
 
-const DarkThemeBackground = styled.div`
-  position: absolute;
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--background2);
-    opacity: 0.8;
-    z-index: -1;
-    right: 0;
-    left: 0;
-    top: 6rem;
-    height: 9rem;
-  }
-`;
-
 const Search = ({ router }: { router: Router }) => {
   const [results, setResults] = useState([]);
   const [offset, setOffset] = useState(20);
@@ -67,7 +54,6 @@ const Search = ({ router }: { router: Router }) => {
   return (
     <Layout currentPath="/search">
       <Title>Explorez les profils d'expert·e·s</Title>
-      {/* <DarkThemeBackground /> */}
       <Filters router={router} />
 
       <ResultsSection>

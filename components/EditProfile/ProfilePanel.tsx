@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { cssQueries } from "styles/utils";
+import ArrowDown from "public/icons/arrow-down.svg";
+
 import { isEmpty, toArray } from "lib/helpers";
 import { EditProfileType, getProfileForEdit } from "lib/profiles";
-import { cssQueries } from "styles/utils";
 
 import { EditProfileForm } from "./EditProfileForm";
-import { FaArrowDown } from "react-icons/fa";
 
 const LearnMore = styled.a`
   text-decoration: none;
@@ -72,7 +73,7 @@ export default function ProfilPanel() {
           </p>
           <LearnMore href="#faq">
             En savoir plus &nbsp;
-            <FaArrowDown aria-label="bas de la page" />
+            <ArrowDown aria-label="bas de la page" />
           </LearnMore>
         </>
       )}

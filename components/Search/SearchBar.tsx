@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { FaSearch } from "react-icons/fa";
+import SearchIcon from "public/icons/search.svg";
 
 import { FiltersType } from "lib/filters";
 import { inputHeight, inputStyle } from "styles/forms";
@@ -94,7 +94,7 @@ export const SearchBar = ({
             inputRef.current.blur();
           }}
         >
-          <FaSearch title="Chercher" />
+          <SearchIcon aria-label="Chercher" />
         </StyledButton>
       </NameInputContainer>
     </label>

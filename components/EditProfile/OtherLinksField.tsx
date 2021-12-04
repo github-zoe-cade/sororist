@@ -1,5 +1,7 @@
+import React from "react";
 import styled from "styled-components";
-import { FaPlus, FaTrash } from "react-icons/fa";
+import PlusIcon from "public/icons/plus.svg"
+import TrashIcon from "public/icons/trash.svg"
 
 import { buttonRadius } from "styles/utils";
 import { inputStyle } from "styles/forms";
@@ -19,7 +21,8 @@ const OutlineButton = styled.button`
   ${buttonRadius};
   background: none;
   border: solid 2px var(--alpha100);
-  color: var(--alpha100);
+  fill: var(--alpha100);
+  cursor: pointer;
   padding: 0 0.6rem;
   display: flex;
   align-items: center;
@@ -27,26 +30,25 @@ const OutlineButton = styled.button`
 
   &:hover {
     border-color: var(--alpha120);
-    color: var(--alpha120);
+    fill: var(--alpha120);
   }
 `;
 
 const DeleteButton = styled(OutlineButton)`
   border-color: var(--error100);
-  color: var(--error100);
+  fill: var(--error100);
 
   &:hover {
     border-color: var(--error120);
-    color: var(--error120);
+    fill: var(--error120);
   }
 `;
 
 export const OtherLinksField = ({ otherLinks, setFieldValue, ...field }) => (
   <LinkInputContainer>
     {otherLinks.map((link: string, index: number) => (
-      <>
+      <React.Fragment key={index}>
         <Input
-          key={index}
           value={link}
           onChange={(e) => {
             const newValues = otherLinks.map((otherLink, i: number) =>
@@ -62,7 +64,7 @@ export const OtherLinksField = ({ otherLinks, setFieldValue, ...field }) => (
             title="Ajouter un autre lien"
             onClick={() => setFieldValue(field.name, [...field.value, ""])}
           >
-            <FaPlus aria-description="Ajouter un autre lien" />
+            <PlusIcon aria-label="Ajouter un autre lien" />
           </OutlineButton>
         ) : (
           <DeleteButton
@@ -76,10 +78,10 @@ export const OtherLinksField = ({ otherLinks, setFieldValue, ...field }) => (
               setFieldValue(field.name, newValues);
             }}
           >
-            <FaTrash aria-description="Supprimer ce lien" />
+            <TrashIcon aria-label="Supprimer ce lien" />
           </DeleteButton>
         )}
-      </>
+      </React.Fragment>
     ))}
   </LinkInputContainer>
 );

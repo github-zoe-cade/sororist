@@ -95,17 +95,22 @@ export const selectStyle = {
       color: "var(--default4)",
     },
   }),
-  option: (provided: CSSObjectWithLabel) => ({
-    ...provided,
-    fontWeight: "400",
-    color: "var(--default2)",
-    "@media (prefers-color-scheme: dark)": {
-      backgroundColor: "var(--background1)",
-      ":hover": {
-        backgroundColor: "var(--background2)",
+  option: (provided: CSSObjectWithLabel, state) => {
+    const customStyle = {
+      ...provided,
+      fontWeight: "400",
+      color: "var(--default2)",
+      "@media (prefers-color-scheme: dark)": {
+        backgroundColor: "var(--background1)",
       },
-    },
-  }),
+    };
+    if (state.isFocused) {
+      customStyle["@media (prefers-color-scheme: dark)"] = {
+        backgroundColor: "var(--background2)",
+      };
+    }
+    return customStyle;
+  },
   placeholder: (provided: CSSObjectWithLabel) => ({
     ...provided,
     color: "var(--default2)",

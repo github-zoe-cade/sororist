@@ -1,26 +1,24 @@
-import { useContext } from "react";
-import styled, { ThemeContext, withTheme } from "styled-components";
-import {
-  FaTwitter,
-  FaYoutube,
-  FaTwitch,
-  FaLink,
-  FaInstagram,
-  FaTiktok,
-  FaGithub,
-  FaCodepen,
-} from "react-icons/fa";
+import styled, { withTheme } from "styled-components";
+import CodepenIcon from "public/icons/codepen.svg"
+import GithubIcon from "public/icons/github.svg"
+import InstagramIcon from "public/icons/instagram.svg"
+import LinkIcon from "public/icons/link.svg"
+import TiktokIcon from "public/icons/tiktok.svg"
+import TwitchIcon from "public/icons/twitch.svg"
+import TwitterIcon from "public/icons/twitter.svg"
+import YoutubeIcon from "public/icons/youtube.svg"
+
 
 const platformIcons = {
-  codepen: FaCodepen,
-  github: FaGithub,
-  instagram: FaInstagram,
-  medium: FaLink,
-  other: FaLink,
-  tiktok: FaTiktok,
-  twitch: FaTwitch,
-  twitter: FaTwitter,
-  youtube: FaYoutube,
+  codepen: CodepenIcon,
+  github: GithubIcon,
+  instagram: InstagramIcon,
+  medium: LinkIcon,
+  other: LinkIcon,
+  tiktok: TiktokIcon,
+  twitch: TwitchIcon,
+  twitter: TwitterIcon,
+  youtube: YoutubeIcon,
 };
 
 const IconContainer = styled.span<{ platform: string }>`

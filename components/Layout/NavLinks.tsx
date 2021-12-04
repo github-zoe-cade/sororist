@@ -13,7 +13,7 @@ type NavLinkProps = {
   currentPath?: string;
 };
 
-const NavLink = ({ href, text, currentPath }: NavLinkProps) => {
+export const NavLink = ({ href, text, currentPath }: NavLinkProps) => {
   return (
     <li>
       <StyledLink href={href} active={currentPath === href}>

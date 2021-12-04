@@ -1,12 +1,14 @@
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import router from "next/router";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FormikProps } from "formik";
 import * as Yup from "yup";
 
 import { isEmpty } from "lib/helpers";
 import { EditProfileType } from "lib/profiles";
 import { inputStyle } from "styles/forms";
 import { cssQueries } from "styles/utils";
+import ErrorIcon from "public/icons/error.svg";
 
 import { Button } from "components/basics/Button";
 import { LinksField } from "components/common/LinksFields";
@@ -57,6 +59,20 @@ const StyledButton = styled(Button)`
   width: 100%;
 `;
 
+const ErrorMessage = styled.div`
+  background: var(--error100);
+  color: var(--default4);
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--default2);
+  }
+`;
+
 const placeholders = {
   description:
     "Développeuse web en Ruby on Rails et React, je m'intéresse à l'actu de la tech et j'en parle sur Twitter et Twitch. Je stream du live coding sur des projets web, parfois seule parfois en pair programming.",
@@ -93,9 +109,16 @@ type Values = {
 };
 
 export const EditProfileForm = ({ profile }: EditProfileForm) => {
+  const [submitError, setSubmitError] = useState("");
+  const formikRef = useRef<FormikProps<Record<string, unknown>>>(null);
   const handleSubmit = (values: Values) => {
-    console.log(values);
-    router.push(`/profiles/${profile.uuid}`);
+    try {
+      // Post to API
+      // router.push(`/profiles/${profile.uuid}`);
+    } catch (e) {
+      setSubmitError(e);
+      formikRef.current?.setSubmitting(false);
+    }
   };
 
   const initialValues: Values = {
@@ -109,6 +132,7 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
+      innerRef={formikRef}
     >
       {({ setFieldValue, values, ...formikBag }) => (
         <StyledForm>
@@ -214,6 +238,18 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
               {profile.published ? "Editer mon profil" : "Publier mon profil"}
             </StyledButton>
           </div>
+
+          {submitError && (
+            <ErrorMessage>
+              <ErrorIcon aria-label="Erreur" />
+              <div>
+                Nous n'avons pas réussi à sauvegarder vos données, veuillez
+                réessayer.
+                <br />
+                Raison : <span>{submitError}</span>
+              </div>
+            </ErrorMessage>
+          )}
 
           <HideOrDeleteButton hidden={profile.hidden} />
         </StyledForm>

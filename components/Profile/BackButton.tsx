@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { cssQueries, marginElement } from "styles/utils";
+import { cssQueries } from "styles/utils";
+import ArrowLeft from "public/icons/arrow-left.svg";
 
 import { Button } from "components/basics/Button";
-import { FaArrowLeft } from "react-icons/fa";
 
 const goBack = () => {
   if (typeof window !== undefined) {
@@ -32,7 +32,7 @@ export const BackButton = () => (
   <div style={{ minHeight: "2rem" }}>
     {arrivedFromSearch() && (
       <StyledButton onClick={goBack}>
-        <FaArrowLeft />
+        <ArrowLeft aria-label="retour"/>
         &nbsp;Retourner
       </StyledButton>
     )}

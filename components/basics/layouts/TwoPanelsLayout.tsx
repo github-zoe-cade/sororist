@@ -7,7 +7,7 @@ import {
 } from "styles/utils";
 
 export const TwoPanelsLayout = styled.div`
-  margin: 1rem;
+  margin: 1rem .5rem;
   ${paddingBottomLastSection}
 
   @media ${cssQueries.desktop} {

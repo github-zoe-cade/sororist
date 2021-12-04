@@ -24,6 +24,7 @@ export const buttonStyle = css`
   &:hover {
     background-color: var(--alpha120);
     color: var(--default4);
+    fill: var(--default4);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -32,6 +33,7 @@ export const buttonStyle = css`
 
     &:hover, &:focus {
       color: var(--default5);
+      fill: var(--default5);
     }
   }
 `;
@@ -60,23 +62,24 @@ export const cardStyle = css`
 
   @media (prefers-color-scheme: dark) {
     opacity: 1;
+    border: 1px solid #2c273a;
   }
 `;
 
 export const marginSection = css`
-  margin: ${({ theme }) => `4rem ${theme.spacings.mainHorizontal}`};
+  margin: 4rem 8%;
 `;
 
 export const marginElement = css`
-  margin: ${({ theme }) => `0rem ${theme.spacings.mainHorizontal}`};
+  margin: 0 8%;
 `;
 
 export const paddingSection = css`
-  padding: ${({ theme }) => `4rem ${theme.spacings.mainHorizontal}`};
+  padding: 4rem 8%;
 `;
 
 export const paddingElement = css`
-  padding: ${({ theme }) => `0rem ${theme.spacings.mainHorizontal}`};
+  padding: 0 8%;
 `;
 
 export const paddingBottomLastSection = css`

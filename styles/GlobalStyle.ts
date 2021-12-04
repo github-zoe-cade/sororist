@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     background-size: cover;
     min-height: 100vh;
     color: var(--default2);
+    fill: var(--default2);
   }
 
   #__next {
@@ -22,6 +23,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     font-size: 4rem;
     line-height: 1.35;
     color: var(--default1);
+    fill: var(--default1);
 
     @media ${cssQueries.mobile} {
       font-size: 3rem;
@@ -32,6 +34,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     font-size: 3rem;
     line-height: 1.3;
     color: var(--default1);
+    fill: var(--default1);
 
     @media ${cssQueries.mobile} {
       font-size: 2rem;
@@ -42,22 +45,28 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     font-family: 'Abril Fatface';
     font-size: 2.2rem;
     color: var(--default1);
+    fill: var(--default1);
     letter-spacing: .8px;
   }
 
   a {
     color: var(--alpha100);
+    fill: var(--alpha100);
 
     &:hover,
     &:focus {
       color: var(--alpha120);
+      fill: var(--alpha120);
     }
 
     @media (prefers-color-scheme: dark) {
       color: var(--alpha20);
+      fill: var(--alpha20);
+
       &:hover,
       &:focus {
         color: var(--alpha50);
+        fill: var(--alpha50);
       }
     }
   }

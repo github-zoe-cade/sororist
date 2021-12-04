@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { cssQueries } from "styles/utils";
+import CloseIcon from "public/icons/close.svg";
+import MenuIcon from "public/icons/menu.svg";
 
 import { Modal } from "components/basics/Modal";
 import { NavLinks } from "./NavLinks";
-import { FiMenu as MenuIcon } from "react-icons/fi";
-import { FaTimes as CloseIcon } from "react-icons/fa";
 import { FooterLinks } from "./Footer";
 
 const MobileMenuTrigger = styled.button<{
@@ -19,10 +19,6 @@ const MobileMenuTrigger = styled.button<{
   padding-right: 1rem;
   display: flex;
   align-items: center;
-
-  &:hover {
-    color: var(--alpha50);
-  }
 
   @media ${cssQueries.desktop} {
     display: none;
@@ -40,10 +36,14 @@ const Content = styled.div`
     padding-top: 5rem;
   }
 
-  & > :first-child > li a {
-    font-size: 1.5rem;
+  & > :first-child > li {
+    margin-top: 2rem;
+
+    & > a {
+      font-size: 1.1rem;
+    }
   }
-`
+`;
 
 const StyledUl = styled.ul`
   list-style: none;
@@ -52,11 +52,7 @@ const StyledUl = styled.ul`
   margin: 0;
 
   & > li {
-    margin-top: 2rem;
-  }
-
-  & > li a {
-    font-size: 1.3rem;
+    margin-top: 1rem;
   }
 `;
 

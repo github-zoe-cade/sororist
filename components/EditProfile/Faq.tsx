@@ -1,5 +1,5 @@
 import { LinkAsButton } from "components/basics/LinkAsButton";
-import { FaArrowUp } from "react-icons/fa";
+import ArrowUp from "public/icons/arrow-up.svg";
 import styled from "styled-components";
 import { cssQueries } from "styles/utils";
 
@@ -49,7 +49,7 @@ export const Faq = () => (
     </p>
     <BackToProfile>
       <LinkAsButton href="#profil">
-        Remplir mon profil &nbsp; <FaArrowUp aria-label="haut de la page" />
+        Remplir mon profil &nbsp; <ArrowUp aria-label="haut de la page" />
       </LinkAsButton>
     </BackToProfile>
   </FaqContainer>

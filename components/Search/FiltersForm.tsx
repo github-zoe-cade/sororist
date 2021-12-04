@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field } from "formik";
-import { Router } from "next/router";
-import { FaRandom } from "react-icons/fa";
+import { NextRouter, Router } from "next/router";
+import RandomIcon from "public/icons/random.svg";
 import { FiltersType } from "lib/filters";
 
 import { cssQueries } from "styles/utils";
@@ -50,7 +50,7 @@ type FiltersForm = {
   filters: FiltersType;
   initialValues: FiltersType;
   onSubmit: (values: FiltersType) => void;
-  router: Router;
+  router: NextRouter;
   toggleOn: boolean;
 };
 
@@ -125,7 +125,7 @@ export const FiltersForm = ({
                   closeForm();
                 }}
               >
-                <FaRandom role="presentation" />
+                <RandomIcon role="presentation" />
                 &nbsp; Au hasard
               </Button>
             </RandomButtonContainer>

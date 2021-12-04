@@ -22,9 +22,8 @@ const PanelContainer = styled.div`
 `;
 
 const AuthorCard = styled.div`
-  ${cardStyle}
-  filter: none;
-  border: 1px solid var(--default3);
+  ${cardStyle};
+  filter: none !important;
   box-sizing: border-box;
   padding: 1rem;
   min-height: 230px;
@@ -32,10 +31,6 @@ const AuthorCard = styled.div`
 
   &:hover {
     transform: none;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    border-color: #2c273a;
   }
 `;
 
@@ -71,7 +66,7 @@ const tix = {
     { platform: "twitch", url: "twitch.tv/downdusky" },
     { platform: "github", url: "github.com/tixlegeek" },
   ],
-  bio: "Cool cool cool",
+  bio: "Cyber bricoleur",
 };
 
 const zoe = {

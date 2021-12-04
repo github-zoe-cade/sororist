@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Router } from "next/router";
+import { NextRouter, Router } from "next/router";
 import { Formik } from "formik";
 import { FiltersType } from "lib/filters";
-
 import { toArray } from "lib/helpers";
+import CaretDown from "public/icons/caret-down.svg";
+import CaretUp from "public/icons/caret-up.svg";
 import { cssQueries } from "styles/utils";
 
+
 import { FiltersForm } from "./FiltersForm";
-import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { Loading } from "components/basics/Loading";
 
 const FiltersContainer = styled.div`
@@ -43,7 +44,13 @@ const FiltersMenu = styled.div`
   }
 `;
 
-export const Filters = ({ router }: { router: Router }) => {
+export const Filters = ({
+  router,
+  className,
+}: {
+  router: NextRouter;
+  className?: string;
+}) => {
   const [filters, setFilters] = useState<FiltersType>();
   const [toggleOn, setToggleOn] = useState(false);
 
@@ -79,7 +86,7 @@ export const Filters = ({ router }: { router: Router }) => {
     toArray(initialValues.searchTerms).length;
 
   return (
-    <FiltersContainer>
+    <FiltersContainer className={className}>
       <FiltersMenu
         role="button"
         onClick={() => setToggleOn(!toggleOn)}
@@ -88,7 +95,7 @@ export const Filters = ({ router }: { router: Router }) => {
       >
         Filters
         {filtersCount > 0 && <span>({filtersCount})</span>}
-        {toggleOn ? <FaCaretUp /> : <FaCaretDown />}
+        {toggleOn ? <CaretUp aria-label="Fermer" /> : <CaretDown aria-label="Ouvrir"/>}
       </FiltersMenu>
 
       <FiltersForm

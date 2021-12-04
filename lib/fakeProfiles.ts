@@ -1,7 +1,7 @@
 export default Array.from({ length: 20 }).map((_, index) => ({
   uuid: "5c38a5d6-47c3-11ec-81d3-0242ac130003",
   name: "Zoé Cadé (Downdusky)",
-  gender: "female",
+  gender: "male",
   description:
     "Twitch affiliate ·  Web Developper RoR/React \n Leftist with a right-clicker mentality\n Attention, tweets avec des bouts de choucroute dedans.\n PP @eniluapski",
   commercial:

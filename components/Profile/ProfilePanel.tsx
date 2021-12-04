@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import {
-  BsGenderAmbiguous,
-  BsGenderFemale,
-  BsGenderMale,
-} from "react-icons/bs";
+import NbIcon from "public/icons/gender-nb.svg";
+import FemaleIcon from "public/icons/gender-female.svg";
+import MaleIcon from "public/icons/gender-male.svg";
 import { ProfileType } from "lib/profiles";
-
 import { cssQueries } from "styles/utils";
 
 import { VoronoiDecoration } from "components/basics/VoronoiDecoration";
@@ -35,7 +32,7 @@ const Info = styled.div`
 
     @media ${cssQueries.mobile} {
       margin-bottom: 1rem;
-  }
+    }
   }
 `;
 
@@ -47,29 +44,29 @@ const StyledThemeTags = styled(ThemeTags)`
 
 const StyledSocialLinks = styled(SocialLinks)`
   font-size: 1.6rem;
-`
+`;
 
 const SectionTitle = styled.h4`
   margin: 3rem 0 2rem;
-`
+`;
 
 const OtherLinksContainer = styled.div`
   display: grid;
   gap: 2rem;
 
- @media ${cssQueries.desktop} {
-   grid-template-columns: repeat(2, 1fr);
- }
+  @media ${cssQueries.desktop} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
- @media ${cssQueries.large} {
-   grid-template-columns: repeat(3, 1fr);
- }
-`
+  @media ${cssQueries.large} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
 
 const genderIcons = {
-  nonbinary: BsGenderAmbiguous,
-  female: BsGenderFemale,
-  male: BsGenderMale,
+  nonbinary: NbIcon,
+  female: FemaleIcon,
+  male: MaleIcon,
 };
 
 export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
@@ -90,7 +87,9 @@ export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
           <h3>
             {profile.name}
             &nbsp;
-            {profile.gender && <Icon aria-label={profile.gender} />}
+            {profile.gender && (
+                <Icon aria-label={profile.gender} height="2rem" />
+            )}
           </h3>
 
           <StyledThemeTags themes={profile.themes} />

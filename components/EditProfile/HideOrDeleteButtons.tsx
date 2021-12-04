@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { cssQueries } from "styles/utils";
 
 import { Button } from "components/basics/Button";
+import { useRouter } from "next/router";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -17,11 +18,27 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export const HideOrDeleteButton = ({ hidden }) => (
+export const HideOrDeleteButton = ({ hidden }) => {
+  const router = useRouter()
+
+  const hideProfile = () => {
+    // Post to api to submit values + hide profil
+    const { token, uuid } = router.query;
+    router.push(`/profiles/${uuid}/edit?token=${token}`)
+  }
+
+  const deleteProfile = () => {
+    const confirm = window.confirm("Êtes-vous sûr·e ? Cette action est définitive.")
+    if (confirm) {
+      // Post to api
+      router.push("/profiles/deleted")
+    }
+  }
+  return (
   <>
     <ButtonContainer>
       <Button
-        onClick={() => console.log("hide")}
+        onClick={hideProfile}
         color="warning"
         disabled={hidden}
         title="Votre profil est déjà masqué"
@@ -29,7 +46,7 @@ export const HideOrDeleteButton = ({ hidden }) => (
         Masquer mon profil
       </Button>
 
-      <Button onClick={() => console.log("delete")} color="error">
+      <Button onClick={deleteProfile} color="error">
         Supprimer mes données
       </Button>
     </ButtonContainer>
@@ -46,4 +63,4 @@ export const HideOrDeleteButton = ({ hidden }) => (
       </small>
     </p>
   </>
-);
+)};

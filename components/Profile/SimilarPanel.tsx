@@ -21,15 +21,14 @@ const PanelContainer = styled.div`
 
 const StyledProfileCard = styled(ProfileCard)`
   filter: none;
-  border: 1px solid var(--default3);
   box-sizing: border-box;
 
   &:hover {
     transform: none;
   }
 
-  @media (prefers-color-scheme: dark) {
-    border-color: #2c273a;
+  @media (prefers-color-scheme: light) {
+    border: 1px solid var(--default3);
   }
 `;
 

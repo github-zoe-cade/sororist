@@ -31,3 +31,15 @@ export const isEmpty = (value: any) => {
 export const compact = <T>(array: Array<T| undefined>): T[] => (
   array.filter((t) => t != null)
 )
+
+export const fromPairs = (pairs) => {
+  var index = -1,
+      length = pairs == null ? 0 : pairs.length,
+      result = {};
+
+  while (++index < length) {
+    var pair = pairs[index];
+    result[pair[0]] = pair[1];
+  }
+  return result;
+}

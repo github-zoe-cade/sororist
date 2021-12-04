@@ -4,7 +4,7 @@ import { Formik, Form, Field, FormikProps } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lib/helpers";
 import { inputStyle } from "styles/forms";
-import { FaRegCheckCircle } from "react-icons/fa";
+import CheckIcon from "public/icons/check.svg";
 
 import { Button } from "components/basics/Button";
 import { ThemeSelect } from "components/common/ThemeSelect";
@@ -36,6 +36,10 @@ const SuccessMessage = styled.div`
   border-radius: 5px;
   display: flex;
   align-items: center;
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--default4);
+  }
 `;
 
 const validationSchema = Yup.object().shape({
@@ -126,7 +130,7 @@ export const NewProfileForm = () => {
 
           {submitSuccess && (
             <SuccessMessage>
-              <FaRegCheckCircle />
+              <CheckIcon />
               &nbsp; Suggestion bien reçue ! Vous pouvez continuer à suggérer
               des profils.
             </SuccessMessage>

@@ -19,7 +19,7 @@ export const Modal = ({ isOpen, onRequestClose, style, children }) => {
           background: 'var(--background2)',
           WebkitOverflowScrolling: 'touch',
           borderRadius: 0,
-          outline: "none",
+          border: "none",
           padding: "0",
           zIndex: "100",
         },

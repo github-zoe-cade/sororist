@@ -61,3 +61,23 @@ export const getProfile = (uuid: string): ProfileType => fakeProfiles[0];
 
 export const getProfileForEdit = (uuid: string): EditProfileType =>
   fakeEditProfile;
+
+export const getMatchingProfilesForEdit = (
+  filters: FiltersType
+): EditProfileType[] => {
+  const fakeProfiles = Array.from({ length: 50 }).map((_) => fakeEditProfile);
+  if (!filters.themes) {
+    return fakeProfiles;
+  }
+
+  const themesArray: string[] = toArray(filters.themes);
+  if (themesArray.length == 0) {
+    return fakeProfiles;
+  }
+
+  return fakeProfiles.filter(
+    (profile: ProfileType) =>
+      profile.themes.filter((theme) => themesArray.includes(theme.name))
+        .length > 0
+  );
+};
