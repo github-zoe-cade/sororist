@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cssQueries } from "styles/utils";
+import { cssQueries, marginElement } from "styles/utils";
 import ArrowLeft from "public/icons/arrow-left.svg";
 
 import { Button } from "components/basics/Button";
@@ -21,7 +21,7 @@ const arrivedFromSearch = () => {
 const StyledButton = styled(Button)`
   display: flex;
   align-items: center;
-  margin: 0rem ${({ theme }) => theme.spacings.mainHorizontal};
+  ${marginElement}
 
   @media ${cssQueries.desktop} {
     margin-top: 1rem;

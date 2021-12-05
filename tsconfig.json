@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/basics/Shape.jsx", "components/Homepage/HeaderDecoration.jsx", "components/basics/VoronoiDecoration.jsx"  ],
+, "components/basics/Shape.jsx", "components/Homepage/HeaderDecoration.jsx", "components/basics/VoronoiDecoration.jsx", "components/basics/Background.jsx"  ],
   "exclude": [
     "node_modules",
     "https://cdn.skypack.dev/*"

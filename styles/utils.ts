@@ -1,5 +1,11 @@
 import { css } from "styled-components";
 
+export const cssQueries = {
+  desktop: `(min-width: 960px)`,
+  mobile: `(max-width: 959px)`,
+  large: `(min-width: 1920px)`,
+};
+
 export const backgroundTransition = css`
   transition: background-color ease 0.3s;
 `;
@@ -36,6 +42,11 @@ export const buttonStyle = css`
       fill: var(--default5);
     }
   }
+
+  @media ${cssQueries.large} {
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const cardShadow = css`
@@ -45,12 +56,6 @@ export const cardShadow = css`
     filter: drop-shadow(1px 2px 4px hsl(257.1, 10.1%, 13.5%));
   }
 `;
-
-export const cssQueries = {
-  desktop: `(min-width: 960px)`,
-  mobile: `(max-width: 959px)`,
-  large: `(min-width: 1800px)`,
-};
 
 export const cardStyle = css`
   background-color: var(--background2);
@@ -68,18 +73,34 @@ export const cardStyle = css`
 
 export const marginSection = css`
   margin: 4rem 8%;
+
+  @media ${cssQueries.large} {
+    margin: 4rem 20%;
+  }
 `;
 
 export const marginElement = css`
   margin: 0 8%;
+
+  @media ${cssQueries.large} {
+    margin: 0 20%;
+  }
 `;
 
 export const paddingSection = css`
   padding: 4rem 8%;
+
+  @media ${cssQueries.large} {
+    padding: 4rem 20%;
+  }
 `;
 
 export const paddingElement = css`
   padding: 0 8%;
+
+  @media ${cssQueries.large} {
+    padding: 0 20%;
+  }
 `;
 
 export const paddingBottomLastSection = css`

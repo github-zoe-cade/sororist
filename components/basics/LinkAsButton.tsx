@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 import { buttonStyle } from "styles/utils";
 
 const StyledLink = styled.a`

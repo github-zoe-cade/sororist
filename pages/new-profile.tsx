@@ -1,10 +1,17 @@
-import { useState } from "react";
 import styled from "styled-components";
+import dynamic from "next/dynamic";
 
 import { Layout } from "components/Layout";
 import { TwoPanelsLayout } from "components/basics/layouts/TwoPanelsLayout";
 import { Faq } from "components/NewProfile/Faq";
-import { NewProfileForm } from "components/NewProfile/NewProfileForm";
+import { Loading } from "components/basics/Loading";
+
+const NewProfileForm = dynamic(() =>
+  import("components/NewProfile/NewProfileForm").then(
+    (mod) => mod.NewProfileForm
+  ),
+  { loading: () => <Loading />}
+);
 
 const Title = styled.h3`
   margin-top: 0;

@@ -29,4 +29,8 @@ export const OnePanelLayout = styled.div`
     padding: 2rem;
     margin: 2rem 1rem 4rem;
   }
+
+  @media ${cssQueries.large} {
+    padding: 6rem 10%;
+  }
 `;

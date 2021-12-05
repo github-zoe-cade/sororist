@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Router, withRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 import { getMatchingProfiles } from "lib/profiles";
 import {
@@ -15,8 +16,12 @@ import { ProfileCard } from "components/ProfileCard";
 import { Button } from "components/basics/Button";
 import { LinkAsButton } from "components/basics/LinkAsButton";
 import { ProfileCardsContainer } from "components/common/ProfileCardsContainer";
+import { Loading } from "components/basics/Loading";
 
-import { Filters } from "components/Search/Filters";
+const Filters = dynamic(
+  () => import("components/Search/Filters").then((mod) => mod.Filters),
+  { loading: () => <Loading /> }
+);
 
 const Title = styled.h3`
   ${paddingElement}
@@ -54,7 +59,7 @@ const Search = ({ router }: { router: Router }) => {
   return (
     <Layout currentPath="/search">
       <Title>Explorez les profils d'expert·e·s</Title>
-      <Filters router={router} />
+      <Filters />
 
       <ResultsSection>
         {results.length > 0 && (

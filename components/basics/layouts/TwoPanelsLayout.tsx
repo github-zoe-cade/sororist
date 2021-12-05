@@ -25,6 +25,10 @@ export const TwoPanelsLayout = styled.div`
     @media ${cssQueries.mobile} {
       padding: 2rem;
     }
+
+    @media ${cssQueries.large} {
+      padding: 12%;
+    }
   }
 
   & > div:nth-child(2) {

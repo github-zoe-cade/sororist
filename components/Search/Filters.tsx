@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { NextRouter, Router } from "next/router";
-import { Formik } from "formik";
+import { useRouter } from "next/router";
+
 import { FiltersType } from "lib/filters";
 import { toArray } from "lib/helpers";
 import CaretDown from "public/icons/caret-down.svg";
 import CaretUp from "public/icons/caret-up.svg";
 import { cssQueries } from "styles/utils";
-
 
 import { FiltersForm } from "./FiltersForm";
 import { Loading } from "components/basics/Loading";
@@ -22,6 +21,10 @@ const FiltersContainer = styled.div`
 
   @media ${cssQueries.mobile} {
     padding: 1rem 2rem;
+  }
+
+  @media ${cssQueries.large} {
+    padding: 4rem 20%;
   }
 `;
 
@@ -44,13 +47,8 @@ const FiltersMenu = styled.div`
   }
 `;
 
-export const Filters = ({
-  router,
-  className,
-}: {
-  router: NextRouter;
-  className?: string;
-}) => {
+export const Filters = () => {
+  const router = useRouter()
   const [filters, setFilters] = useState<FiltersType>();
   const [toggleOn, setToggleOn] = useState(false);
 
@@ -86,7 +84,7 @@ export const Filters = ({
     toArray(initialValues.searchTerms).length;
 
   return (
-    <FiltersContainer className={className}>
+    <FiltersContainer>
       <FiltersMenu
         role="button"
         onClick={() => setToggleOn(!toggleOn)}

@@ -125,7 +125,7 @@ export const FiltersForm = ({
                   closeForm();
                 }}
               >
-                <RandomIcon role="presentation" />
+                <RandomIcon role="presentation" aria-hidden="true" />
                 &nbsp; Au hasard
               </Button>
             </RandomButtonContainer>

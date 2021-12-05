@@ -7,30 +7,20 @@ import * as Yup from "yup";
 import { isEmpty } from "lib/helpers";
 import { EditProfileType } from "lib/profiles";
 import { inputStyle } from "styles/forms";
-import { cssQueries } from "styles/utils";
 import ErrorIcon from "public/icons/error.svg";
 
 import { Button } from "components/basics/Button";
 import { LinksField } from "components/common/LinksFields";
 import { ThemeSelect } from "components/common/ThemeSelect";
 
-import { GenderSelect } from "./GenderSelect";
 import { OtherLinksField } from "./OtherLinksField";
 import { HideOrDeleteButton } from "./HideOrDeleteButtons";
+import { IdentityFields } from "./IdentityFields";
 
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
-`;
-
-const IdentityContainer = styled.div`
-  display: grid;
-  column-gap: 2rem;
-
-  @media ${cssQueries.desktop} {
-    grid-template-columns: 60% 1fr;
-  }
 `;
 
 const Label = styled.label`
@@ -42,9 +32,6 @@ const Label = styled.label`
   flex-grow: 1;
 `;
 
-const Input = styled.input`
-  ${inputStyle};
-`;
 
 const TextArea = styled.textarea`
   ${inputStyle};
@@ -136,33 +123,7 @@ export const EditProfileForm = ({ profile }: EditProfileForm) => {
     >
       {({ setFieldValue, values, ...formikBag }) => (
         <StyledForm>
-          <IdentityContainer>
-            <Label htmlFor="name">
-              Nom et/ou pseudo*
-              <Field name="name">
-                {({ field }) => (
-                  <Input
-                    {...field}
-                    placeholder="Angie Neer (@AngieDev)"
-                    id={field.name}
-                  />
-                )}
-              </Field>
-            </Label>
-
-            <Label htmlFor="gender">
-              Votre genre
-              <Field name="gender">
-                {({ field }) => (
-                  <GenderSelect
-                    {...field}
-                    fieldValue={values.gender}
-                    setFieldValue={setFieldValue}
-                  />
-                )}
-              </Field>
-            </Label>
-          </IdentityContainer>
+          <IdentityFields setFieldValue={setFieldValue} values={values} />
 
           <Label htmlFor="description">Présentez-vous en quelques mots*</Label>
           <Field name="description">

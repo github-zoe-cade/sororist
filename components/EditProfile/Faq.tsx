@@ -38,7 +38,7 @@ export const Faq = () => (
     <h4>À quoi vont servir mes données ?</h4>
     <p>
       Uniquement à être affichées sur ce site ! Aucune autre utilisation n'en
-      sera fait, comme l'indiquent nos{" "}
+      sera faite, comme l'indiquent nos{" "}
       <a href="/terms-of-services">Mentions Légales</a>
     </p>
 

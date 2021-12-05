@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { Filters } from "components/Search/Filters";
-import { getMatchingProfilesForEdit } from "lib/profiles";
 import { useRouter } from "next/router";
-import styled from "styled-components";
+import dynamic from "next/dynamic";
+import { getMatchingProfilesForEdit } from "lib/profiles";
 
-const StyledFilters = styled(Filters)`
-  border: none;
-`;
+import { Loading } from "components/basics/Loading";
+
+const Filters = dynamic(
+  () => import("components/Search/Filters").then((mod) => mod.Filters),
+  { loading: () => <Loading /> }
+);
 
 export const ProfileList = () => {
   // Do this with context or else
@@ -29,7 +31,7 @@ export const ProfileList = () => {
 
   return (
     <div>
-      <StyledFilters router={router} />
+      <Filters />
       <div style={{padding: "2rem"}}>
         {results.map((profile, i) => (
           <div key={i}>{profile.name}</div>

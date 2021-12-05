@@ -12,6 +12,11 @@ export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     min-height: 100vh;
     color: var(--default2);
     fill: var(--default2);
+    background-image: var(--backgroundUrlLight);
+
+    @media (prefers-color-scheme: dark) {
+      background-image: var(--backgroundUrlDark);
+    }
   }
 
   #__next {
