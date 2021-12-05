@@ -1,21 +1,53 @@
+import { useState } from "react";
 import styled from "styled-components";
+import CaretUp from "public/icons/caret-up.svg"
+import CaretDown from "public/icons/caret-down.svg"
+import { cssQueries } from "styles/utils";
 
-import { cardStyle } from "styles/utils";
 import { LinkAsButton } from "components/basics/LinkAsButton";
 import { NavLink } from "components/Layout/NavLinks";
 
 const LayoutContainer = styled.div`
   display: grid;
-  grid-template-columns: 20% 1fr;
   height: 100%;
+
+  @media ${cssQueries.desktop} {
+    grid-template-columns: 20% 1fr;
+  }
 `;
 
-const SideNav = styled.nav`
+const OpenSideNav = styled.div`
+  @media ${cssQueries.desktop} {
+    display: none;
+  }
+
+  background: var(--background2);
+  border-bottom: 1px solid var(--default3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  & > svg {
+    fill: var(--alpha100);
+    height: 1.6rem;
+  }
+`;
+
+const SideNav = styled.nav<{ open: boolean }>`
   background: var(--background2);
   border-right: 1px solid var(--default3);
   height: 100%;
   padding: 2rem;
   overflow: hidden;
+
+  @media ${cssQueries.mobile} {
+    display: ${({ open }) => (open ? "flex" : "none")};
+    flex-direction: column;
+  }
 `;
 
 const Ul = styled.ul`
@@ -26,7 +58,7 @@ const Ul = styled.ul`
   & > * {
     margin-bottom: 1rem;
   }
-`
+`;
 
 const Main = styled.main`
   background: var(--background2);
@@ -34,19 +66,38 @@ const Main = styled.main`
 `;
 
 export const AdminLayout = ({ children }) => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
   return (
     <LayoutContainer>
-      <SideNav>
+      <OpenSideNav
+        role="button"
+        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+        onKeyDown={(e) => e.key === "Enter" && setMobileNavOpen(!mobileNavOpen)}
+        tabIndex={0}
+      >
+        Navigation
+        {mobileNavOpen ? (
+          <CaretUp aria-label="Fermer" />
+        ) : (
+          <CaretDown aria-label="Ouvrir" />
+        )}
+      </OpenSideNav>
+
+      <SideNav open={mobileNavOpen}>
         <LinkAsButton href="/">Retour au site</LinkAsButton>
         <Ul>
-          <NavLink href="/admin/profiles" text="Profils" />
           <NavLink href="/admin/themes" text="Thèmes" />
           <NavLink href="/admin/platforms" text="Plateformes" />
+          <NavLink href="/admin/profiles" text="Profils" />
+          <ul>
+            <NavLink href="/admin/profiles?state=new" text="À valider" />
+            <NavLink href="/admin/profiles?state=waiting" text="En attente" />
+            <NavLink href="/admin/profiles?state=displayed" text="Publiés" />
+            <NavLink href="/admin/profiles?state=hidden" text="Masqués" />
+          </ul>
         </Ul>
       </SideNav>
-      <Main>
-        {children}
-      </Main>
+      <Main>{children}</Main>
     </LayoutContainer>
   );
 };

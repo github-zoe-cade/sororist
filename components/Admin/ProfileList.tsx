@@ -6,7 +6,7 @@ import { getMatchingProfilesForEdit } from "lib/profiles";
 import { Loading } from "components/basics/Loading";
 
 const Filters = dynamic(
-  () => import("components/Search/Filters").then((mod) => mod.Filters),
+  () => import("components/Admin/Filters").then((mod) => mod.Filters),
   { loading: () => <Loading /> }
 );
 
