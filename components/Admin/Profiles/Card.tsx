@@ -15,23 +15,31 @@ const Container = styled.div`
 
 export const Card = ({ profile, state }) => (
   <Container>
-    <p>{profile.name}</p>
-    <p>2021-12-06</p>
-    <Formik initialValues={{ state: state }} onSubmit={() => {}}>
-      {({ setFieldValue, values, ...formikBag }) => (
-        <Form>
-          <Field name="state">
-            {({ field }) => (
-              <StateSelect
-                {...field}
-                setFieldValue={setFieldValue}
-                fieldValue={values.state}
-              />
-            )}
-          </Field>
-        </Form>
-      )}
-    </Formik>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        width: "50rem",
+      }}
+    >
+      <p>{profile.name}</p>
+      <p>2021-12-06</p>
+      <Formik initialValues={{ state: state }} onSubmit={() => {}}>
+        {({ setFieldValue, values, ...formikBag }) => (
+          <Form>
+            <Field name="state">
+              {({ field }) => (
+                <StateSelect
+                  {...field}
+                  setFieldValue={setFieldValue}
+                  fieldValue={values.state}
+                />
+              )}
+            </Field>
+          </Form>
+        )}
+      </Formik>
+    </div>
 
     <LinkAsButton href={`/admin/profiles/${profile.uuid}`} text="Voir" />
   </Container>

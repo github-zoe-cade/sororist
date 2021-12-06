@@ -43,7 +43,10 @@ const StyledThemeTags = styled(ThemeTags)`
 `;
 
 const StyledSocialLinks = styled(SocialLinks)`
-  font-size: 1.6rem;
+  & svg {
+    height: 1.6rem !important;
+    width: 1.6rem !important;
+  }
 `;
 
 const SectionTitle = styled.h4`
@@ -88,7 +91,7 @@ export const ProfilePanel = ({ profile }: { profile: ProfileType }) => {
             {profile.name}
             &nbsp;
             {profile.gender && (
-                <Icon aria-label={profile.gender} height="2rem" />
+              <Icon aria-label={profile.gender} height="2rem" />
             )}
           </h3>
 

@@ -11,8 +11,10 @@ const goBack = () => {
 
 const arrivedFromSearch = (fromPage: string) => {
   if (typeof window === "object") {
-    const pathname = "localhost:3000";
+    const pathname = "localhost:3000"; // TODO Zoé
     const searchUrl = `${pathname}/${fromPage}`;
+    console.log(searchUrl)
+    console.log(document.referrer)
     return document.referrer.match(new RegExp(searchUrl));
   }
 };

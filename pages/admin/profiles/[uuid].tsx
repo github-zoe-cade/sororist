@@ -6,7 +6,7 @@ import CheckIcon from "public/icons/check.svg";
 
 import { Loading } from "components/basics/Loading";
 import { SessionProvider } from "components/Admin/SessionProvider";
-import { EditProfileForm } from "components/EditProfile/EditProfileForm";
+import { EditProfileForm } from "components/common/EditProfileForm";
 import { Button } from "components/basics/Button";
 import { BackButton } from "components/Profile/BackButton";
 
@@ -38,7 +38,8 @@ const StyledButton = styled(Button)<{ copySuccess: boolean }>`
   }
 
   @media (prefers-color-scheme: dark) {
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: var(--alpha50);
       fill: var(--alpha50);
     }
@@ -77,7 +78,9 @@ export default function Profiles({ uuid }) {
   };
 
   const copy = () => {
-    if (copySuccess) { return }
+    if (copySuccess) {
+      return;
+    }
     navigator.clipboard.writeText(
       `sororist.tech/profiles/${profile.uuid}?token=${profile.token}`
     );
@@ -92,9 +95,7 @@ export default function Profiles({ uuid }) {
       <AdminLayout>
         <div style={{ padding: "3rem" }}>
           <Header>
-            <div>
-              <BackButton fromPage="admin/profiles" />
-            </div>
+            <BackButton fromPage="admin/profiles" />
             <p style={{ fontSize: "1.2rem", fontWeight: "600" }}>
               Ce profil est actuellement {getProfileState()}
             </p>

@@ -32,6 +32,7 @@ const StyledButton = styled(Button)`
 const SuccessMessage = styled.div`
   background: var(--success100);
   color: var(--default1);
+  fill: var(--default1);
   padding: 1rem;
   border-radius: 5px;
   display: flex;
@@ -39,6 +40,7 @@ const SuccessMessage = styled.div`
 
   @media (prefers-color-scheme: dark) {
     color: var(--default4);
+    fill: var(--default4);
   }
 `;
 
@@ -96,7 +98,11 @@ export const NewProfileForm = () => {
           <Label htmlFor="name">Nom et/ou pseudo*</Label>
           <Field name="name">
             {({ field }) => (
-              <Input {...field} placeholder="Angie Neer (@AngieDev)" id={field.name} />
+              <Input
+                {...field}
+                placeholder="Angie Neer (@AngieDev)"
+                id={field.name}
+              />
             )}
           </Field>
 
@@ -127,6 +133,15 @@ export const NewProfileForm = () => {
           >
             Ajouter ce profil
           </StyledButton>
+
+          <p>
+            <small>
+              En soumettant ses données, elles seront ajoutées à Sororist,
+              conformément au consentement de la personne concernée,
+              conformément à nos{" "}
+              <a href="/terms-of-services">mentions légales</a>.
+            </small>
+          </p>
 
           {submitSuccess && (
             <SuccessMessage>

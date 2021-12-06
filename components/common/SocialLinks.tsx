@@ -1,13 +1,10 @@
 import styled from "styled-components";
-import { LinkAsIcon } from "components/basics/LinkAsIcon";
 import { PlatformIcon } from "components/basics/PlateformIcon";
 
 // Allow to use StyledIcon inside LinksContainer for selector specificity
 const StyledIcon = styled(PlatformIcon)``;
 
 const LinksContainer = styled.div`
-  font-size: 1.3rem;
-
   & > :not(:last-child) {
     margin-right: 0.5rem;
   }
@@ -18,6 +15,8 @@ const LinksContainer = styled.div`
     background: none;
     position: relative;
     z-index: 10;
+    height: 20px;
+    width: 20px;
 
     &:hover {
       fill: var(--alpha120);

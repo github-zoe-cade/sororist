@@ -111,8 +111,8 @@ export const ProfilePictureForm = ({ id, setFieldValue, ...field }) => {
             >
               <CloseIcon
                 aria-label="Enlever la photo"
-                height="1.3rem"
-                width="1.3rem"
+                height="20px"
+                width="20px"
               />
             </RemoveButton>
           )}

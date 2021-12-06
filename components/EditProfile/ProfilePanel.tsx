@@ -6,7 +6,7 @@ import ArrowDown from "public/icons/arrow-down.svg";
 import { isEmpty, toArray } from "lib/helpers";
 import { EditProfileType, getProfileForEdit } from "lib/profiles";
 
-import { EditProfileForm } from "./EditProfileForm";
+import { EditProfileForm } from "../common/EditProfileForm";
 
 const LearnMore = styled.a`
   text-decoration: none;

@@ -8,7 +8,7 @@ export default function TermsOfServices() {
         <h3>Mentions légales</h3>
         <h4>Protections des données</h4>
         <p>
-          Les données recueillis sur ce site sont affichées uniquement après
+          Les données recueillies sur ce site sont affichées uniquement après
           consentement exprès des personnes concernées. Les données sont
           conservées jusqu'à demande de suppression pour les profils approuvés
           et pour une durée de 6 mois pour les profils en attente d'approbation.
@@ -17,10 +17,10 @@ export default function TermsOfServices() {
         </p>
         <p>
           Les informations recueillies sur ce site sont enregistrées dans un
-          fichier informatisé par les éditeurs de Sororist pour maintenir le
-          registre du site sur la base du consentement exprès pour l'affichage
-          et la suggestion anonyme en l'attente du consentement ou jusqu'à la
-          fin de la période de conservation des données.
+          fichier informatisé par les éditeurs de Sororist pour maintenir les
+          profils affichés sur le site sur la base du consentement exprès pour
+          l'affichage et la suggestion anonyme en l'attente du consentement ou
+          jusqu'à la fin de la période de conservation des données.
         </p>
         <p>
           Vous pouvez accéder aux données vous concernant, les rectifier,

@@ -57,8 +57,7 @@ export const theme = {
       youtube: "#ff0000",
     },
     dropShadow: {
-      tiktok:
-        "drop-shadow(-.05em -.05em 0 #22f6e8) drop-shadow(.05em .05em 0 #fd2c54);",
+      tiktok: "drop-shadow(-.5px -.5px 0 #22f6e8) drop-shadow(.5px .5px 0 #fd2c54)",
     },
     background: {
       instagram:

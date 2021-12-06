@@ -13,9 +13,9 @@ import { Button } from "components/basics/Button";
 import { LinksField } from "components/common/LinksFields";
 import { ThemeSelect } from "components/common/ThemeSelect";
 
-import { OtherLinksField } from "./OtherLinksField";
-import { HideOrDeleteButton } from "./HideOrDeleteButtons";
-import { IdentityFields } from "./IdentityFields";
+import { OtherLinksField } from "./EditProfileForm/OtherLinksField";
+import { HideOrDeleteButton } from "./EditProfileForm/HideOrDeleteButtons";
+import { IdentityFields } from "./EditProfileForm/IdentityFields";
 
 const StyledForm = styled(Form)`
   display: flex;

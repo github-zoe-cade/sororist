@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import styled from "styled-components";
 import { getMatchingProfilesForEdit } from "lib/profiles";
+import { cssQueries } from "styles/utils";
 
 import { Button } from "components/basics/Button";
 import { LinkAsButton } from "components/basics/LinkAsButton";
@@ -14,8 +15,22 @@ const Filters = dynamic(
   { loading: () => <Loading /> }
 );
 
+const Headers = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 50rem;
+  margin-left: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  gap: 0.5rem;
+
+  @media ${cssQueries.mobile} {
+    display: none;
+  }
+`;
+
 const NoResults = styled.div`
- text-align: center;
+  text-align: center;
 `;
 
 export const ProfileList = () => {
@@ -54,12 +69,21 @@ export const ProfileList = () => {
   return (
     <div>
       <Filters />
-      <div style={{padding: "2rem"}}>
-      {results.length > 0 && (
+      <div style={{ padding: "2rem" }}>
+        <Headers>
+          <p>Nom</p>
+          <p>Crée le</p>
+          <p>State</p>
+        </Headers>
+        {results.length > 0 && (
           <>
             <div>
               {results.map((profile, index) => (
-                <Card key={index} profile={profile} state={getProfileState(profile)} />
+                <Card
+                  key={index}
+                  profile={profile}
+                  state={getProfileState(profile)}
+                />
               ))}
             </div>
             <Button onClick={fetchNextResults}>Voir plus</Button>
