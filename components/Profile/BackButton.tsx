@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { cssQueries, marginElement } from "styles/utils";
 import ArrowLeft from "public/icons/arrow-left.svg";
 
 import { Button } from "components/basics/Button";
@@ -10,10 +9,10 @@ const goBack = () => {
   }
 };
 
-const arrivedFromSearch = () => {
+const arrivedFromSearch = (fromPage: string) => {
   if (typeof window === "object") {
     const pathname = "localhost:3000";
-    const searchUrl = `${pathname}/search`;
+    const searchUrl = `${pathname}/${fromPage}`;
     return document.referrer.match(new RegExp(searchUrl));
   }
 };
@@ -21,18 +20,13 @@ const arrivedFromSearch = () => {
 const StyledButton = styled(Button)`
   display: flex;
   align-items: center;
-  ${marginElement}
-
-  @media ${cssQueries.desktop} {
-    margin-top: 1rem;
-  }
 `;
 
-export const BackButton = () => (
-  <div style={{ minHeight: "2rem" }}>
-    {arrivedFromSearch() && (
+export const BackButton = ({ fromPage, className }: { fromPage: string, className?: string }) => (
+  <div className={className}>
+    {arrivedFromSearch(fromPage) && (
       <StyledButton onClick={goBack}>
-        <ArrowLeft aria-label="retour"/>
+        <ArrowLeft aria-label="retour" />
         &nbsp;Retourner
       </StyledButton>
     )}

@@ -28,3 +28,16 @@ export const upOnHover = css`
     transform: translateY(-3%);
   }
 `;
+
+export const slideDown = css`
+  animation: .3s ease-out 1 forwards slideDown;
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-10%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+`;

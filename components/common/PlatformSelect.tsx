@@ -14,15 +14,16 @@ type PlatformSelect = {
   name: string,
   onChange: (options?: string[]) => void;
   value: string[]
+  placeholder?: string,
 };
 
-export const PlatformSelect = ({ error, name, onChange, value, ...field }: PlatformSelect) => (
+export const PlatformSelect = ({ error, name, onChange, placeholder, value, ...field }: PlatformSelect) => (
   <MultiSelect
     {...field}
     value={value}
     name={name}
     error={error}
-    placeholder="Twitter, Youtube, Github..."
+    placeholder={placeholder || "Twitter, Youtube, Github..."}
     options={options}
     onChange={onChange}
   />

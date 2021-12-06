@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field } from "formik";
 import { NextRouter } from "next/router";
-import RandomIcon from "public/icons/random.svg";
 import { FiltersType } from "lib/filters";
+import { toArray } from "lib/helpers";
 
 import { cssQueries } from "styles/utils";
 
@@ -11,6 +11,7 @@ import { Button } from "components/basics/Button";
 import { ThemeSelect } from "components/common/ThemeSelect";
 import { PlatformSelect } from "components/common/PlatformSelect";
 import { SearchBar } from "components/common/SearchBar";
+import { StatesField } from "./StatesField";
 
 const StyledForm = styled(Form)<{ open: boolean }>`
   display: grid;
@@ -24,11 +25,8 @@ const StyledForm = styled(Form)<{ open: boolean }>`
   }
 `;
 
-const StyledLabel = styled.span`
-  line-height: 2;
-`;
 
-const RandomButtonContainer = styled.div`
+const ButtonContainer = styled.div`
   display: flex;
   justify-content: end;
   align-items: end;
@@ -59,7 +57,6 @@ export const FiltersForm = ({
   filters,
   initialValues,
   onSubmit,
-  router,
   toggleOn,
 }: FiltersForm) => {
   return (
@@ -79,9 +76,9 @@ export const FiltersForm = ({
             <Field name="themes">
               {({ field }) => (
                 <label htmlFor="theme">
-                  <StyledLabel>Filtrer par thème :</StyledLabel>
                   <ThemeSelect
                     {...field}
+                    placeholder="Filtrer par thème"
                     setFieldValue={setFieldValue}
                     onChange={onChange(field.name)}
                   />
@@ -92,8 +89,11 @@ export const FiltersForm = ({
             <Field name="platforms">
               {({ field }) => (
                 <label htmlFor="platforms">
-                  <StyledLabel>Filtrer par plateforme :</StyledLabel>
-                  <PlatformSelect {...field} onChange={onChange(field.name)} />
+                  <PlatformSelect
+                    {...field}
+                    onChange={onChange(field.name)}
+                    placeholder="Filtrer par plateforme"
+                  />
                 </label>
               )}
             </Field>
@@ -101,7 +101,6 @@ export const FiltersForm = ({
             <Field name="searchTerms">
               {({ field }) => (
                 <label htmlFor="searchTerms" style={{ position: "relative" }}>
-                  <StyledLabel>Filtrer par nom :</StyledLabel>
                   <SearchBar
                     {...field}
                     filters={filters}
@@ -112,7 +111,31 @@ export const FiltersForm = ({
               )}
             </Field>
 
-            <RandomButtonContainer>
+            <Field name="states">
+              {({ field }) => {
+                const changeStatesValue = (value) => {
+                  if (!field.value) {
+                    setFieldValue(field.name, [value]);
+                  } else if (field.value.includes(value)) {
+                    setFieldValue(
+                      field.name,
+                      toArray(field.value).filter((x) => x !== value)
+                    );
+                  } else {
+                    setFieldValue(field.name, [...toArray(field.value), value]);
+                  }
+                  submitForm()
+                };
+                return (
+                  <StatesField
+                    {...field}
+                    changeStatesValue={changeStatesValue}
+                  />
+                );
+              }}
+            </Field>
+
+            <ButtonContainer>
               <ApplyButton
                 onClick={() => {
                   submitForm();
@@ -121,17 +144,7 @@ export const FiltersForm = ({
               >
                 Appliquer
               </ApplyButton>
-              <Button
-                style={{ display: "flex", alignItems: "center" }}
-                onClick={() => {
-                  router.push("/search");
-                  closeForm();
-                }}
-              >
-                <RandomIcon role="presentation" aria-hidden="true" />
-                &nbsp; Au hasard
-              </Button>
-            </RandomButtonContainer>
+            </ButtonContainer>
           </StyledForm>
         );
       }}

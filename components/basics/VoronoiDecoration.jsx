@@ -26,6 +26,7 @@ export const VoronoiDecoration = ({
   pictureHeight,
   pictureWidth,
   pictureShape = "rectangle",
+  className = undefined,
 }) => {
   const spaceHolders = [];
   for (let i = 0; i < 6; i++) {
@@ -71,6 +72,7 @@ export const VoronoiDecoration = ({
         viewBox={`0 0 ${width} ${height}`}
         style={{ overflow: "visible" }}
         preserveAspectRatio="xMinYMin meet"
+        className={className}
       >
         <defs>
           {pictureShape === "circle" ? (

@@ -4,7 +4,7 @@ import { cssQueries, marginSection } from "styles/utils";
 
 import { LinkAsButton } from "components/basics/LinkAsButton";
 import { VoronoiDecoration } from "components/basics/VoronoiDecoration";
-import { bounceOnHover } from "styles/animations";
+import { bounceOnHover, slideDown } from "styles/animations";
 
 const HeaderContainer = styled.header`
   ${marginSection}
@@ -71,6 +71,10 @@ const ExploreButton = styled(LinkAsButton)`
   ${bounceOnHover};
 `;
 
+const StyledVoronoiDecoration = styled(VoronoiDecoration)`
+  ${slideDown}
+`;
+
 export const Header = () => {
   return (
     <>
@@ -86,7 +90,7 @@ export const Header = () => {
           <DarkThemeBackground />
         </TextContainer>
 
-        <VoronoiDecoration
+        <StyledVoronoiDecoration
           image="/images/cover.jpg"
           height={500}
           width={600}

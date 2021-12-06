@@ -24,7 +24,9 @@ export const HideOrDeleteButton = ({ hidden }) => {
   const hideProfile = () => {
     // Post to api to submit values + hide profil
     const { token, uuid } = router.query;
-    router.push(`/profiles/${uuid}/edit?token=${token}`)
+    const pathname = router.pathname.replace("[uuid]", uuid as string)
+    const withToken = !!token ? `?token=${token}` : ""
+    router.push(`${pathname}${withToken}`)
   }
 
   const deleteProfile = () => {

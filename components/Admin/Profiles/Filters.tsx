@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-import { FiltersType } from "lib/filters";
+import { AdminFiltersType } from "lib/filters";
 import { toArray } from "lib/helpers";
 import CaretDown from "public/icons/caret-down.svg";
 import CaretUp from "public/icons/caret-up.svg";
 import { cssQueries } from "styles/utils";
 
-// import { FiltersForm } from "./FiltersForm";
 import { Loading } from "components/basics/Loading";
+import { FiltersForm } from "./FiltersForm";
 
 const FiltersContainer = styled.div`
   background-color: var(--background2);
@@ -49,12 +49,13 @@ const FiltersMenu = styled.div`
 
 export const Filters = () => {
   const router = useRouter()
-  const [filters, setFilters] = useState<FiltersType>();
+  const [filters, setFilters] = useState<AdminFiltersType>();
   const [toggleOn, setToggleOn] = useState(false);
 
   useEffect(() => {
     if (router.isReady) {
-      const appliedFilters: FiltersType = {
+      const appliedFilters: AdminFiltersType = {
+        states: router.query.states,
         themes: router.query.themes,
         platforms: router.query.platforms,
         searchTerms: toArray(router.query.searchTerms).join(),
@@ -63,7 +64,7 @@ export const Filters = () => {
     }
   }, [router]);
 
-  const onSubmit = async (values: FiltersType) => {
+  const onSubmit = async (values: AdminFiltersType) => {
     router.push({ pathname: router.pathname, query: values }, undefined, {
       scroll: false,
     });
@@ -73,15 +74,11 @@ export const Filters = () => {
     return <Loading />;
   }
 
-  const initialValues: FiltersType = {};
+  const initialValues: AdminFiltersType = {};
+  if (!!filters.states) initialValues["states"] = filters.states;
   if (!!filters.themes) initialValues["themes"] = filters.themes;
   if (!!filters.platforms) initialValues["platforms"] = filters.platforms;
   if (!!filters.searchTerms) initialValues["searchTerms"] = filters.searchTerms;
-
-  const filtersCount =
-    toArray(initialValues.themes).length +
-    toArray(initialValues.platforms).length +
-    toArray(initialValues.searchTerms).length;
 
   return (
     <FiltersContainer>
@@ -92,18 +89,17 @@ export const Filters = () => {
         tabIndex={0}
       >
         Filters
-        {filtersCount > 0 && <span>({filtersCount})</span>}
         {toggleOn ? <CaretUp aria-label="Fermer" /> : <CaretDown aria-label="Ouvrir"/>}
       </FiltersMenu>
 
-      {/* <FiltersForm
+      <FiltersForm
         closeForm={() => setToggleOn(false)}
         filters={filters}
         initialValues={initialValues}
         onSubmit={onSubmit}
         router={router}
         toggleOn={toggleOn}
-      /> */}
+      />
     </FiltersContainer>
   );
 };

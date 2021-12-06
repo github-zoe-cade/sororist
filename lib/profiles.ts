@@ -26,8 +26,10 @@ export type ProfileType = {
 
 export type EditProfileType = ProfileType & {
   notValidated: boolean;
+  contacted: boolean;
   published: boolean;
   hidden: boolean;
+  token: string;
 };
 
 // Return the info to build the latest profiles on the homepage

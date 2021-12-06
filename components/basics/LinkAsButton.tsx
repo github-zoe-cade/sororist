@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { buttonStyle } from "styles/utils";
+import Link from "next/link";
 
 const StyledLink = styled.a`
   ${buttonStyle};
@@ -27,8 +28,10 @@ export const LinkAsButton = ({
   className,
   children,
 }: LinkAsButtonProps) => (
-  <StyledLink href={href} className={className} tabIndex={0}>
-    {text}
-    {children && <Container>{children}</Container>}
-  </StyledLink>
+  <Link href={href} passHref>
+    <StyledLink className={className} tabIndex={0}>
+      {text}
+      {children && <Container>{children}</Container>}
+    </StyledLink>
+  </Link>
 );

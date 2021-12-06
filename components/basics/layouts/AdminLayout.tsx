@@ -90,10 +90,10 @@ export const AdminLayout = ({ children }) => {
           <NavLink href="/admin/platforms" text="Plateformes" />
           <NavLink href="/admin/profiles" text="Profils" />
           <ul>
-            <NavLink href="/admin/profiles?state=new" text="À valider" />
-            <NavLink href="/admin/profiles?state=waiting" text="En attente" />
-            <NavLink href="/admin/profiles?state=displayed" text="Publiés" />
-            <NavLink href="/admin/profiles?state=hidden" text="Masqués" />
+            <NavLink href="/admin/profiles?states=new" text="À valider" />
+            <NavLink href="/admin/profiles?states=waiting" text="En attente" />
+            <NavLink href="/admin/profiles?states=approved" text="Publiés" />
+            <NavLink href="/admin/profiles?states=hidden" text="Masqués" />
           </ul>
         </Ul>
       </SideNav>

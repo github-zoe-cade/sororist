@@ -47,6 +47,8 @@ export default {
     },
   ],
   notValidated: true,
+  contacted: true,
   published: false,
   hidden: false,
+  token: "coucou",
 };

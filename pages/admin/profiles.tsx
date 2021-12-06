@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 
 import { SessionProvider } from "components/Admin/SessionProvider";
 import { Loading } from "components/basics/Loading";
-import { ProfileList } from "components/Admin/ProfileList";
+import { ProfileList } from "components/Admin/Profiles/ProfileList";
 
 const AdminLayout = dynamic(
   () => import("components/basics/layouts/AdminLayout").then((mod) => mod.AdminLayout),

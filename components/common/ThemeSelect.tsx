@@ -13,13 +13,14 @@ const themesOptions = [
 type ThemeSelect = {
   error?: boolean,
   onChange: (options?: string[]) => void;
+  placeholder?: string,
 };
 
-export const ThemeSelect = ({ error, onChange, ...field }: ThemeSelect) => (
+export const ThemeSelect = ({ error, onChange, placeholder, ...field }: ThemeSelect) => (
   <MultiSelect
     {...field}
     error={error}
-    placeholder="Python, sécurité, accessibilité..."
+    placeholder={placeholder || "Python, sécurité, accessibilité..."}
     options={themesOptions}
     onChange={onChange}
   />

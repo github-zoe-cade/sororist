@@ -8,10 +8,6 @@ import { inputHeight, inputStyle } from "styles/forms";
 import { Button } from "components/basics/Button";
 import { RemovableTag } from "components/basics/RemovableTag";
 
-const StyledLabel = styled.span`
-  line-height: 2;
-`;
-
 const NameInputContainer = styled.div`
   display: flex;
   ${inputHeight}
@@ -19,7 +15,11 @@ const NameInputContainer = styled.div`
 
 const StyledInput = styled.input<{ textHidden: boolean }>`
   ${inputStyle}
-  color: ${({ textHidden }) => textHidden ? "transparent": "var(--defaut2)"};
+  color: ${({ textHidden }) => (textHidden ? "transparent" : "var(--defaut2)")};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${({ textHidden }) => (textHidden ? "var(--background1)" : "var(--defaut2)")};
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -68,12 +68,10 @@ export const SearchBar = ({
     }
   };
   return (
-    <label htmlFor="searchTerms" style={{ position: "relative" }}>
+    <>
       {tag && <RemovableTag label={tag} onRemove={clearInput} />}
 
-      <StyledLabel>Filtrer par nom :</StyledLabel>
-
-      <NameInputContainer onFocus={clearInput}>
+      <NameInputContainer>
         <StyledInput
           {...field}
           id="searchTerms"
@@ -82,12 +80,14 @@ export const SearchBar = ({
           autoComplete="off"
           ref={inputRef}
           textHidden={!!tag}
+          onFocus={clearInput}
         />
 
         <StyledButton
           type="submit"
           aria-label="Chercher par nom/pseudo"
           onClick={(e: Event) => {
+            e.preventDefault()
             submitForm();
             setTag(value);
             (e.currentTarget as HTMLButtonElement).blur();
@@ -97,6 +97,6 @@ export const SearchBar = ({
           <SearchIcon aria-label="Chercher" />
         </StyledButton>
       </NameInputContainer>
-    </label>
+    </>
   );
 };

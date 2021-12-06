@@ -9,10 +9,21 @@ import { Layout } from "components/Layout";
 import { ThemeSection } from "components/common/ThemeSection";
 
 
+import styled from "styled-components";
+import { cssQueries, marginElement } from "styles/utils";
+
 import { BackButton } from "components/Profile/BackButton";
 import { ProfilePanel } from "components/Profile/ProfilePanel";
 import { SimilarPanel } from "components/Profile/SimilarPanel";
 import { TwoPanelsLayout } from "components/basics/layouts/TwoPanelsLayout";
+
+const StyledBackButton = styled(BackButton)`
+  ${marginElement}
+
+  @media ${cssQueries.large} {
+    margin-top: 1rem;
+  }
+`
 
 export const getStaticProps = async ({ params }) => {
   const profile = getProfile(params.uuid);
@@ -41,7 +52,7 @@ type ProfileProps = {
 export default function Profile({ profile, similarProfiles }: ProfileProps) {
   return (
     <Layout>
-      <BackButton />
+      <StyledBackButton fromPage="search" />
 
       <TwoPanelsLayout>
         <ProfilePanel profile={profile} />
